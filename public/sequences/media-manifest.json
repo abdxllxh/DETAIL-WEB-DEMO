@@ -1,0 +1,98 @@
+{
+  "generatedBy": "scripts/extract_frames.py",
+  "targetFps": 25.0,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "sections": [
+    {
+      "id": "exterior",
+      "sourceFolder": "section 1 (body wash)",
+      "frameDirectory": "/sequences/exterior",
+      "framePattern": "frame_{index}.jpg",
+      "frameCount": 250,
+      "sources": [
+        {
+          "source": "video\\section 1 (body wash)\\Man_washing_car_with_foam_20261016224218.mp4",
+          "filename": "Man_washing_car_with_foam_20261016224218.mp4",
+          "durationSeconds": 10.0,
+          "sourceResolution": [
+            1920,
+            1080
+          ],
+          "sourceFrameRate": "24",
+          "targetFrameRate": 25.0,
+          "startFrame": 1,
+          "frameCount": 250
+        }
+      ]
+    },
+    {
+      "id": "interior",
+      "sourceFolder": "section 2 (interior)",
+      "frameDirectory": "/sequences/interior",
+      "framePattern": "frame_{index}.jpg",
+      "frameCount": 745,
+      "sources": [
+        {
+          "source": "video\\section 2 (interior)\\interior.MOV",
+          "filename": "interior.MOV",
+          "durationSeconds": 29.791,
+          "sourceResolution": [
+            3840,
+            2160
+          ],
+          "sourceFrameRate": "42900/1787",
+          "targetFrameRate": 25.0,
+          "startFrame": 1,
+          "frameCount": 745
+        }
+      ]
+    },
+    {
+      "id": "wheels",
+      "sourceFolder": "section 3 (wheels)",
+      "frameDirectory": "/sequences/wheels",
+      "framePattern": "frame_{index}.jpg",
+      "frameCount": 500,
+      "sources": [
+        {
+          "source": "video\\section 3 (wheels)\\wheel.mp4",
+          "filename": "wheel.mp4",
+          "durationSeconds": 20.0,
+          "sourceResolution": [
+            3840,
+            2160
+          ],
+          "sourceFrameRate": "28800/1201",
+          "targetFrameRate": 25.0,
+          "startFrame": 1,
+          "frameCount": 500
+        }
+      ]
+    },
+    {
+      "id": "ceramic",
+      "sourceFolder": "section 4 (creamic coating)",
+      "frameDirectory": "/sequences/ceramic",
+      "framePattern": "frame_{index}.jpg",
+      "frameCount": 438,
+      "sources": [
+        {
+          "source": "video\\section 4 (creamic coating)\\creamic .MOV",
+          "filename": "creamic .MOV",
+          "durationSeconds": 17.5,
+          "sourceResolution": [
+            3840,
+            2160
+          ],
+          "sourceFrameRate": "25200/1051",
+          "targetFrameRate": 25.0,
+          "startFrame": 1,
+          "frameCount": 438
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="description" content="Recent work from Sam’s Auto Detailing in Mildura - sample vehicle transformations, services, and finish details.">
+  <title>Sam’s Auto Detailing - Recent Work</title>
+  <link rel="icon" type="image/png" href="public/images/brand/sams-auto-detailing-logo-transparent.png">
+  <link rel="apple-touch-icon" href="public/images/brand/sams-auto-detailing-logo-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05080a; --surface: #0b1115; --text: #eaf2f5; --muted: #9eabb0; --muted-dark: #66767d; --line: #1b2b34; --blue: #62c1ce;
+      --display: "Barlow Condensed", "Arial Narrow", -apple-system, sans-serif; --body: "Manrope", Arial, -apple-system, sans-serif; --mono: "JetBrains Mono", monospace;
+      --radius: 4px; --radius-lg: 12px; --radius-pill: 999px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color-scheme: dark; scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--body); line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E"); z-index: 999; }
+    body.modal-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; } button { color: inherit; font: inherit; } img { display: block; max-width: 100%; height: auto; }
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 10; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(180deg, rgba(5,8,10,.96), rgba(5,8,10,.52) 72%, transparent); border-bottom: 1px solid rgba(98,193,206,.12); }
+    .nav-brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; white-space: nowrap; }
+    .brand-icon { width: 42px; height: 42px; object-fit: contain; display: block; }
+    .brand-title { font-family: var(--display); font-size: 21px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+    .brand-title span { font-size: 11px; font-family: var(--mono); color: var(--muted); font-weight: 500; letter-spacing: .12em; }
+    .page-actions { display: flex; align-items: center; gap: 18px; flex-wrap: nowrap; white-space: nowrap; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .page-actions a { color: var(--muted); transition: color .2s ease; } .page-actions a:hover { color: #fff; }
+    .page-actions .book-link { color: var(--bg); background: var(--text); padding: 9px 16px; border-radius: var(--radius-pill); font-weight: 700; white-space: nowrap; }
+    .wrap { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
+    .gallery-hero { position: relative; isolation: isolate; display: flex; min-height: min(900px, 96vh); align-items: flex-end; overflow: hidden; padding: 210px 0 132px; border-bottom: 1px solid var(--line); }
+    .gallery-hero::before { content: ""; position: absolute; z-index: -2; inset: -4%; background: url("public/images/gallery/gallery-hero-original.jpg") center / cover no-repeat; filter: saturate(.78) contrast(1.06); transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.045); transform-origin: center; animation: galleryHeroDrift 18s ease-in-out infinite alternate; will-change: transform; }
+    .gallery-hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(5,6,6,.92) 0%, rgba(5,6,6,.72) 30%, rgba(5,6,6,.27) 63%, rgba(5,6,6,.34) 100%), linear-gradient(180deg, rgba(5,6,6,.48) 0%, transparent 35%, rgba(5,6,6,.72) 100%); pointer-events: none; }
+    .gallery-hero .wrap { position: relative; z-index: 1; }
+    .gallery-hero .eyebrow { animation: galleryHeroContentIn .8s cubic-bezier(.16,1,.3,1) both; }
+    .gallery-hero h1 { text-shadow: 0 5px 30px rgba(0,0,0,.42); animation: galleryHeroContentIn .95s .08s cubic-bezier(.16,1,.3,1) both; }
+    .gallery-hero .hero-copy { text-shadow: 0 2px 12px rgba(0,0,0,.78); animation: galleryHeroContentIn .95s .18s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes galleryHeroDrift { from { transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.045); } to { transform: translate3d(-1.2%, calc(var(--hero-shift, 0px) - 1.2%), 0) scale(1.08); } }
+    @keyframes galleryHeroContentIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .eyebrow { font-family: var(--mono); font-size: 11px; color: var(--blue); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 14px; }
+    h1, h2, h3, h4 { font-family: var(--display); text-transform: uppercase; line-height: .95; }
+    h1 { font-size: clamp(64px, 11vw, 142px); letter-spacing: -.025em; max-width: 980px; }
+    .hero-copy { max-width: 610px; color: var(--muted); font-size: 15px; margin-top: 28px; }
+    .recent-work { padding: 90px 0 120px; }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(250px, .7fr); gap: 60px; align-items: end; margin-bottom: 48px; }
+    .section-head h2 { font-size: clamp(54px, 7vw, 94px); letter-spacing: -.02em; }
+    .section-head-copy { color: var(--muted); font-size: 13px; line-height: 1.65; } .section-head-copy strong { color: var(--text); font-weight: 600; }
+    .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .work-card { appearance: none; width: 100%; padding: 0; text-align: left; cursor: pointer; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); transition: transform .45s cubic-bezier(.16,1,.3,1), border-color .3s ease, box-shadow .45s ease; }
+    .work-card:hover, .work-card:focus-visible { outline: none; transform: translateY(-6px); border-color: rgba(98,193,206,.72); box-shadow: 0 24px 58px rgba(98,193,206,.14); }
+    .work-card:focus-visible { box-shadow: 0 0 0 3px rgba(98,193,206,.34), 0 24px 58px rgba(98,193,206,.14); }
+    .work-cover { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #030404; } .work-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.62)); pointer-events: none; }
+    .work-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16,1,.3,1); } .work-card:hover .work-cover img { transform: scale(1.045); }
+    .work-index { position: absolute; z-index: 1; top: 16px; left: 16px; color: #fff; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; }
+    .work-open { position: absolute; z-index: 1; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 11px; border: 1px solid rgba(255,255,255,.35); border-radius: var(--radius-pill); background: rgba(8,9,9,.74); color: #fff; font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+    .work-open span { color: var(--blue); font-size: 14px; line-height: .7; }
+    .work-copy { padding: 22px 24px 24px; } .work-meta { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; margin-bottom: 10px; }
+    .work-name { font-family: var(--display); font-size: 34px; line-height: .9; text-transform: uppercase; } .work-colour { color: var(--blue); font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; text-align: right; }
+    .work-service { color: var(--muted); font-size: 13px; line-height: 1.55; max-width: 520px; } .work-location { display: flex; justify-content: space-between; gap: 16px; margin-top: 18px; color: var(--muted-dark); font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; } .work-location strong { color: var(--blue); font-weight: 500; }
+    .footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: var(--bg); color: var(--muted); font-size: 13px; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
+    .footer-brand { margin-bottom: 16px; }
+    .footer-col h5 { margin-bottom: 18px; color: #fff; font-family: var(--mono); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; }
+    .footer-col ul { display: grid; gap: 10px; list-style: none; }
+    .footer-col a:hover, .footer-bottom a:hover { color: #fff; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 24px; padding-top: 28px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 10px; }
+    .work-modal { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; padding: 28px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .3s ease, visibility .3s ease; }
+    .work-modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; } .work-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.82); backdrop-filter: blur(10px); }
+    .work-modal-panel { position: relative; z-index: 1; width: min(1100px, 100%); max-height: min(900px, calc(100vh - 56px)); overflow-y: auto; border: 1px solid rgba(255,255,255,.16); border-radius: 14px; background: #0b0d0d; box-shadow: 0 28px 100px rgba(0,0,0,.6); transform: translateY(20px) scale(.98); transition: transform .4s cubic-bezier(.16,1,.3,1); }
+    .work-modal.is-open .work-modal-panel { transform: translateY(0) scale(1); } .work-modal-close { position: sticky; top: 18px; z-index: 3; float: right; width: 38px; height: 38px; margin: 18px 18px 0 0; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; background: rgba(10,11,11,.82); color: #fff; cursor: pointer; font-size: 24px; line-height: 1; } .work-modal-close:hover, .work-modal-close:focus-visible { border-color: var(--blue); color: var(--blue); outline: none; }
+    .work-modal-intro { padding: 42px 42px 26px; } .work-modal-intro h2 { font-size: clamp(52px, 7vw, 88px); max-width: 720px; } .work-modal-subline { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 18px; color: var(--muted); font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; } .work-modal-subline strong { color: var(--blue); font-weight: 500; }
+    .work-modal-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 42px; } .detail-shot { position: relative; overflow: hidden; min-height: 260px; border-radius: 7px; background: #030404; } .detail-shot:first-child { grid-column: 1 / -1; aspect-ratio: 2 / .94; } .detail-shot:not(:first-child) { aspect-ratio: 4 / 3; } .detail-shot img { width: 100%; height: 100%; object-fit: cover; }
+    .detail-shot figcaption { position: absolute; left: 14px; bottom: 14px; padding: 7px 9px; border-radius: var(--radius-pill); background: rgba(7,8,8,.82); color: #fff; font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+    .work-modal-details { display: grid; grid-template-columns: .9fr 1.1fr; gap: 42px; padding: 32px 42px 44px; } .work-modal-details h3 { font-size: 34px; margin-bottom: 18px; } .service-list { list-style: none; display: grid; gap: 10px; } .service-list li { position: relative; padding-left: 20px; color: var(--muted); font-size: 13px; } .service-list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 7px; height: 1px; background: var(--blue); }
+    .review-block { align-self: end; padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: rgba(98,193,206,.035); } .review-kicker { color: var(--blue); font-family: var(--mono); font-size: 10px; letter-spacing: .13em; text-transform: uppercase; } .review-stars { margin: 16px 0 10px; color: var(--blue); letter-spacing: .15em; } .review-block blockquote { color: var(--text); font-size: 15px; line-height: 1.65; } .review-byline { margin-top: 18px; color: var(--muted-dark); font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    @media (max-width: 850px) { .wrap { width: min(100% - 40px, 680px); } .section-head { grid-template-columns: 1fr; gap: 20px; } .work-grid { grid-template-columns: 1fr; } .work-modal-details { grid-template-columns: 1fr; gap: 30px; } .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .site-nav { padding: 12px 14px; } .brand-title { font-size: 16px; } .brand-title span { display: none; } .page-actions { gap: 8px; font-size: 8.5px; } .page-actions a:not(.book-link) { display: none; } .page-actions .book-link { padding: 8px 11px; } .gallery-hero { min-height: 760px; padding: 150px 0 78px; } .gallery-hero::after { background: linear-gradient(90deg, rgba(5,6,6,.88) 0%, rgba(5,6,6,.56) 70%, rgba(5,6,6,.42) 100%), linear-gradient(180deg, rgba(5,6,6,.42) 0%, transparent 35%, rgba(5,6,6,.82) 100%); } .recent-work { padding: 64px 0 84px; } .work-copy { padding: 20px; } .work-meta { display: block; } .work-colour { display: block; margin-top: 10px; text-align: left; } .work-location { display: block; } .work-location span + span { display: block; margin-top: 8px; } .work-modal { padding: 10px; } .work-modal-panel { max-height: calc(100vh - 20px); } .work-modal-intro { padding: 34px 20px 22px; } .work-modal-gallery { grid-template-columns: 1fr; padding: 0 20px; } .detail-shot:first-child, .detail-shot:not(:first-child) { grid-column: auto; aspect-ratio: 4 / 3; } .work-modal-details { padding: 26px 20px 30px; } .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 12px; } }
+    @media (prefers-reduced-motion: reduce) { .gallery-hero::before, .gallery-hero .eyebrow, .gallery-hero h1, .gallery-hero .hero-copy { animation: none; } }
+    .footer { padding: 56px 0 22px; background: var(--bg); }
+    .footer-main { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(180px,.72fr) minmax(180px,.72fr); gap: 14px; align-items: stretch; }
+    .footer-lead { padding: 4px 26px 12px 0; }
+    .footer-brand-line { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+    .footer-brand-line .brand-icon { flex:0 0 42px; }
+    .footer-name { font-family:var(--display); font-size:22px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .footer-name span { color:var(--muted); font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; }
+    .footer-lead p { max-width:460px; color:var(--muted); font-size:13px; line-height:1.75; }
+    .footer-contact-line { margin-top:18px; color:#d6dcda !important; font-family:var(--mono); font-size:11px !important; letter-spacing:.06em; }
+    .footer-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
+    .footer-action { display:inline-flex; min-height:40px; align-items:center; gap:8px; padding:10px 14px; border:1px solid var(--line); border-radius:5px; color:#e8ece9; font-family:var(--mono); font-size:10px; letter-spacing:.06em; transition:border-color .2s ease, background .2s ease, transform .2s ease; }
+    .footer-action:hover, .footer-action:focus-visible { border-color:var(--blue); background:rgba(98,193,206,.08); transform:translateY(-2px); }
+    .footer-panel { padding:20px 18px 24px; border:1px solid var(--line); background:rgba(255,255,255,.018); }
+    .footer-panel h5 { margin-bottom:18px; color:var(--blue); font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
+    .footer-panel ul { display:grid; gap:10px; list-style:none; }
+    .footer-panel li, .footer-panel a { color:var(--muted); font-family:var(--mono); font-size:10px; line-height:1.45; }
+    .footer-panel a:hover, .footer-panel a:focus-visible { color:#fff; }
+    .footer-wordmark { width:100%; max-width:100%; margin:34px 0 18px; overflow:hidden; color:rgba(98,193,206,.08); font-family:var(--display); font-size:clamp(44px,9.5vw,136px); font-weight:800; letter-spacing:-.055em; line-height:.8; text-align:center; text-transform:uppercase; white-space:nowrap; }
+    .footer-bottom { align-items:center; gap:18px; }
+    @media (max-width:560px) { .footer-main { grid-template-columns:1fr; gap:14px; } .footer-lead { padding-right:0; } .footer-panel { padding:18px; } .footer-wordmark { margin:28px 0 18px; font-size:clamp(26px,8.6vw,56px); letter-spacing:-.06em; text-align:center; } }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <a class="nav-brand" href="index.html" aria-label="Back to Sam’s Auto Detailing home"><img class="brand-icon" src="public/images/brand/sams-auto-detailing-logo-transparent.png" alt="Sam's Auto Detailing logo"><span class="brand-title">SAM'S AUTO <span>DETAILING</span></span></a>
+    <nav class="page-actions" aria-label="Gallery navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a class="book-link" href="book-now.html">Book Now</a></nav>
+  </header>
+  <main>
+    <section class="gallery-hero"><div class="wrap"><div class="eyebrow">Sam’s Auto Detailing / Recent Work</div><h1>Different cars.<br>Same standard.</h1><p class="hero-copy">A closer look at sixteen sample transformations, photographed from the angles that matter: the finish outside, the finish behind, and the cabin when the doors open.</p></div></section>
+    <section class="recent-work" aria-labelledby="recent-work-title">
+      <div class="wrap">
+        <div class="section-head"><div><div class="eyebrow">Client Result Journal</div><h2 id="recent-work-title">Recent<br>Work.</h2></div><div class="section-head-copy"><p><strong>Open a vehicle to see its full detail study.</strong> Browse sixteen vehicle projects organised by finish, service scope, and condition, with front, rear, and cabin views alongside the work completed.</p></div></div>
+        <div class="work-grid" id="work-grid"></div>
+      </div>
+    </section>
+  </main>
+  <div class="work-modal" id="work-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="work-modal-title">
+    <div class="work-modal-backdrop" data-close-work></div>
+    <div class="work-modal-panel">
+      <button class="work-modal-close" type="button" aria-label="Close vehicle details" data-close-work>&times;</button>
+      <div class="work-modal-intro"><div class="eyebrow" id="work-modal-kicker"></div><h2 id="work-modal-title"></h2><div class="work-modal-subline"><span id="work-modal-colour"></span><span id="work-modal-location"></span><span id="work-modal-rating"></span></div></div>
+      <div class="work-modal-gallery" id="work-modal-gallery"></div>
+      <div class="work-modal-details"><div><div class="eyebrow">Services provided</div><h3>What we did.</h3><ul class="service-list" id="work-modal-services"></ul></div><div class="review-block"><div class="review-kicker">Demo review / sample client</div><div class="review-stars" id="work-modal-stars" aria-hidden="true"></div><blockquote id="work-modal-review"></blockquote><div class="review-byline" id="work-modal-byline"></div></div></div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="footer-lead">
+          <div class="footer-brand-line"><img class="brand-icon" src="public/images/brand/sams-auto-detailing-logo-transparent.png" alt="Sam's Auto Detailing logo"><div class="footer-name">SAM'S AUTO <span>DETAILING</span></div></div>
+          <p>Mobile car care in Mildura and surrounding areas. We come to you for practical cleans, deeper detailing, and finish protection.</p>
+          <p class="footer-contact-line">Mildura, VIC 3500 &amp; surrounding areas<br>Fully insured mobile service<br>ABN 77 698 702 569</p>
+          <div class="footer-actions"><a class="footer-action" href="https://www.facebook.com/SamsCarDetailing1" target="_blank" rel="noopener">Facebook ↗</a><a class="footer-action" href="tel:+61470385024">Call / Text</a><a class="footer-action" href="book-now.html">Book Now</a></div>
+        </div>
+        <div class="footer-panel"><h5>Explore</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="book-now.html">Book an assessment</a></li><li><a href="#recent-work-title">Recent work</a></li></ul></div>
+        <div class="footer-panel"><h5>Contact</h5><ul><li><a href="tel:+61470385024">0470 385 024</a></li><li><a href="https://www.facebook.com/SamsCarDetailing1" target="_blank" rel="noopener">Facebook page ↗</a></li></ul></div>
+      </div>
+      <div class="footer-wordmark" aria-hidden="true">SAM'S AUTO DETAILING</div>
+      <div class="footer-bottom"><span>&copy; 2026 SAM'S AUTO DETAILING. All rights reserved.</span><a href="book-now.html">Book an assessment &rarr;</a></div>
+    </div>
+  </footer>
+  <script>
+    const galleryHero = document.querySelector('.gallery-hero');
+    if (galleryHero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let heroMotionTicking = false;
+      function updateGalleryHeroMotion() {
+        const progress = Math.max(-1, Math.min(1, -galleryHero.getBoundingClientRect().top / Math.max(1, galleryHero.offsetHeight)));
+        galleryHero.style.setProperty('--hero-shift', (progress * -22).toFixed(2) + 'px');
+        heroMotionTicking = false;
+      }
+      window.addEventListener('scroll', function() {
+        if (!heroMotionTicking) {
+          heroMotionTicking = true;
+          window.requestAnimationFrame(updateGalleryHeroMotion);
+        }
+      }, { passive: true });
+      updateGalleryHeroMotion();
+    }
+
+    const recentWork = [
+      { name: "BMW X5", colour: "Alpine white", location: "Sample suburb / Subiaco", service: "Paint decontamination, one-step correction, ceramic sealant, leather clean and UV protection.", rating: "4.8 / 5", client: "Demo client / Aiden R.", review: "The white paint looks properly clear again, and the cabin feels fresh without that over-dressed finish.", images: [["public/images/gallery/recent-work/bmw-x5-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/bmw-x5-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/bmw-x5-interior.png", "Front cabin detail"]], services: ["Foam wash and safe contact wash", "Iron and mineral decontamination", "Light machine polish", "Ceramic sealant and tyre dressing", "Leather clean and interior protection"] },
+      { name: "Porsche Cayenne GTS", colour: "Gloss black", location: "Sample suburb / Cottesloe", service: "Gloss enhancement, wheel barrel clean, ceramic protection, glass polish and cabin reset.", rating: "5.0 / 5", client: "Demo client / Maya T.", review: "The black paint has a deeper reflection without looking oily. The wheel and glass work made the whole car feel finished.", images: [["public/images/gallery/recent-work/porsche-cayenne-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/porsche-cayenne-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/porsche-cayenne-interior.png", "Rear cabin detail"]], services: ["pH-neutral pre-wash and hand wash", "Tar, iron and clay decontamination", "Gloss-enhancing machine polish", "Wheel face and barrel detailing", "Interior vacuum and leather protection"] },
+      { name: "Audi RS6 Avant", colour: "Deep cobalt blue", location: "Sample suburb / Fremantle", service: "Road-film removal, metallic paint refinement, trim protection and a full sport-cabin clean.", rating: "4.9 / 5", client: "Demo client / Noah K.", review: "The blue has more depth in the shade and more clarity in the sun. It feels cared for without changing its character.", images: [["public/images/gallery/recent-work/audi-rs6-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/audi-rs6-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/audi-rs6-interior.png", "Front cabin detail"]], services: ["Mobile-safe snow foam wash", "Fallout and road-film removal", "Metallic flake clarity polish", "Trim and tyre dressing", "Sport seat and dashboard clean"] },
+      { name: "Mercedes-AMG GLC 63 S", colour: "Silver metallic", location: "Sample suburb / Como", service: "Exterior reset, gloss protection, wheel face detail and matte interior finish restoration.", rating: "4.7 / 5", client: "Demo client / Chloe S.", review: "The silver is brighter but still natural, and the interior has gone back to that clean factory-matte look.", images: [["public/images/gallery/recent-work/mercedes-glc-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/mercedes-glc-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/mercedes-glc-interior.png", "Front cabin detail"]], services: ["Exterior wash and decontamination", "Single-stage paint refinement", "Wheel face and caliper clean", "Spray sealant for gloss and protection", "Carbon trim and leather clean"] },
+      { name: "Range Rover Sport", colour: "Cool white", location: "Sample suburb / Claremont", service: "Coastal grime removal, paint sealant, glass treatment and light-leather cabin care.", rating: "4.8 / 5", client: "Demo client / Zara B.", review: "It came back looking calm and clean rather than shiny for the sake of it. The light interior feels noticeably better too.", images: [["public/images/gallery/recent-work/range-rover-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/range-rover-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/range-rover-interior.png", "Rear cabin detail"]], services: ["Salt and mineral pre-rinse", "Gentle exterior decontamination", "Paint sealant and glass treatment", "Wheel and tyre deep clean", "Light leather and carpet refresh"] },
+      { name: "Lexus IS 350", colour: "Graphite grey", location: "Sample suburb / Nedlands", service: "Clearcoat clarity polish, trim revival, wheel detail and a detailed front-cabin refresh.", rating: "4.6 / 5", client: "Demo client / Liam P.", review: "The grey paint reads much cleaner now, and the cabin detail feels like the small difference you notice every day.", images: [["public/images/gallery/recent-work/lexus-is350-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/lexus-is350-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/lexus-is350-interior.png", "Front cabin detail"]], services: ["Safe wash and surface inspection", "Light swirl and haze refinement", "Exterior trim dressing", "Wheel face and tyre clean", "Dashboard, leather and carpet refresh"] },
+      { name: "BMW 320i", colour: "Mineral silver", location: "Sample suburb / Leederville", service: "Safe wash, light correction, trim revival and a full black-leather cabin refresh.", rating: "4.8 / 5", client: "Demo client / Isla M.", review: "The silver reads clean without becoming harsh, and the cabin feels properly reset for daily driving.", images: [["public/images/gallery/recent-work/bmw-320-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/bmw-320-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/bmw-320-interior.png", "Front cabin detail"]], services: ["Safe wash and surface inspection", "Light swirl and haze refinement", "Glass and exterior trim clean", "Wheel face and tyre dressing", "Leather and carpet refresh"] },
+      { name: "BMW X7 M", colour: "Graphite metallic", location: "Sample suburb / Dalkeith", service: "Large-SUV decontamination, gloss refinement, wheel detail and second-row leather care.", rating: "4.9 / 5", client: "Demo client / Ethan W.", review: "The big body now has an even reflection from every angle, and the rear cabin feels as cared for as the front.", images: [["public/images/gallery/recent-work/bmw-x7-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/bmw-x7-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/bmw-x7-interior.png", "Rear cabin detail"]], services: ["Foam wash and mineral decontamination", "Paint gloss enhancement", "Wheel face and barrel detailing", "Tyre and exterior trim dressing", "Second-row leather and carpet care"] },
+      { name: "Porsche Macan GTS", colour: "Chalk grey", location: "Sample suburb / City Beach", service: "Coastal grime removal, paint sealant, glass treatment and a matte sport-cabin clean.", rating: "4.7 / 5", client: "Demo client / Zoe M.", review: "The grey finish looks calm and clear against the coastal light, while the sport cabin still feels purposeful.", images: [["public/images/gallery/recent-work/porsche-macan-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/porsche-macan-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/porsche-macan-interior.png", "Front cabin detail"]], services: ["Coastal pre-rinse and safe wash", "Tar, iron and clay decontamination", "Gloss-enhancing machine polish", "Glass treatment and tyre dressing", "Sport seat and dashboard clean"] },
+      { name: "Tesla Model 3", colour: "Midnight blue", location: "Sample suburb / Wembley", service: "Paint-safe wash, glass clarity treatment, wheel clean and a minimalist cabin reset.", rating: "4.6 / 5", client: "Demo client / Noah D.", review: "The blue paint has a cleaner reflection now, and the simple cabin feels fresh without unnecessary dressing.", images: [["public/images/gallery/recent-work/tesla-model3-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/tesla-model3-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/tesla-model3-interior.png", "Front cabin detail"]], services: ["Contact-safe exterior wash", "Glass and paint decontamination", "Light clarity polish", "Aero wheel and tyre clean", "Dashboard and seat refresh"] },
+      { name: "Ford Ranger Raptor", colour: "Matte charcoal", location: "Sample suburb / Malaga", service: "Road-film removal, matte-finish safe clean, wheel deep clean and rugged cabin detail.", rating: "4.8 / 5", client: "Demo client / Marcus V.", review: "The matte bodywork looks even and clean again, and the cabin lost the dust without becoming shiny.", images: [["public/images/gallery/recent-work/ford-raptor-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/ford-raptor-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/ford-raptor-interior.png", "Front cabin detail"]], services: ["Low-pressure pre-rinse and foam wash", "Matte-safe surface decontamination", "Wheel and off-road tyre clean", "Exterior trim protection", "Sport seat and rubber mat clean"] },
+      { name: "Lexus ES 300h", colour: "Pearl silver", location: "Sample suburb / Applecross", service: "Clarity polish, wheel refinement, glass protection and light leather cabin care.", rating: "4.9 / 5", client: "Demo client / Maya R.", review: "The pearl finish looks brighter but still natural, and the light interior is noticeably cleaner.", images: [["public/images/gallery/recent-work/lexus-es300h-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/lexus-es300h-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/lexus-es300h-interior.png", "Front cabin detail"]], services: ["Gentle wash and paint inspection", "Mineral and fallout removal", "Pearl paint clarity polish", "Glass and wheel protection", "Light leather and carpet refresh"] },
+      { name: "Toyota Vellfire", colour: "Pearl white", location: "Sample suburb / Peppermint Grove", service: "Family-vehicle reset, exterior sealant, wheel clean and a detailed captain-seat cabin service.", rating: "4.8 / 5", client: "Demo client / Chloe N.", review: "Every seat and surface feels looked after, and the white exterior is clean without looking over-polished.", images: [["public/images/gallery/recent-work/toyota-vellfire-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/toyota-vellfire-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/toyota-vellfire-interior.png", "Luxury cabin detail"]], services: ["Exterior foam wash and decontamination", "Paint sealant for family use", "Wheel face and tyre dressing", "Glass and trim clean", "Captain-seat and carpet deep refresh"] },
+      { name: "Nissan GT-R R35", colour: "Gunmetal grey", location: "Sample suburb / Osborne Park", service: "Performance-coupe decontamination, gloss correction, wheel detail and sport-cabin care.", rating: "5.0 / 5", client: "Demo client / Theo J.", review: "The gunmetal paint has sharper reflections now, and the interior finally matches the condition of the outside.", images: [["public/images/gallery/recent-work/nissan-gtr-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/nissan-gtr-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/nissan-gtr-interior.png", "Front cabin detail"]], services: ["Safe wash and iron fallout removal", "Machine gloss refinement", "Wheel face and caliper clean", "Tyre and exterior trim dressing", "Sport cabin and carbon trim clean"] },
+      { name: "Mercedes-Benz GLE 300d", colour: "Deep navy", location: "Sample suburb / Mount Lawley", service: "Large-SUV exterior reset, glass polish, sealant and black-leather interior protection.", rating: "4.7 / 5", client: "Demo client / Sofia L.", review: "The navy paint looks deep rather than flashy, and the cabin has that clean factory-matte finish again.", images: [["public/images/gallery/recent-work/mercedes-gle-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/mercedes-gle-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/mercedes-gle-interior.png", "Front cabin detail"]], services: ["pH-neutral wash and surface inspection", "Road-film and mineral removal", "Paint sealant and glass treatment", "Wheel face and tyre clean", "Leather, dashboard and carpet protection"] },
+      { name: "Porsche Taycan GTS", colour: "Deep graphite", location: "Sample suburb / Peppermint Grove", service: "Graphite paint refinement, wheel detailing, glass polish and a clean matte cabin reset.", rating: "4.9 / 5", client: "Demo client / Oliver K.", review: "The graphite finish has a much cleaner reflection now, and the cabin feels precise without looking over-dressed.", images: [["public/images/gallery/recent-work/porsche-taycan-front.png", "Front three-quarter exterior"], ["public/images/gallery/recent-work/porsche-taycan-rear.png", "Rear three-quarter exterior"], ["public/images/gallery/recent-work/porsche-taycan-interior.png", "Front cabin detail"]], services: ["pH-neutral wash and surface inspection", "Iron and mineral decontamination", "Graphite paint clarity polish", "Wheel face and glass treatment", "Leather, trim and carpet refresh"] }
+    ];
+    recentWork.forEach(function(vehicle) { vehicle.location = "Sample suburb / Mildura area"; });
+    const workGrid = document.querySelector("#work-grid"), modal = document.querySelector("#work-modal"), modalPanel = document.querySelector(".work-modal-panel"), modalTitle = document.querySelector("#work-modal-title"), modalKicker = document.querySelector("#work-modal-kicker"), modalColour = document.querySelector("#work-modal-colour"), modalLocation = document.querySelector("#work-modal-location"), modalRating = document.querySelector("#work-modal-rating"), modalGallery = document.querySelector("#work-modal-gallery"), modalServices = document.querySelector("#work-modal-services"), modalReview = document.querySelector("#work-modal-review"), modalByline = document.querySelector("#work-modal-byline"), modalStars = document.querySelector("#work-modal-stars");
+    let lastTrigger = null;
+    function starsFor(rating) { const score = Number.parseFloat(rating); return "★".repeat(Math.round(score)) + "☆".repeat(5 - Math.round(score)); }
+    function renderCards() {
+      workGrid.innerHTML = recentWork.map(function(vehicle, index) {
+        return '<button class="work-card" type="button" data-work-index="' + index + '" aria-label="View ' + vehicle.name + ' recent work details"><div class="work-cover"><img src="' + vehicle.images[0][0] + '" alt="' + vehicle.name + ' ' + vehicle.images[0][1].toLowerCase() + '" loading="' + (index < 2 ? "eager" : "lazy") + '"><span class="work-index">' + String(index + 1).padStart(3, "0") + ' / 16</span><span class="work-open">View angles <span>↗</span></span></div><div class="work-copy"><div class="work-meta"><span class="work-name">' + vehicle.name + '</span><span class="work-colour">' + vehicle.colour + '</span></div><p class="work-service">' + vehicle.service + '</p><div class="work-location"><span><strong>Sample project</strong> / ' + vehicle.location.replace("Sample suburb / ", "") + '</span><span>' + vehicle.rating + ' / detail log</span></div></div></button>';
+      }).join("");
+    }
+    function openWork(index, trigger) {
+      const vehicle = recentWork[index]; lastTrigger = trigger; modalKicker.textContent = "Recent work / 0" + (index + 1); modalTitle.textContent = vehicle.name; modalColour.textContent = "Finish / " + vehicle.colour; modalLocation.textContent = vehicle.location; modalRating.textContent = "Rating / " + vehicle.rating;
+      modalGallery.innerHTML = vehicle.images.map(function(image) { return '<figure class="detail-shot"><img src="' + image[0] + '" alt="' + vehicle.name + ' ' + image[1].toLowerCase() + '" loading="eager"><figcaption>' + image[1] + '</figcaption></figure>'; }).join("");
+      modalServices.innerHTML = vehicle.services.map(function(service) { return "<li>" + service + "</li>"; }).join(""); modalStars.textContent = starsFor(vehicle.rating); modalReview.textContent = "“" + vehicle.review + "”"; modalByline.textContent = vehicle.client + " / " + vehicle.location.replace("Sample suburb / ", "");
+      modal.classList.add("is-open"); modal.setAttribute("aria-hidden", "false"); document.body.classList.add("modal-open"); modalPanel.scrollTop = 0; window.setTimeout(function() { document.querySelector(".work-modal-close").focus(); }, 50);
+    }
+    function closeWork() { modal.classList.remove("is-open"); modal.setAttribute("aria-hidden", "true"); document.body.classList.remove("modal-open"); if (lastTrigger) lastTrigger.focus(); }
+    renderCards();
+    workGrid.addEventListener("click", function(event) { const card = event.target.closest("[data-work-index]"); if (card) openWork(Number(card.dataset.workIndex), card); });
+    modal.addEventListener("click", function(event) { if (event.target.closest("[data-close-work]")) closeWork(); });
+    document.addEventListener("keydown", function(event) { if (event.key === "Escape" && modal.classList.contains("is-open")) closeWork(); });
+  </script>
+</body>
+</html>

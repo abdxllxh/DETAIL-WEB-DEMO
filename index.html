@@ -1,0 +1,1731 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="description" content="Sam’s Auto Detailing - mobile car care in Mildura and surrounding areas, from quick cleans to deep detailing.">
+  <title>Sam’s Auto Detailing - Mobile Car Care | Mildura</title>
+  <link rel="icon" type="image/png" href="public/images/brand/sams-auto-detailing-logo-transparent.png">
+  <link rel="apple-touch-icon" href="public/images/brand/sams-auto-detailing-logo-transparent.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #05080a;
+      --surface: #0b1115;
+      --surface-glass: rgba(11, 17, 21, 0.8);
+      --surface-glass-border: rgba(255, 255, 255, 0.12);
+      --text: #f3f4ef;
+      --muted: #9ea29f;
+      --muted-dark: #666a68;
+      --line: #1b2b34;
+      --silver: #e5eef2;
+      --blue: #62c1ce;
+      --blue-glow: rgba(98, 193, 206, 0.25);
+      --display: "Barlow Condensed", "Arial Narrow", -apple-system, sans-serif;
+      --body: "Manrope", Arial, -apple-system, sans-serif;
+      --mono: "JetBrains Mono", monospace;
+      --radius: 4px;
+      --radius-lg: 12px;
+      --radius-pill: 999px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg); color-scheme: dark; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle Film Grain */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+      z-index: 999;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* Fixed Glass Navigation Header */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 18px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(5,8,10,.96) 0%, rgba(5,8,10,.52) 60%, transparent 100%);
+      pointer-events: none;
+    }
+    .nav-brand {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+    }
+    .brand-title {
+      font-family: var(--display);
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-title span {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: .12em;
+    }
+    .nav-links {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      background: rgba(11, 17, 21, 0.86);
+      padding: 6px 8px 6px 24px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(98,193,206,.18);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover { color: #fff; }
+    .btn-nav-book {
+      background: var(--text);
+      color: #070808;
+      padding: 9px 20px;
+      border-radius: var(--radius-pill);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: all .2s ease;
+    }
+    .btn-nav-book:hover {
+      background: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(255,255,255,.2);
+    }
+    .mobile-menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%;
+      color: var(--blue);
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .mobile-menu-toggle span {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .mobile-menu-toggle:hover,
+    .mobile-menu-toggle:focus-visible,
+    .mobile-menu-toggle[aria-expanded="true"] {
+      border-color: var(--blue);
+      background: rgba(98,193,206,.1);
+      outline: none;
+    }
+    .mobile-menu {
+      position: absolute;
+      top: calc(100% + 7px);
+      right: 14px;
+      width: min(220px, calc(100vw - 28px));
+      padding: 8px;
+      border: 1px solid rgba(98,193,206,.28);
+      border-radius: 12px;
+       background: rgba(7, 11, 13, .96);
+      box-shadow: 0 18px 42px rgba(0,0,0,.5);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-7px);
+      transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+      pointer-events: none;
+    }
+    .mobile-menu.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .mobile-menu a {
+      display: block;
+      min-height: 44px;
+      padding: 13px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-radius: 7px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: color .2s ease, background .2s ease;
+    }
+    .mobile-menu a:last-child { border-bottom: 0; color: var(--blue); }
+    .mobile-menu a:hover,
+    .mobile-menu a:focus-visible {
+      color: #fff;
+      background: rgba(98,193,206,.1);
+      outline: none;
+    }
+
+    /* =========================================================
+       HERO CINEMATIC PINNED SCROLL CONTAINER
+       ========================================================= */
+    .hero-scroll-track {
+      position: relative;
+      width: 100%;
+      height: 720vh; /* Slower cinematic scrub: 7.2 viewports across the full sequence */
+      isolation: isolate;
+    }
+    .hero-scroll-track::before {
+      content: '';
+      position: absolute;
+      z-index: 5;
+      left: 0;
+      right: 0;
+      top: -1px;
+      height: clamp(90px, 14vh, 170px);
+      pointer-events: none;
+      border-top: 1px solid rgba(255,255,255,.07);
+      background: linear-gradient(180deg, rgba(2,3,3,.34) 0%, rgba(2,3,3,.08) 55%, transparent 100%);
+    }
+    .hero-scroll-track::after {
+      content: '';
+      position: absolute;
+      z-index: 5;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: clamp(90px, 14vh, 170px);
+      pointer-events: none;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      background: linear-gradient(180deg, rgba(2,3,3,0) 0%, rgba(2,3,3,.12) 55%, rgba(2,3,3,.58) 100%);
+      filter: blur(3px);
+      transform: translateZ(0);
+    }
+    .hero-sticky-frame {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background: #020303;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform;
+    }
+
+    /* Fullscreen Background Canvas */
+    .hero-frame-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 1;
+      background: #020303;
+    }
+    .hero-frame-layer img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(100vw, 177.78vh);
+      height: min(100vh, 56.25vw);
+      object-fit: contain;
+      display: block;
+      transform: translate(-50%, -50%);
+      backface-visibility: hidden;
+    }
+    .hero-frame-layer img.hero-frame-backdrop {
+      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.08);
+      transform-origin: center;
+      filter: blur(16px) brightness(.68) saturate(.86);
+      opacity: .48;
+    }
+    .hero-frame-layer img.hero-frame-image {
+      z-index: 1;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+      mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+    }
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      z-index: 0;
+      /* A CSS blur on a 1600x900 canvas is re-rasterized while scrubbing. */
+      filter: none;
+      transform: none;
+    }
+
+    /* Wide desktop screens are wider than the source's 16:9 frame. Cover the
+       viewport there so the real frame reaches both side edges instead of
+       exposing the blurred backdrop as visible side bands. Standard desktop,
+       tablet, and phone ratios keep the full source frame via contain/cover
+       rules below. */
+    @media (min-width: 993px) and (min-aspect-ratio: 16/9) {
+      .hero-frame-layer img.hero-frame-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    /* Vignette overlays to preserve luxury contrast & ensure readability */
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background: radial-gradient(circle at center, transparent 40%, rgba(6,7,7,.24) 85%, rgba(6,7,7,.52) 100%),
+                  linear-gradient(180deg, rgba(6,7,7,.18) 0%, transparent 20%, transparent 70%, rgba(6,7,7,.42) 100%);
+    }
+
+    /* HUD OVERLAY CONTAINER */
+    .hero-hud-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 90px 48px 48px;
+    }
+
+    /* Stage 0: Initial Hero Headline (Fades out on scroll) */
+    .hud-hero-intro {
+      position: absolute;
+      top: 104px;
+      left: 48px;
+      transform: none;
+      max-width: 500px;
+      padding: 20px 24px 22px;
+      border: 0;
+      border-radius: var(--radius-lg);
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      transition: opacity .4s ease, transform .4s ease;
+      pointer-events: auto;
+    }
+    .hud-hero-intro.hidden {
+      opacity: 0;
+      transform: translateY(-18px);
+      pointer-events: none;
+    }
+    .hud-hero-intro .hud-tag { margin-bottom: 14px; }
+    .hud-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 16, 16, 0.75);
+      border: 1px solid var(--surface-glass-border);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--blue);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
+    }
+    .hud-hero-intro h1 {
+      font-family: var(--display);
+      font-size: clamp(48px, 6vw, 92px);
+      font-weight: 900;
+      line-height: .86;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 4px 24px rgba(0,0,0,.6);
+      margin-bottom: 14px;
+    }
+    .hud-hero-intro p {
+      font-size: clamp(13px, 1.35vw, 16px);
+      color: var(--silver);
+      line-height: 1.6;
+      max-width: 480px;
+      text-shadow: 0 2px 12px rgba(0,0,0,.8);
+      margin-bottom: 20px;
+    }
+    /* Top-Right Chapter Indicator HUD */
+    .hud-top-right {
+      position: absolute;
+      top: 100px;
+      right: 48px;
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      transition: opacity .3s ease;
+    }
+    .hud-step-badge {
+      background: var(--surface-glass);
+      border: 1px solid var(--surface-glass-border);
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      color: var(--blue);
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hud-step-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 10px #4ade80;
+    }
+    .hud-fps-meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: .1em;
+    }
+
+    /* Stage 1-4 Floating Detail Card (scene-aware safe zones) */
+    .hud-detail-card {
+      position: absolute;
+      top: 128px;
+      left: 48px;
+      max-width: 440px;
+      background: rgba(6, 7, 7, 0.96);
+      border: 1px solid rgba(255,255,255, 0.14);
+      border-radius: var(--radius-lg);
+      padding: 26px 30px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.1);
+      transition: opacity .28s ease, transform .28s ease;
+      pointer-events: auto;
+    }
+    .hud-detail-card.final-card-exit {
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .hud-detail-card.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+    .hud-detail-card.copy-fade {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    .hud-detail-card.stage-exterior { top: 128px; left: 48px; right: auto; }
+    .hud-detail-card.stage-interior { top: auto; bottom: 112px; left: 48px; right: auto; }
+    .hud-detail-card.stage-gear { top: 132px; left: auto; right: 48px; }
+    .hud-detail-card.stage-steering { top: auto; bottom: 112px; left: auto; right: 48px; }
+    .hud-detail-card.stage-wheels { top: auto; bottom: 112px; left: auto; right: 48px; }
+    .hud-detail-card.stage-ceramic { top: 96px; left: auto; right: 48px; max-width: min(340px, calc(100% - 96px)); padding: 20px 22px; }
+    .hud-detail-card.stage-ceramic .card-desc { font-size: 13px; line-height: 1.45; margin-bottom: 12px; }
+    .hud-detail-card.stage-ceramic .card-tags { gap: 4px; }
+    .hud-detail-card.stage-ceramic .card-tag { font-size: 9px; padding: 3px 8px; }
+    /* First and last detail cards use a distinct near-black tone; the middle
+       cards retain the standard black panel so the sequence has a quiet arc. */
+    .hud-detail-card.stage-exterior { background: rgba(15, 16, 16, 0.98); }
+    .hud-detail-card.stage-ceramic { background: rgba(18, 17, 15, 0.98); }
+    .card-num-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .card-step-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: .15em;
+    }
+    .card-chapter-title {
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+    .card-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .card-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.09);
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: var(--silver);
+    }
+
+    /* Stage 5: Final Reveal — a compact black board in the upper-left, after
+       the clean vehicle hold has had time to read on its own. */
+    .hud-final-reveal {
+      position: absolute;
+      top: 96px;
+      left: 48px;
+      width: min(54vw, 640px);
+      height: auto;
+      transform: none;
+      padding: 28px 32px;
+      border: 0;
+      border-radius: var(--radius-lg);
+      background: transparent;
+      box-shadow: none;
+      text-align: left;
+      transition: opacity .4s ease, transform .4s ease;
+      pointer-events: auto;
+    }
+    .hud-final-reveal.hidden {
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+    }
+    .hud-final-reveal h2 {
+      font-family: var(--display);
+      font-size: clamp(58px, 8vw, 112px);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      line-height: .86;
+      color: #fff;
+      text-transform: uppercase;
+      text-shadow: 0 4px 30px rgba(0,0,0,.8);
+      margin-bottom: 18px;
+    }
+    .hud-final-reveal p {
+      font-size: 16px;
+      color: var(--silver);
+      max-width: 520px;
+      margin: 0 0 32px;
+      line-height: 1.6;
+      text-shadow: 0 2px 10px rgba(0,0,0,.9);
+    }
+    .reveal-buttons {
+      display: flex;
+      justify-content: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-reveal-book {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue);
+      color: #070808;
+      padding: 14px 32px;
+      border-radius: var(--radius-pill);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: all .25s ease;
+      box-shadow: 0 6px 28px var(--blue-glow);
+    }
+    .btn-reveal-book:hover {
+      background: #9dd0e3;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px var(--blue-glow);
+    }
+    .btn-reveal-gallery {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(14, 16, 16, 0.8);
+      border: 1px solid var(--surface-glass-border);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: var(--radius-pill);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      transition: all .2s ease;
+    }
+    .btn-reveal-gallery:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.3);
+    }
+
+    /* Bottom Full-Width Scrubber Track */
+    .hud-bottom-scrubber {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      right: 0;
+      padding: 0 48px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 20;
+      pointer-events: auto;
+    }
+    .scrub-line-track {
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,.15);
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .scrub-line-fill {
+      height: 100%;
+      width: 100%;
+      background: var(--blue);
+      box-shadow: 0 0 12px var(--blue);
+      transform: scaleX(0);
+      transform-origin: left center;
+      will-change: transform;
+    }
+    .scrub-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .scrub-phase-text { color: var(--blue); font-weight: 700; }
+
+    .hero-intro-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 22px;
+    }
+    .hero-intro-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: var(--radius-pill);
+      background: rgba(6,7,7,.55);
+      color: #f4f7f5;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .hero-intro-action.primary { border-color: var(--blue); background: var(--blue); color: #071012; }
+    .hero-intro-action:hover, .hero-intro-action:focus-visible { border-color: #fff; background: rgba(255,255,255,.14); transform: translateY(-2px); outline: none; }
+    .hero-intro-action.primary:hover, .hero-intro-action.primary:focus-visible { background: #8ad6df; color: #071012; }
+
+    /* =========================================================
+       DOWNSTREAM SECTIONS (Smooth Continuation)
+       ========================================================= */
+    .wrap { width: min(calc(100% - 64px), 1360px); margin: 0 auto; }
+    .section { padding: 110px 0; border-top: 0; position: relative; }
+    #reviews::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      top: -140px;
+      left: 0;
+      right: 0;
+      height: 180px;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(2,3,3,0) 0%, rgba(2,3,3,.7) 62%, #020303 100%);
+      filter: blur(9px);
+    }
+    #reviews > .wrap { position: relative; z-index: 1; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      color: var(--blue);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+    h2 {
+      font-family: var(--display);
+      font-size: clamp(38px, 6vw, 76px);
+      font-weight: 800;
+      line-height: .92;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+    }
+    .section-head p {
+      max-width: 440px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .gallery-card {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .gallery-card:hover {
+      border-color: rgba(255,255,255,.25);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.6);
+    }
+    .gallery-media {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #020303;
+    }
+    .gallery-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-card:hover .gallery-media img { transform: scale(1.06); }
+    .gallery-content { padding: 24px; }
+    .gallery-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .gallery-content h4 {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .gallery-content p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .review-grid { margin-top: 8px; }
+    .review-card .gallery-media { aspect-ratio: 16 / 10; }
+    .review-card .gallery-media img { object-position: center; }
+    .review-card .gallery-content { padding: 26px; }
+    .review-card .gallery-content h4 { margin-bottom: 10px; font-size: 26px; }
+    .review-card .gallery-content p { font-size: 14px; line-height: 1.6; }
+    .review-meta { color: var(--blue); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; margin-top: 16px; }
+    .review-rating { display: flex; align-items: center; gap: 9px; margin-top: 12px; color: var(--blue); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; }
+    .review-rating strong { color: var(--muted); font-size: 10px; font-weight: 600; }
+    .review-rating .stars { letter-spacing: .12em; }
+    .review-carousel { position: relative; overflow: hidden; margin-top: 8px; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+    .review-track { display: flex; width: max-content; gap: 24px; padding: 0 2px 8px; animation: reviewMarquee 76s linear infinite; will-change: transform; }
+    .review-slide { display: contents; }
+    .review-card { flex: 0 0 clamp(320px, 28vw, 390px); }
+    .review-carousel:hover .review-track, .review-carousel:focus-within .review-track { animation-play-state: paused; }
+    @keyframes reviewMarquee { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 12px)); } }
+    @keyframes reviewMarqueeRight { from { transform: translateX(calc(-50% - 12px)); } to { transform: translateX(0); } }
+    .review-gallery-cta { display: inline-flex; padding: 11px 22px; font-size: 10px; animation: reviewCtaFloat 4.2s ease-in-out infinite; }
+    .review-gallery-cta:hover { animation-play-state: paused; transform: translateY(-2px); }
+    @keyframes reviewCtaFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+    /* Footer */
+    .footer {
+      padding: 80px 0 40px;
+      border-top: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr repeat(3, 1fr);
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-col h5 {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #fff;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: grid; gap: 10px; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid var(--line);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .site-nav { padding: 14px 20px; }
+      .hero-frame-layer img.hero-frame-image { top: 69%; width: 100vw; height: min(56.25vw, 54vh, 520px); object-fit: cover; object-position: center; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); }
+      .hero-hud-layer { padding: 80px 24px 36px; }
+      .hud-hero-intro { top: 88px; left: 24px; max-width: min(460px, calc(100% - 48px)); padding: 18px 20px 20px; }
+      .hud-top-right { right: 24px; top: 80px; }
+      .hud-detail-card { top: 96px; bottom: auto; left: 24px; right: 24px; width: auto; max-width: none; padding: 18px 0 24px; background: transparent; background-image: none; border: 0; border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; -webkit-mask-image: none; mask-image: none; text-shadow: 0 2px 18px rgba(0,0,0,.98); }
+      .hud-detail-card.stage-exterior,
+      .hud-detail-card.stage-interior,
+      .hud-detail-card.stage-gear,
+      .hud-detail-card.stage-steering,
+      .hud-detail-card.stage-wheels,
+      .hud-detail-card.stage-ceramic { top: 96px; bottom: auto; left: 24px; right: 24px; max-width: none; padding: 18px 0 24px; background: transparent; background-image: none; border: 0; border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; -webkit-mask-image: none; mask-image: none; }
+      .hud-final-reveal { top: 88px; left: 24px; width: min(580px, calc(100% - 48px)); padding: 24px; }
+      .hud-bottom-scrubber { padding: 0 24px 18px; }
+      .review-carousel { max-height: none; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+      .review-track { flex-direction: row; width: max-content; gap: 14px; padding: 0 10px 12px; animation: reviewMarqueeRight 62s linear infinite; }
+      .review-card { flex: 0 0 min(460px, calc((100vw - 52px) / 2)); width: min(460px, calc((100vw - 52px) / 2)); }
+      .review-card { border-color: transparent; box-shadow: inset 0 0 0 1px rgba(98,193,206,.05), 0 14px 32px rgba(0,0,0,.24); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%); }
+      .review-card .gallery-media { aspect-ratio: 16 / 10; height: auto; }
+      .review-card .gallery-content { padding: 22px; }
+      .review-card .gallery-content h4 { font-size: 26px; margin-bottom: 8px; }
+      .review-card .gallery-content p { font-size: 13px; line-height: 1.55; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+      .review-rating { margin-top: 8px; font-size: 10px; }
+      .review-meta { margin-top: 8px; font-size: 9px; }
+      .card-chapter-title { font-size: clamp(42px, 8vw, 64px); }
+      .card-desc { font-size: 12px; line-height: 1.45; }
+      .card-tag { padding: 0; border: 0; background: transparent; font-size: 9px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .site-nav { padding: 10px 14px; }
+      .brand-icon { width: 30px; height: 30px; }
+      .brand-title { font-size: 16px; gap: 4px; white-space: nowrap; }
+      .brand-title span { display: none; }
+      .nav-links { gap: 3px; padding: 3px 3px 3px 8px; }
+      .nav-links a { font-size: 8.5px; }
+      .btn-nav-book { padding: 7px 10px; font-size: 8px; white-space: nowrap; }
+      .mobile-menu-toggle { display: inline-flex; width: 32px; height: 32px; border: 0; background: transparent; }
+      .mobile-menu-toggle:hover,
+      .mobile-menu-toggle:focus-visible,
+      .mobile-menu-toggle[aria-expanded="true"] { border: 0; background: rgba(98,193,206,.08); }
+      .nav-links a:not(.btn-nav-book) { display: none; }
+      .hero-frame-layer img.hero-frame-image { top: 70%; width: 100vw; height: min(54vh, 400px); object-fit: cover; object-position: center; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); }
+      .hud-hero-intro { top: 80px; left: 16px; max-width: calc(100% - 32px); padding: 16px 18px 18px; }
+      .hud-hero-intro h1 { font-size: clamp(44px, 12vw, 68px); }
+      .hud-hero-intro p { font-size: 13px; margin-bottom: 20px; }
+      .hud-detail-card { top: 78px; bottom: auto; left: 16px; right: 16px; max-width: none; padding: 18px 0 22px; background: transparent; background-image: none; border: 0; border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; -webkit-mask-image: none; mask-image: none; text-shadow: 0 2px 16px rgba(0,0,0,.98); }
+      .hud-detail-card.stage-exterior,
+      .hud-detail-card.stage-interior,
+      .hud-detail-card.stage-gear,
+      .hud-detail-card.stage-steering,
+      .hud-detail-card.stage-wheels,
+      .hud-detail-card.stage-ceramic { top: 78px; bottom: auto; left: 16px; right: 16px; max-width: none; padding: 18px 0 22px; background: transparent; background-image: none; border: 0; border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; -webkit-mask-image: none; mask-image: none; }
+      .card-num-row { margin-bottom: 6px; }
+      .card-step-num { font-size: 10px; }
+      .card-chapter-title { font-size: clamp(42px, 12vw, 64px); margin-bottom: 9px; }
+      .card-desc { font-size: 12px; line-height: 1.45; margin-bottom: 13px; }
+      .hud-detail-card.stage-ceramic .card-desc { font-size: 12px; line-height: 1.35; margin-bottom: 10px; }
+      .card-tags { gap: 4px; }
+      .card-tag { font-size: 8px; padding: 0; border: 0; background: transparent; }
+      .hud-final-reveal { top: 80px; left: 16px; width: calc(100% - 32px); padding: 22px 20px; }
+      .hud-final-reveal { top: 78px; padding: 16px 18px; }
+      .hud-final-reveal h2 { font-size: clamp(42px, 12vw, 64px); margin-bottom: 12px; }
+      .hud-final-reveal p { font-size: 12px; margin-bottom: 18px; }
+      .hero-intro-actions { gap: 8px; margin-bottom: 18px; }
+      .hero-intro-action { min-height: 36px; padding: 9px 13px; font-size: 9px; }
+      .hud-bottom-scrubber { bottom: 4px; padding: 0 16px 14px; gap: 8px; }
+      .scrub-meta-row { font-size: 9px; letter-spacing: .08em; }
+      .reveal-buttons { gap: 10px; }
+      .btn-reveal-book, .btn-reveal-gallery { width: 100%; padding: 13px 18px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; }
+      .review-carousel { max-height: none; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+      .review-track { flex-direction: row; width: max-content; gap: 14px; padding: 0 8px 10px; animation: reviewMarqueeRight 54s linear infinite; }
+      .review-card { flex: 0 0 calc(100vw - 44px); width: calc(100vw - 44px); }
+      .review-card { border-color: transparent; box-shadow: inset 0 0 0 1px rgba(98,193,206,.05), 0 12px 28px rgba(0,0,0,.22); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%); }
+      .review-card .gallery-media { aspect-ratio: 16 / 10; height: auto; }
+      .review-card .gallery-content { padding: 20px; }
+      .review-card .gallery-content h4 { font-size: 24px; margin-bottom: 8px; }
+      .review-card .gallery-content p { font-size: 13px; line-height: 1.55; -webkit-line-clamp: 3; }
+      .review-gallery-cta { width: auto; padding: 10px 18px; font-size: 10px; }
+    }
+    .footer { padding: 56px 0 22px; background: var(--bg); }
+    .footer-main { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(180px,.72fr) minmax(180px,.72fr); gap: 14px; align-items: stretch; }
+    .footer-lead { padding: 4px 26px 12px 0; }
+    .footer-brand-line { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+    .footer-brand-line .brand-icon { flex:0 0 42px; }
+    .footer-name { font-family:var(--display); font-size:22px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .footer-name span { color:var(--muted); font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; }
+    .footer-lead p { max-width:460px; color:var(--muted); font-size:13px; line-height:1.75; }
+    .footer-contact-line { margin-top:18px; color:#d6dcda !important; font-family:var(--mono); font-size:11px !important; letter-spacing:.06em; }
+    .footer-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
+    .footer-action { display:inline-flex; min-height:40px; align-items:center; gap:8px; padding:10px 14px; border:1px solid var(--line); border-radius:5px; color:#e8ece9; font-family:var(--mono); font-size:10px; letter-spacing:.06em; transition:border-color .2s ease, background .2s ease, transform .2s ease; }
+    .footer-action:hover, .footer-action:focus-visible { border-color:var(--blue); background:rgba(98,193,206,.08); transform:translateY(-2px); }
+    .footer-panel { padding:20px 18px 24px; border:1px solid var(--line); background:rgba(255,255,255,.018); }
+    .footer-panel h5 { margin-bottom:18px; color:var(--blue); font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
+    .footer-panel ul { display:grid; gap:10px; list-style:none; }
+    .footer-panel li, .footer-panel a { color:var(--muted); font-family:var(--mono); font-size:10px; line-height:1.45; }
+    .footer-panel a:hover, .footer-panel a:focus-visible { color:#fff; }
+    .footer-wordmark { width:100%; max-width:100%; margin:34px 0 18px; overflow:hidden; color:rgba(98,193,206,.08); font-family:var(--display); font-size:clamp(44px,9.5vw,136px); font-weight:800; letter-spacing:-.055em; line-height:.8; text-align:center; text-transform:uppercase; white-space:nowrap; }
+    .footer-bottom { align-items:center; gap:18px; }
+    @media (max-width: 640px) { .footer-main { grid-template-columns:1fr; gap:14px; } .footer-lead { padding-right:0; } .footer-panel { padding:18px; } .footer-wordmark { margin:28px 0 18px; font-size:clamp(26px,8.6vw,56px); letter-spacing:-.06em; text-align:center; } }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="site-nav">
+    <div class="nav-brand">
+      <img class="brand-icon" src="public/images/brand/sams-auto-detailing-logo-transparent.png" alt="Sam's Auto Detailing logo">
+      <div class="brand-title">SAM'S AUTO <span>DETAILING</span></div>
+    </div>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="book-now.html" class="btn-nav-book">Book Now</a>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="book-now.html">Book Now</a>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       HERO CINEMATIC PINNED SCROLL EXPERIENCE (4 SECTIONS)
+       ========================================================= -->
+  <div class="hero-scroll-track" id="hero-track">
+    <div class="hero-sticky-frame">
+      <!-- Fullscreen High-Performance Canvas -->
+      <div class="hero-frame-layer" id="hero-frame-layer" aria-hidden="true">
+        <img class="hero-frame-image" src="public/sequences/exterior/frame_0001.jpg" alt="">
+      </div>
+      <canvas class="hero-canvas" id="hero-canvas" width="1600" height="900" aria-label="Interactive detailing video frame sequence"></canvas>
+      
+      <!-- Contrast & Luxury Vignettes -->
+      <div class="hero-vignette"></div>
+
+      <!-- HUD OVERLAY LAYER -->
+      <div class="hero-hud-layer">
+        
+        <!-- Opening Stage 0 Headline (Fades out when scroll starts) -->
+        <div class="hud-hero-intro" id="hud-hero-intro">
+          <h1>ROAD-WORN<br>TO MIRROR.</h1>
+          <p>
+            Thoughtful detailing brought to your doorstep — from quick cleans to deep finish protection.
+          </p>
+          <div class="hero-intro-actions">
+            <a href="book-now.html" class="hero-intro-action primary">Book now ↗</a>
+            <a href="services.html" class="hero-intro-action">Services</a>
+          </div>
+        </div>
+
+        <!-- Top-Right Progress Badge -->
+        <div class="hud-top-right" id="hud-top-right">
+          <div class="hud-step-badge">
+            <span class="hud-step-dot" aria-hidden="true"></span>
+            <span id="hud-step-title">STEP 01 / 04 &bull; BODY WASH</span>
+          </div>
+          <div class="hud-fps-meta" id="hud-frame-stat">FRAME 0001 / 0222 &bull; 25 FPS</div>
+        </div>
+
+        <!-- Stages 1-4: Scene-aware detail card, positioned into the current frame's negative space -->
+        <div class="hud-detail-card hidden" id="hud-detail-card">
+          <div class="card-num-row">
+            <span class="card-step-num" id="card-num">01 // PRE-WASH</span>
+          </div>
+          <div class="card-chapter-title" id="card-title">SNOW FOAM DECON</div>
+          <p class="card-desc" id="card-desc">
+            pH-neutral snow foam bath encapsulates grit, mineral deposits, and road film before contacting with ultra-plush wash mitts.
+          </p>
+          <div class="card-tags" id="card-tags">
+            <span class="card-tag">pH-NEUTRAL</span>
+            <span class="card-tag">DE-IONIZED RINSE</span>
+            <span class="card-tag">TOUCHLESS FOAM</span>
+          </div>
+        </div>
+
+        <!-- Stage 5: Final Reveal after the last ceramic frame holds -->
+        <div class="hud-final-reveal hidden" id="hud-final-reveal">
+          <h2>SHOWROOM.<br>AT HOME.</h2>
+          <div class="reveal-buttons">
+            <a href="book-now.html" class="btn-reveal-book">Book This Service Spec</a>
+            <a href="gallery.html" class="btn-reveal-gallery">Explore Gallery &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Bottom Full-Width Scrubber Track -->
+        <div class="hud-bottom-scrubber">
+          <div class="scrub-line-track" id="scrub-track" onclick="handleTrackClick(event)">
+            <div class="scrub-line-fill" id="scrub-fill"></div>
+          </div>
+          <div class="scrub-meta-row">
+            <span class="scrub-phase-text" id="scrub-phase-name">01 // SNOW FOAM &amp; BODY WASH</span>
+            <span id="scrub-percentage">0% SCROLLED</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SECTION 02: CLIENT RESULT REVIEWS
+       ========================================================= -->
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Client Result Journal</div>
+          <h2>Real Paint.<br>Clearer Finish.</h2>
+        </div>
+      </div>
+
+      <div class="review-carousel" id="review-carousel" aria-label="Client result reviews">
+        <div class="review-track" id="review-track">
+          <div class="review-slide">
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-01-black.png" alt="Black sedan bonnet before and after paint correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • SUBIACO</span><h4>Aiden R.</h4><p>“The black finish reads deeper and more even now. Swirls that caught the light no longer compete with the reflection.”</p><div class="review-rating" aria-label="4.8 out of 5 stars"><span class="stars" aria-hidden="true">★★★★★</span><strong>4.8 / 5</strong></div><div class="review-meta">Paint correction</div></div></article>
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-02-pearl-white.png" alt="Pearl white car bonnet before and after paint correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • COMO</span><h4>Maya T.</h4><p>“The pearl paint has cleaner, brighter clarity in daylight now, without the chalky haze.”</p><div class="review-rating" aria-label="4.5 out of 5 stars"><span class="stars" aria-hidden="true">★★★★☆</span><strong>4.5 / 5</strong></div><div class="review-meta">Machine polish</div></div></article>
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-11-sapphire-blue.png" alt="Sapphire blue car bonnet before and after correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • FREMANTLE</span><h4>Noah K.</h4><p>“The blue has real depth again. The old haze is gone and the reflection reads much cleaner.”</p><div class="review-rating" aria-label="4.0 out of 5 stars"><span class="stars" aria-hidden="true">★★★★☆</span><strong>4.0 / 5</strong></div><div class="review-meta">Finish refinement</div></div></article>
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-12-ice-silver.png" alt="Ice silver car bonnet before and after correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • CLAREMONT</span><h4>Chloe S.</h4><p>“The silver looks crisp and controlled now—cleaner in the sun without an artificial shine.”</p><div class="review-rating" aria-label="5.0 out of 5 stars"><span class="stars" aria-hidden="true">★★★★★</span><strong>5.0 / 5</strong></div><div class="review-meta">Clarity polish</div></div></article>
+          </div>
+          <div class="review-slide">
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-05-graphite.png" alt="Graphite coupe bonnet before and after paint correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • SCARBOROUGH</span><h4>Liam P.</h4><p>“The correction kept the graphite finish natural. It looks sharper, calmer, and properly refined.”</p><div class="review-rating" aria-label="4.9 out of 5 stars"><span class="stars" aria-hidden="true">★★★★★</span><strong>4.9 / 5</strong></div><div class="review-meta">Swirl removal</div></div></article>
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-06-slate-gray.png" alt="Slate gray sedan bonnet before and after paint correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • LEEDERVILLE</span><h4>Zara B.</h4><p>“The grey finish carries a cleaner reflection from every angle now, without looking overworked.”</p><div class="review-rating" aria-label="4.6 out of 5 stars"><span class="stars" aria-hidden="true">★★★★☆</span><strong>4.6 / 5</strong></div><div class="review-meta">Clarity polish</div></div></article>
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-13-aubergine.png" alt="Aubergine purple car bonnet before and after correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • NEDLANDS</span><h4>Ethan W.</h4><p>“The darker paint showed every defect. The correction settled the haze and brought the colour back.”</p><div class="review-rating" aria-label="5.0 out of 5 stars"><span class="stars" aria-hidden="true">★★★★★</span><strong>5.0 / 5</strong></div><div class="review-meta">Metallic correction</div></div></article>
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-08-steel-blue.png" alt="Steel blue car bonnet before and after paint correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • VICTORIA PARK</span><h4>Isla M.</h4><p>“The blue finish looks deeper outdoors now, with a clear reflection instead of a cloudy bonnet.”</p><div class="review-rating" aria-label="4.8 out of 5 stars"><span class="stars" aria-hidden="true">★★★★★</span><strong>4.8 / 5</strong></div><div class="review-meta">Outdoor correction</div></div></article>
+          </div>
+          <div class="review-slide">
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-09-black-glass.png" alt="Black performance car bonnet before and after paint correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • WEMBLEY</span><h4>Theo J.</h4><p>“The before-and-after made the difference easy to judge. The black finish now looks far more composed.”</p><div class="review-rating" aria-label="4.5 out of 5 stars"><span class="stars" aria-hidden="true">★★★★☆</span><strong>4.5 / 5</strong></div><div class="review-meta">Clearcoat reset</div></div></article>
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-10-silver.png" alt="Silver performance car bonnet before and after paint correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • COTTESLOE</span><h4>Amelia D.</h4><p>“The silver has more clarity and brightness now, with a smoother reflection and no harsh glare.”</p><div class="review-rating" aria-label="4.9 out of 5 stars"><span class="stars" aria-hidden="true">★★★★★</span><strong>4.9 / 5</strong></div><div class="review-meta">Reflective finish</div></div></article>
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-14-midnight-blue.png" alt="Midnight blue coupe bonnet before and after correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • MOUNT LAWLEY</span><h4>Isaac V.</h4><p>“The midnight blue is richer and more settled now. The finish reads deep instead of hazy.”</p><div class="review-rating" aria-label="4.7 out of 5 stars"><span class="stars" aria-hidden="true">★★★★☆</span><strong>4.7 / 5</strong></div><div class="review-meta">Deep gloss correction</div></div></article>
+            <article class="gallery-card review-card"><div class="gallery-media"><img src="public/images/gallery/client-results/result-15-titanium-silver.png" alt="Titanium silver car bonnet before and after correction" loading="lazy"></div><div class="gallery-content"><span class="gallery-tag">SAMPLE CLIENT • MILDURA AREA</span><h4>Sofia L.</h4><p>“The surface feels properly reset—tidier, clearer, and still natural rather than over-polished.”</p><div class="review-rating" aria-label="4.7 out of 5 stars"><span class="stars" aria-hidden="true">★★★★☆</span><strong>4.7 / 5</strong></div><div class="review-meta">Surface refinement</div></div></article>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:40px;"><a href="gallery.html" class="btn-reveal-gallery review-gallery-cta">View Full Gallery &rarr;</a></div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="footer-lead">
+          <div class="footer-brand-line"><img class="brand-icon" src="public/images/brand/sams-auto-detailing-logo-transparent.png" alt="Sam's Auto Detailing logo"><div class="footer-name">SAM'S AUTO <span>DETAILING</span></div></div>
+          <p>Mobile car care in Mildura and surrounding areas. We come to you for practical cleans, deeper detailing, and finish protection.</p>
+          <p class="footer-contact-line">Mildura, VIC 3500 &amp; surrounding areas<br>Fully insured mobile service<br>ABN 77 698 702 569</p>
+          <div class="footer-actions"><a class="footer-action" href="https://www.facebook.com/SamsCarDetailing1" target="_blank" rel="noopener">Facebook ↗</a><a class="footer-action" href="tel:+61470385024">Call / Text</a><a class="footer-action" href="book-now.html">Book Now</a></div>
+        </div>
+        <div class="footer-panel"><h5>Explore</h5><ul><li><a href="services.html">Services</a></li><li><a href="gallery.html">Recent work</a></li><li><a href="book-now.html">Book an assessment</a></li><li><a href="#hero-track">Watch the detail</a></li></ul></div>
+        <div class="footer-panel"><h5>Contact</h5><ul><li><a href="tel:+61470385024">0470 385 024</a></li><li><a href="https://www.facebook.com/SamsCarDetailing1" target="_blank" rel="noopener">Facebook page ↗</a></li></ul></div>
+      </div>
+      <div class="footer-wordmark" aria-hidden="true">SAM'S AUTO DETAILING</div>
+      <div class="footer-bottom"><div>&copy; 2026 SAM'S AUTO DETAILING. All rights reserved.</div><div>Mobile detailing &bull; Mildura VIC</div></div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       CONTINUOUS SCROLL ENGINE & INTERACTION SCRIPTS
+       ========================================================= -->
+  <script>
+    /* 4 Continuous Video Sections Data */
+    const SECTIONS = [
+      {
+        id: 'exterior',
+        name: '01 // SNOW FOAM & PRE-WASH',
+        folder: 'public/sequences/exterior',
+        // The source camera loses focus in frames 116-143. Keep the scrub
+        // continuous with sharp source frames instead of showing a blurred
+        // focus-pull or duplicating a frame to cover it.
+        frameCount: 222,
+        skipFrameRanges: [[116, 143]],
+        badgeTitle: 'STEP 01 / 04 &bull; BODY WASH',
+        cardNum: '01 // PRE-WASH & FOAM',
+        cardTitle: 'SNOW FOAM DECONTAMINATION',
+        cardDesc: 'High-lubricity pH-neutral foam encapsulates road film and grit before hand-contact wash with ultra-plush mitts.',
+        cardTags: ['pH-NEUTRAL', 'DE-IONIZED RINSE', 'TWO-BUCKET METHOD'],
+        overlayClass: 'stage-exterior',
+        range: [0.00, 0.25]
+      },
+      {
+        id: 'interior',
+        name: '02 // CABIN EXTRACTION & STEAM',
+        folder: 'public/sequences/interior',
+        frameCount: 745,
+        badgeTitle: 'STEP 02 / 04 &bull; INTERIOR PURIFICATION',
+        cardNum: '02 // CABIN REJUVENATION',
+        cardTitle: 'DEEP EXTRACTION & STEAM',
+        cardDesc: '160°C dry vapor steam dissolves deep grime from leather seams, AC vents, and carpets without greasy residues.',
+        cardTags: ['STEAM SANITIZATION', 'MATTE LEATHER', 'ZERO GREASY RESIDUE'],
+        overlayClass: 'stage-interior',
+        cardVariants: [
+          {
+            range: [0.00, 0.58],
+            cardNum: '02 // TRUNK & CARPET EXTRACTION',
+            cardTitle: 'DEEP EXTRACTION & STEAM',
+            cardDesc: 'Low-moisture extraction lifts embedded grit from the cargo floor and carpet pile, then dry steam resets the hard-to-reach seams.',
+            cardTags: ['LOW-MOISTURE EXTRACTION', 'DRY STEAM', 'CARPET RESET'],
+            overlayClass: 'stage-interior'
+          },
+          {
+            range: [0.58, 0.68],
+            cardNum: '02 // DASHBOARD & TRIM',
+            cardTitle: 'DASHBOARD DETAIL RESET',
+            cardDesc: 'A low-moisture wipe lifts dust from the dashboard, vents, and satin trim while preserving the factory matte finish.',
+            cardTags: ['DASHBOARD DETAIL', 'MATTE TRIM', 'NO GREASY FILM'],
+            overlayClass: 'stage-interior'
+          },
+          {
+            range: [0.68, 0.77],
+            cardNum: '02 // GEAR SELECTOR & CONSOLE',
+            cardTitle: 'TOUCHPOINTS, RESET',
+            cardDesc: 'Soft-brush agitation clears dust from the gear selector, rotary controls, and console joins without leaving a greasy dressing behind.',
+            cardTags: ['SOFT-BRUSH DETAIL', 'CONSOLE JOINS', 'MATTE FINISH'],
+            overlayClass: 'stage-gear'
+          },
+          {
+            range: [0.77, 1.00],
+            cardNum: '02 // STEERING & DRIVER ZONE',
+            cardTitle: 'STEERING WHEEL PURIFICATION',
+            cardDesc: 'A controlled leather clean removes hand oils from the wheel, buttons, and high-touch trim while keeping the factory texture natural.',
+            cardTags: ['LEATHER SAFE', 'BUTTON DETAIL', 'NATURAL FEEL'],
+            overlayClass: 'stage-steering'
+          }
+        ],
+        range: [0.25, 0.50]
+      },
+      {
+        id: 'wheels',
+        name: '03 // WHEELS & BRAKE IRON DECON',
+        folder: 'public/sequences/wheels',
+        frameCount: 500,
+        badgeTitle: 'STEP 03 / 04 &bull; WHEELS & CALIPERS',
+        cardNum: '03 // STANCE & BRAKES',
+        cardTitle: 'BARREL & CALIPER ARMOR',
+        cardDesc: 'Acid-free iron decontamination formula liquefies baked-on brake dust from deep barrels, rotors, and calipers.',
+        cardTags: ['IRON DISSOLUTION', 'BARREL WOOLIES', 'CERAMIC WHEEL SHIELD'],
+        overlayClass: 'stage-wheels',
+        range: [0.50, 0.75]
+      },
+      {
+        id: 'ceramic',
+        name: '04 // MACHINE JEWELING & CERAMIC',
+        folder: 'public/sequences/ceramic',
+        frameCount: 438,
+        badgeTitle: 'STEP 04 / 04 &bull; CERAMIC SHIELD',
+        cardNum: '04 // FINAL GLOSS PROTECTION',
+        cardTitle: 'CONCOURS MACHINE JEWELING',
+        cardDesc: 'Dual-action machine polish eliminates 90%+ of swirls, permanently sealed with a 10H hydrophobic quartz matrix.',
+        cardTags: ['10H QUARTZ MATRIX', '115° CONTACT ANGLE', 'PERMANENT GLOSS'],
+        overlayClass: 'stage-ceramic',
+        range: [0.75, 1.00]
+      }
+    ];
+
+    const canvas = document.getElementById('hero-canvas');
+    const heroFrameLayer = document.getElementById('hero-frame-layer');
+    const ctx = canvas.getContext('2d', { alpha: false });
+    const heroTrack = document.getElementById('hero-track');
+    const scrubFill = document.getElementById('scrub-fill');
+    const scrubPhaseName = document.getElementById('scrub-phase-name');
+    const scrubPercentage = document.getElementById('scrub-percentage');
+
+    const hudHeroIntro = document.getElementById('hud-hero-intro');
+    const hudTopRight = document.getElementById('hud-top-right');
+    const hudStepTitle = document.getElementById('hud-step-title');
+    const hudFrameStat = document.getElementById('hud-frame-stat');
+
+    const hudDetailCard = document.getElementById('hud-detail-card');
+    const cardNum = document.getElementById('card-num');
+    const cardTitle = document.getElementById('card-title');
+    const cardDesc = document.getElementById('card-desc');
+    const cardTags = document.getElementById('card-tags');
+
+    const hudFinalReveal = document.getElementById('hud-final-reveal');
+
+    /* Compact mobile navigation: Book Now stays visible in the pill while
+       the remaining links move into an accessible, touch-sized menu. */
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuToggle && mobileMenu) {
+      const closeMobileMenu = () => {
+        mobileMenu.classList.remove('is-open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuToggle.setAttribute('aria-label', 'Open navigation menu');
+      };
+      mobileMenuToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = mobileMenu.classList.toggle('is-open');
+        mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu));
+      document.addEventListener('click', (event) => {
+        if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) closeMobileMenu();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMobileMenu();
+      });
+    }
+
+    /* Rolling frame cache: keep only a small window of decoded frames in
+       memory so a long scroll cannot retain all 1,900+ source images. */
+    const frameCache = new Map();
+    const MAX_FRAME_CACHE = 32;
+    const PREFETCH_RADIUS = 3;
+    let currentRenderPath = '';
+    let currentRequestedPath = '';
+    let currentFrameRecord = null;
+    let lastRequestedSectionId = '';
+    let lastRequestedFrame = 0;
+    let lastCardKey = '';
+    let lastFrameLabel = '';
+    let lastProgressPercent = -1;
+    let lastActiveSectionIndex = -1;
+    let lastCardStage = '';
+    let detailCardVisible = false;
+    let detailCopyTimer = 0;
+    let pendingCardContent = null;
+    let finalRevealVisible = false;
+    let heroIntroVisible = true;
+    const CERAMIC_HOLD_START = 0.91;
+    const CERAMIC_CARD_END = 0.91;
+    const FINAL_REVEAL_START = 0.975;
+
+    function fadeToDetailCopy(cardContent) {
+      pendingCardContent = cardContent;
+      hudDetailCard.classList.add('copy-fade');
+      window.clearTimeout(detailCopyTimer);
+      detailCopyTimer = window.setTimeout(() => {
+        if (!pendingCardContent) return;
+        cardNum.textContent = pendingCardContent.cardNum;
+        cardTitle.textContent = pendingCardContent.cardTitle;
+        cardDesc.textContent = pendingCardContent.cardDesc;
+        cardTags.innerHTML = pendingCardContent.cardTags.map(t => `<span class="card-tag">${t}</span>`).join('');
+        pendingCardContent = null;
+        requestAnimationFrame(() => hudDetailCard.classList.remove('copy-fade'));
+      }, 150);
+    }
+
+    function getFramePath(section, frameIndex) {
+      let sourceFrameIndex = frameIndex;
+      if (section.skipFrameRanges) {
+        section.skipFrameRanges.forEach(([start, end]) => {
+          if (sourceFrameIndex >= start) sourceFrameIndex += end - start + 1;
+        });
+      }
+      const pad = String(sourceFrameIndex).padStart(4, '0');
+      return `${section.folder}/frame_${pad}.jpg`;
+    }
+
+    function trimFrameCache() {
+      while (frameCache.size > MAX_FRAME_CACHE) {
+        const oldestPath = frameCache.keys().next().value;
+        if (oldestPath === currentRequestedPath) {
+          const current = frameCache.get(oldestPath);
+          frameCache.delete(oldestPath);
+          frameCache.set(oldestPath, current);
+          continue;
+        }
+        frameCache.delete(oldestPath);
+      }
+    }
+
+    function getCachedImage(path, priority = 'low') {
+      const existing = frameCache.get(path);
+      if (existing) {
+        if (priority === 'high') {
+          existing.img.loading = 'eager';
+          existing.img.fetchPriority = 'high';
+        }
+        frameCache.delete(path);
+        frameCache.set(path, existing);
+        return existing;
+      }
+
+      const img = new Image();
+      img.decoding = 'async';
+      // These Image objects are detached preloads; lazy-loading detached
+      // images can leave them permanently deferred in Chromium.
+      img.loading = 'eager';
+      img.fetchPriority = priority;
+      let settled = false;
+      const record = { img, ready: false, cancelled: false, promise: null, cancel: null };
+      const finish = ready => {
+        if (settled) return;
+        settled = true;
+        if (ready && !record.cancelled) record.ready = true;
+        resolveRecord(record);
+      };
+      let resolveRecord;
+      record.promise = new Promise(resolve => {
+        resolveRecord = resolve;
+        img.onload = () => {
+          if (typeof img.decode === 'function') {
+            img.decode().then(() => finish(true)).catch(() => finish(true));
+          } else {
+            finish(true);
+          }
+        };
+        img.onerror = () => finish(false);
+      });
+      record.cancel = () => {
+        if (settled) return;
+        record.cancelled = true;
+        img.onload = null;
+        img.onerror = null;
+        img.src = '';
+        finish(false);
+      };
+      img.src = path;
+      frameCache.set(path, record);
+      trimFrameCache();
+      return record;
+    }
+
+    /* Preload only chapter starts after the opening frame has had a chance to paint. */
+    function bootstrapPreloader() {
+      getCachedImage(getFramePath(SECTIONS[0], 1));
+      const preloadChapterStarts = () => {
+        SECTIONS.slice(1).forEach(sec => getCachedImage(getFramePath(sec, 1)));
+      };
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(preloadChapterStarts, { timeout: 1200 });
+      } else {
+        window.setTimeout(preloadChapterStarts, 300);
+      }
+    }
+    bootstrapPreloader();
+
+    function renderImageToCanvas(img) {
+      if (!img.naturalWidth) return;
+      const cw = canvas.width;
+      const ch = canvas.height;
+      
+      // Contain scaling keeps the complete source frame visible on portrait
+      // screens; the surrounding frame layer supplies a soft visual fill.
+      ctx.fillStyle = '#020303';
+      ctx.fillRect(0, 0, cw, ch);
+      const scale = Math.min(cw / img.naturalWidth, ch / img.naturalHeight);
+      const dw = img.naturalWidth * scale;
+      const dh = img.naturalHeight * scale;
+      ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    }
+
+    function showDecodedFrame(img) {
+      img.className = 'hero-frame-image';
+      img.alt = '';
+      const backdrop = img.cloneNode(false);
+      backdrop.className = 'hero-frame-backdrop';
+      backdrop.alt = '';
+      backdrop.setAttribute('aria-hidden', 'true');
+      backdrop.src = img.currentSrc || img.src;
+      backdrop.decoding = 'async';
+      heroFrameLayer.replaceChildren(backdrop, img);
+    }
+
+    function drawSequenceFrame(section, frameIndex) {
+      const path = getFramePath(section, frameIndex);
+      if (path === currentRenderPath) return true;
+      // Let the active decode finish. During a fast gesture, keep only the
+      // latest requested frame so intermediate paths do not starve the
+      // browser by repeatedly cancelling and restarting image work.
+      if (currentFrameRecord && !currentFrameRecord.ready) {
+        return false;
+      }
+      if (path === currentRequestedPath) return false;
+
+      currentRequestedPath = path;
+      const record = getCachedImage(path, 'high');
+      currentFrameRecord = record;
+      if (record.ready && record.img.naturalWidth) {
+        showDecodedFrame(record.img);
+        currentRenderPath = path;
+        currentFrameRecord = null;
+      } else {
+        record.promise.then(readyRecord => {
+          if (currentRequestedPath === path) {
+            if (readyRecord.img.naturalWidth) {
+              showDecodedFrame(readyRecord.img);
+              currentRenderPath = path;
+            }
+            currentFrameRecord = null;
+            requestHeroScrollUpdate();
+          }
+        });
+      }
+
+      const direction = section.id === lastRequestedSectionId && frameIndex < lastRequestedFrame ? -1 : 1;
+      lastRequestedSectionId = section.id;
+      lastRequestedFrame = frameIndex;
+
+      // Prefetch only a short directional window instead of eleven images on every tick.
+      for (let offset = 1; offset <= PREFETCH_RADIUS; offset++) {
+        const nextIdx = frameIndex + (offset * direction);
+        if (nextIdx >= 1 && nextIdx <= section.frameCount) {
+          getCachedImage(getFramePath(section, nextIdx));
+        }
+      }
+      return currentRenderPath === path;
+    }
+
+    /* Main Scroll Update Loop */
+    let isTicking = false;
+    let targetScrollProgress = 0;
+    let smoothedScrollProgress = 0;
+    // Keep the cinematic ease, but let the frame follow a real wheel/touch
+    // gesture quickly enough that it does not feel stuck behind the scroll.
+    const SCRUB_SMOOTHING = 0.14;
+
+    function resizeHeroCanvas() {
+      // The extracted sequence is native 1600x900. Keep the backing canvas at
+      // that source size instead of resizing it to the viewport's often
+      // portrait-ish aspect ratio and stretching a smaller bitmap back up.
+      // The CSS object-fit handles the viewport crop while the canvas keeps
+      // one consistent, sharp render surface for every frame.
+      const nextWidth = 1600;
+      const nextHeight = 900;
+      if (canvas.width === nextWidth && canvas.height === nextHeight) return;
+      canvas.width = nextWidth;
+      canvas.height = nextHeight;
+      ctx.imageSmoothingEnabled = true;
+      currentRenderPath = '';
+    }
+
+    function getHeroScrollProgress() {
+      const rect = heroTrack.getBoundingClientRect();
+      const scrollableHeight = heroTrack.offsetHeight - window.innerHeight;
+      const scrolled = -rect.top;
+
+      return Math.max(0, Math.min(1, scrolled / scrollableHeight));
+    }
+
+    function updateHeroScroll(totalProgress) {
+
+      // Update compositor-friendly values only when their displayed value changes.
+      const progressPercent = Math.round(totalProgress * 100);
+      if (progressPercent !== lastProgressPercent) {
+        scrubFill.style.transform = `scaleX(${totalProgress})`;
+        scrubPercentage.textContent = `${progressPercent}% SCROLLED`;
+        lastProgressPercent = progressPercent;
+      }
+
+      // 1. Stage 0 (Opening Headline): visible at 0% - 6% scroll
+      const shouldShowIntro = totalProgress < 0.05;
+      if (shouldShowIntro !== heroIntroVisible) {
+        hudHeroIntro.classList.toggle('hidden', !shouldShowIntro);
+        heroIntroVisible = shouldShowIntro;
+      }
+
+      // Determine which section is currently active
+      let activeSectionIndex = 0;
+      for (let i = 0; i < SECTIONS.length; i++) {
+        if (totalProgress >= SECTIONS[i].range[0] && totalProgress <= SECTIONS[i].range[1]) {
+          activeSectionIndex = i;
+          break;
+        }
+      }
+      if (totalProgress >= 1.0) activeSectionIndex = SECTIONS.length - 1;
+
+      const currentSection = SECTIONS[activeSectionIndex];
+      const sectionSpan = currentSection.range[1] - currentSection.range[0];
+      const sectionProgress = Math.max(0, Math.min(1, (totalProgress - currentSection.range[0]) / sectionSpan));
+      const frameProgress = currentSection.id === 'ceramic' && totalProgress >= CERAMIC_HOLD_START
+        ? 1
+        : sectionProgress;
+      const frameIndex = Math.max(1, Math.round(frameProgress * (currentSection.frameCount - 1)) + 1);
+
+      // Draw the video frame on Canvas. Text and cards wait for the same
+      // frame so a chapter can never describe an image that is still loading.
+      const frameReady = drawSequenceFrame(currentSection, frameIndex);
+
+      // Stage 5 (Final Climax Reveal): enter after the final ceramic frames hold
+      // and only after that held frame is actually ready.
+      const shouldShowFinal = frameReady && totalProgress >= FINAL_REVEAL_START;
+      if (shouldShowFinal !== finalRevealVisible) {
+        hudFinalReveal.classList.toggle('hidden', !shouldShowFinal);
+        finalRevealVisible = shouldShowFinal;
+      }
+
+      if (!frameReady) {
+        // Hold the existing card in its current stage position while the
+        // requested frame decodes. It must not flicker or disappear between frames.
+        return;
+      }
+
+      // Update HUD text only when the chapter/frame label changes.
+      if (activeSectionIndex !== lastActiveSectionIndex) {
+        hudStepTitle.innerHTML = currentSection.badgeTitle;
+        scrubPhaseName.textContent = currentSection.name;
+        lastActiveSectionIndex = activeSectionIndex;
+      }
+      const frameLabel = `FRAME ${String(frameIndex).padStart(4, '0')} / ${String(currentSection.frameCount).padStart(4, '0')} &bull; 25 FPS`;
+      if (frameLabel !== lastFrameLabel) {
+        hudFrameStat.textContent = frameLabel;
+        lastFrameLabel = frameLabel;
+      }
+
+      // The final ceramic frame holds cleanly while its card exits first. This
+      // leaves a short, text-free vehicle hold before the showroom board.
+      const shouldShowDetail = totalProgress >= 0.05
+        && totalProgress < FINAL_REVEAL_START
+        && (currentSection.id !== 'ceramic' || totalProgress < CERAMIC_CARD_END);
+      if (shouldShowDetail) {
+        const variantIndex = currentSection.cardVariants
+          ? Math.max(0, currentSection.cardVariants.findIndex(variant => sectionProgress >= variant.range[0] && sectionProgress <= variant.range[1]))
+          : -1;
+        const cardContent = variantIndex >= 0 ? currentSection.cardVariants[variantIndex] : currentSection;
+        const cardKey = `${activeSectionIndex}:${variantIndex}`;
+        const stageClass = cardContent.overlayClass || currentSection.overlayClass;
+
+        if (!detailCardVisible) {
+          hudDetailCard.classList.remove('hidden', 'final-card-exit');
+          detailCardVisible = true;
+        }
+        if (stageClass !== lastCardStage) {
+          hudDetailCard.classList.remove('stage-exterior', 'stage-interior', 'stage-gear', 'stage-steering', 'stage-wheels', 'stage-ceramic');
+          hudDetailCard.classList.add(stageClass);
+          lastCardStage = stageClass;
+        }
+
+        // Only update copy when the scene-specific variant changes
+        if (cardKey !== lastCardKey) {
+          // Keep the overlay in place and cross-fade only its copy. This
+          // avoids the abrupt content flip that is especially visible on
+          // narrow screens while the vehicle frame continues scrubbing.
+          fadeToDetailCopy(cardContent);
+          scrubPhaseName.textContent = cardContent.cardNum || currentSection.name;
+          lastCardKey = cardKey;
+        }
+      } else if (detailCardVisible) {
+        const isFinalCardExit = currentSection.id === 'ceramic' && totalProgress >= CERAMIC_CARD_END;
+        hudDetailCard.classList.toggle('final-card-exit', isFinalCardExit);
+        hudDetailCard.classList.add('hidden');
+        detailCardVisible = false;
+      }
+
+    }
+
+    function animateHeroScroll() {
+      const delta = targetScrollProgress - smoothedScrollProgress;
+      smoothedScrollProgress = Math.abs(delta) < 0.0005
+        ? targetScrollProgress
+        : smoothedScrollProgress + (delta * SCRUB_SMOOTHING);
+
+      updateHeroScroll(smoothedScrollProgress);
+
+      if (Math.abs(targetScrollProgress - smoothedScrollProgress) > 0.0005) {
+        window.requestAnimationFrame(animateHeroScroll);
+      } else {
+        isTicking = false;
+      }
+    }
+
+    function requestHeroScrollUpdate() {
+      targetScrollProgress = getHeroScrollProgress();
+      if (!isTicking) {
+        isTicking = true;
+        window.requestAnimationFrame(animateHeroScroll);
+      }
+    }
+
+    window.addEventListener('scroll', requestHeroScrollUpdate, { passive: true });
+    window.addEventListener('resize', () => {
+      resizeHeroCanvas();
+      requestHeroScrollUpdate();
+    }, { passive: true });
+
+    // Handle clicking on the bottom scrubber line to jump directly
+    function handleTrackClick(e) {
+      const track = document.getElementById('scrub-track');
+      const rect = track.getBoundingClientRect();
+      const clickRatio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      const scrollableHeight = heroTrack.offsetHeight - window.innerHeight;
+      window.scrollTo({
+        top: heroTrack.offsetTop + (clickRatio * scrollableHeight),
+        behavior: 'smooth'
+      });
+    }
+
+    function jumpToChapter(index) {
+      const sec = SECTIONS[index];
+      const scrollableHeight = heroTrack.offsetHeight - window.innerHeight;
+      window.scrollTo({
+        top: heroTrack.offsetTop + (sec.range[0] * scrollableHeight),
+        behavior: 'smooth'
+      });
+    }
+
+    // Initial render
+    function initializeHeroScroll() {
+      resizeHeroCanvas();
+      targetScrollProgress = getHeroScrollProgress();
+      smoothedScrollProgress = targetScrollProgress;
+      updateHeroScroll(smoothedScrollProgress);
+    }
+    window.addEventListener('load', initializeHeroScroll);
+    initializeHeroScroll();
+
+    /* =========================================================
+       BEFORE & AFTER SPLIT COMPARISON SLIDER
+       ========================================================= */
+    const compareBox = document.getElementById('compare-box');
+    const compareAfter = document.getElementById('compare-after');
+    const compareAfterImg = document.getElementById('compare-after-img');
+    const compareHandle = document.getElementById('compare-handle');
+    if (compareBox) {
+    let isDraggingCompare = false;
+
+    function setComparePosition(clientX) {
+      const rect = compareBox.getBoundingClientRect();
+      let percent = ((clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(2, Math.min(98, percent));
+      compareAfter.style.width = `${percent}%`;
+      compareHandle.style.left = `${percent}%`;
+      compareAfterImg.style.width = `${rect.width}px`;
+    }
+
+    function initCompareSlider() {
+      const rect = compareBox.getBoundingClientRect();
+      compareAfterImg.style.width = `${rect.width}px`;
+      setComparePosition(rect.left + rect.width * 0.5);
+    }
+
+    compareBox.addEventListener('mousedown', (e) => {
+      isDraggingCompare = true;
+      setComparePosition(e.clientX);
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (isDraggingCompare) setComparePosition(e.clientX);
+    });
+    window.addEventListener('mouseup', () => { isDraggingCompare = false; });
+
+    compareBox.addEventListener('touchstart', (e) => {
+      isDraggingCompare = true;
+      setComparePosition(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchmove', (e) => {
+      if (isDraggingCompare) setComparePosition(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchend', () => { isDraggingCompare = false; });
+
+    window.addEventListener('resize', initCompareSlider);
+    setTimeout(initCompareSlider, 350);
+    }
+
+    /* =========================================================
+       CLIENT REVIEW CAROUSEL - 4 CARDS / 12.5 SECOND GROUPS
+       ========================================================= */
+    const reviewCarousel = document.getElementById('review-carousel');
+    const reviewTrack = document.getElementById('review-track');
+    const reviewCards = [...reviewTrack.querySelectorAll('.review-card')];
+    reviewCards.forEach((card) => reviewTrack.appendChild(card.cloneNode(true)));
+
+    document.querySelectorAll('.gallery-tag').forEach((tag) => {
+      tag.textContent = tag.textContent.replace(/SAMPLE CLIENT • .+$/i, 'SAMPLE CLIENT • MILDURA AREA');
+    });
+
+  </script>
+</body>
+</html>
