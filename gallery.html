@@ -28,8 +28,9 @@
     .brand-title { font-family: var(--display); font-size: 21px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
     .brand-title span { font-size: 11px; font-family: var(--mono); color: var(--muted); font-weight: 500; letter-spacing: .12em; }
     .page-actions { display: flex; align-items: center; gap: 18px; flex-wrap: nowrap; white-space: nowrap; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
-    .page-actions a { color: var(--muted); transition: color .2s ease; } .page-actions a:hover { color: #fff; }
-    .page-actions .book-link { color: var(--bg); background: var(--text); padding: 9px 16px; border-radius: var(--radius-pill); font-weight: 700; white-space: nowrap; }
+    .page-actions a { color: var(--muted); transition: color .2s ease; } .page-actions a:hover, .page-actions a:focus-visible { color: #fff; }
+    .page-actions .book-link { color: #061014; background: var(--blue); padding: 9px 16px; border-radius: var(--radius-pill); font-weight: 700; white-space: nowrap; transition: background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .page-actions .book-link:hover, .page-actions .book-link:focus-visible { color: #061014; background: #8be0e8; transform: translateY(-1px); box-shadow: 0 4px 18px rgba(98,193,206,.28); outline: none; }
     .wrap { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
     .gallery-hero { position: relative; isolation: isolate; display: flex; min-height: min(900px, 96vh); align-items: flex-end; overflow: hidden; padding: 210px 0 132px; border-bottom: 1px solid var(--line); }
     .gallery-hero::before { content: ""; position: absolute; z-index: -2; inset: -4%; background: url("public/images/gallery/gallery-hero-original.jpg") center / cover no-repeat; filter: saturate(.78) contrast(1.06); transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.045); transform-origin: center; animation: galleryHeroDrift 18s ease-in-out infinite alternate; will-change: transform; }

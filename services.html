@@ -24,7 +24,8 @@
     .page-actions { display:flex; align-items:center; gap:20px; flex-wrap:nowrap; white-space:nowrap; font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
     .page-actions a { color:var(--muted); transition:color .2s ease; }
     .page-actions a:hover, .page-actions a:focus-visible { color:#fff; }
-    .page-actions .book-link { padding:9px 16px; border-radius:var(--pill); background:var(--text); color:var(--bg); font-weight:700; white-space:nowrap; }
+    .page-actions .book-link { padding:9px 16px; border-radius:var(--pill); background:var(--blue); color:#061014; font-weight:700; white-space:nowrap; transition:background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .page-actions .book-link:hover, .page-actions .book-link:focus-visible { background:#8be0e8; color:#061014; transform:translateY(-1px); box-shadow:0 4px 18px rgba(98,193,206,.28); outline:none; }
     .page-actions .active { color:var(--blue); }
     .wrap { width:min(1240px,calc(100% - 64px)); margin:0 auto; }
     .services-hero { position:relative; min-height:690px; padding:190px 0 110px; display:flex; align-items:flex-end; isolation:isolate; overflow:hidden; }
