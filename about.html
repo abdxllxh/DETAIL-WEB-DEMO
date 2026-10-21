@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Auto G Detailing approach: condition-led vehicle care, careful preparation, and a clear finish for drivers in Kingsgrove, Sydney and surrounding areas.">
+  <title>Our Approach | Auto G Detailing</title>
+  <link rel="icon" type="image/svg+xml" href="public/images/brand/autog-wordmark.svg">
+  <link rel="apple-touch-icon" href="public/images/brand/autog-wordmark.svg">
+  <link rel="preload" as="image" href="public/images/gallery/interior_cockpit.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#05080a; --panel:#0b1115; --text:#f3f4ef; --muted:#9ea29f; --muted-dark:#666a68; --line:#1b2b34;
+      --orange:#f97316; --display:"Barlow Condensed", "Arial Narrow", sans-serif; --body:"Manrope", Arial, sans-serif; --mono:"JetBrains Mono", monospace;
+      --pill:999px; --radius:4px; --radius-lg:12px;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { background:var(--bg); color-scheme:dark; scroll-behavior:smooth; }
+    body { min-height:100vh; overflow-x:hidden; background:var(--bg); color:var(--text); font-family:var(--body); line-height:1.5; -webkit-font-smoothing:antialiased; }
+    body::before { content:""; position:fixed; inset:0; z-index:999; pointer-events:none; opacity:.03; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E"); }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; height:auto; }
+    .site-nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:18px 32px; background:linear-gradient(180deg,rgba(5,8,10,.96),rgba(5,8,10,.52) 72%,transparent); border-bottom:1px solid rgba(249,115,22,.12); }
+    .nav-brand { display:flex; align-items:center; gap:12px; flex-shrink:0; white-space:nowrap; }
+    .brand-wordmark { display:inline-flex; align-items:baseline; gap:8px; color:#fff; font-family:var(--display); font-size:21px; font-weight:800; letter-spacing:.08em; line-height:1; text-transform:uppercase; white-space:nowrap; }
+    .brand-wordmark-main { color:#fff; }
+    .brand-wordmark-dot { color:var(--orange); }
+    .brand-wordmark-sub { color:var(--muted); font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.12em; }
+    .page-actions { display:flex; align-items:center; gap:20px; flex-wrap:nowrap; white-space:nowrap; font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+    .page-actions a { color:var(--muted); transition:color .2s ease; }
+    .page-actions a:hover, .page-actions a:focus-visible { color:#fff; }
+    .page-actions .active { color:var(--orange); }
+    .page-actions .book-link { padding:9px 16px; border-radius:var(--pill); background:var(--orange); color:#061014; font-weight:700; transition:background .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .page-actions .book-link:hover, .page-actions .book-link:focus-visible { background:#ffab66; color:#061014; transform:translateY(-1px); box-shadow:0 4px 18px rgba(249,115,22,.28); outline:none; }
+    .wrap { width:min(1180px,calc(100% - 64px)); margin:0 auto; }
+    .about-hero { position:relative; isolation:isolate; min-height:min(820px,92vh); display:flex; align-items:flex-end; overflow:hidden; padding:190px 0 110px; border-bottom:1px solid var(--line); }
+    .about-hero::before { content:""; position:absolute; z-index:-2; inset:0; background:url("public/images/gallery/interior_cockpit.jpg") center / cover no-repeat; filter:saturate(.65) contrast(1.08) brightness(.58); transform:scale(1.04); animation:heroDrift 18s ease-in-out infinite alternate; }
+    .about-hero::after { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(90deg,rgba(5,8,10,.96) 0%,rgba(5,8,10,.84) 35%,rgba(5,8,10,.26) 78%,rgba(5,8,10,.52) 100%),linear-gradient(180deg,rgba(5,8,10,.28),transparent 42%,var(--bg) 100%); }
+    .about-hero .wrap { position:relative; z-index:1; }
+    .eyebrow { margin-bottom:16px; color:var(--orange); font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; }
+    h1,h2,h3 { font-family:var(--display); line-height:.9; text-transform:uppercase; }
+    h1 { max-width:760px; font-size:clamp(72px,11vw,150px); letter-spacing:-.025em; }
+    .hero-copy { max-width:540px; margin-top:28px; color:#d4d9d6; font-size:15px; line-height:1.7; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+    .button { display:inline-flex; min-height:44px; align-items:center; justify-content:center; padding:13px 20px; border:1px solid var(--line); border-radius:var(--pill); color:#fff; font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; transition:transform .2s ease,border-color .2s ease,background .2s ease; }
+    .button:hover,.button:focus-visible { transform:translateY(-2px); border-color:rgba(249,115,22,.7); outline:none; }
+    .button-primary { border-color:var(--orange); background:var(--orange); color:#061014; }
+    .approach-section { padding:112px 0 126px; }
+    .intro-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,.62fr); gap:80px; align-items:end; margin-bottom:54px; }
+    .intro-grid h2 { max-width:740px; font-size:clamp(58px,8vw,112px); }
+    .intro-grid p { color:var(--muted); font-size:14px; line-height:1.8; }
+    .approach-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .approach-card { min-height:280px; padding:28px; border:1px solid var(--line); border-radius:var(--radius); background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018)); transition:transform .3s ease,border-color .3s ease,background .3s ease; }
+    .approach-card:hover { transform:translateY(-5px); border-color:rgba(249,115,22,.55); background:linear-gradient(145deg,rgba(249,115,22,.1),rgba(255,255,255,.018)); }
+    .approach-index { color:var(--orange); font-family:var(--mono); font-size:10px; letter-spacing:.16em; }
+    .approach-card h3 { margin-top:46px; font-size:clamp(36px,4vw,60px); }
+    .approach-card p { margin-top:18px; color:var(--muted); font-size:13px; line-height:1.7; }
+    .proof-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px; padding:24px 0 0; border-top:1px solid var(--line); }
+    .proof-strip strong { display:block; color:#fff; font-family:var(--display); font-size:30px; line-height:1; text-transform:uppercase; }
+    .proof-strip span { display:block; margin-top:8px; color:var(--muted-dark); font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; }
+    .about-cta { position:relative; overflow:hidden; margin-top:14px; padding:48px; border:1px solid rgba(249,115,22,.5); border-radius:var(--radius-lg); background:linear-gradient(110deg,rgba(249,115,22,.16),rgba(9,20,22,.8) 58%,rgba(255,255,255,.025)); }
+    .about-cta::after { content:"AUTO.G"; position:absolute; right:-18px; bottom:-48px; color:rgba(249,115,22,.08); font-family:var(--display); font-size:clamp(100px,17vw,260px); font-weight:900; letter-spacing:-.08em; line-height:.8; pointer-events:none; }
+    .about-cta h2 { position:relative; z-index:1; max-width:720px; font-size:clamp(50px,7vw,100px); }
+    .about-cta p { position:relative; z-index:1; max-width:600px; margin-top:18px; color:#d4d9d6; font-size:14px; line-height:1.7; }
+    .about-cta .button { position:relative; z-index:1; margin-top:26px; }
+    .footer { padding:80px 0 40px; border-top:1px solid var(--line); background:var(--bg); color:var(--muted); font-size:13px; }
+    .footer-main { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(180px,.72fr) minmax(180px,.72fr); gap:14px; align-items:stretch; }
+    .footer-lead { padding:4px 26px 12px 0; }
+    .footer-brand-line { margin-bottom:24px; }
+    .footer-name { font-family:var(--display); font-size:22px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .footer-name span { color:var(--muted); font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; }
+    .footer-name .footer-wordmark-dot { color:var(--orange); font-family:var(--display); font-size:inherit; font-weight:inherit; letter-spacing:normal; }
+    .footer-lead p { max-width:460px; color:var(--muted); font-size:13px; line-height:1.75; }
+    .footer-contact-line { margin-top:18px; color:#d6dcda !important; font-family:var(--mono); font-size:11px !important; letter-spacing:.06em; }
+    .footer-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
+    .footer-action { display:inline-flex; min-height:40px; align-items:center; padding:10px 14px; border:1px solid var(--line); border-radius:5px; color:#e8ece9; font-family:var(--mono); font-size:10px; letter-spacing:.06em; transition:border-color .2s ease,background .2s ease,transform .2s ease; }
+    .footer-action:hover,.footer-action:focus-visible { border-color:var(--orange); background:rgba(249,115,22,.08); transform:translateY(-2px); outline:none; }
+    .footer-panel { padding:20px 18px 24px; border:1px solid var(--line); background:rgba(255,255,255,.018); }
+    .footer-panel h5 { margin-bottom:18px; color:var(--orange); font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
+    .footer-panel ul { display:grid; gap:10px; list-style:none; }
+    .footer-panel li,.footer-panel a { color:var(--muted); font-family:var(--mono); font-size:10px; line-height:1.45; }
+    .footer-panel a:hover,.footer-panel a:focus-visible { color:#fff; outline:none; }
+    .footer-wordmark { width:100%; margin:34px 0 18px; overflow:hidden; color:rgba(249,115,22,.08); font-family:var(--display); font-size:clamp(44px,9.5vw,136px); font-weight:800; letter-spacing:-.055em; line-height:.8; text-align:center; text-transform:uppercase; white-space:nowrap; }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; gap:18px; padding-top:28px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10px; }
+    .footer-bottom a:hover { color:#fff; }
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.is-visible { opacity:1; transform:none; }
+    .reveal:nth-child(2) { transition-delay:.08s; } .reveal:nth-child(3) { transition-delay:.16s; }
+    @keyframes heroDrift { from { transform:scale(1.04) translate3d(0,0,0); } to { transform:scale(1.09) translate3d(-1.2%,-1%,0); } }
+    @media (max-width:900px) { .intro-grid { grid-template-columns:1fr; gap:24px; } .approach-grid { grid-template-columns:1fr; } .approach-card { min-height:0; } .footer-main { grid-template-columns:1fr 1fr; } }
+    @media (max-width:560px) { .site-nav { padding:12px; gap:8px; } .brand-wordmark { font-size:14.5px; gap:4px; } .brand-wordmark-sub { font-size:8px; letter-spacing:.08em; } .page-actions { gap:7px; font-size:7.8px; } .page-actions .book-link { padding:8px 10px; font-size:8px; } .wrap { width:min(100% - 40px,560px); } .about-hero { min-height:760px; align-items:flex-start; padding:150px 0 56px; } .about-hero::after { background:linear-gradient(180deg,rgba(5,8,10,.94),rgba(5,8,10,.6) 48%,var(--bg) 100%); } h1 { font-size:clamp(64px,17vw,94px); } .hero-copy { font-size:14px; } .approach-section { padding:78px 0 92px; } .intro-grid h2 { font-size:56px; } .proof-strip { grid-template-columns:1fr; gap:18px; } .about-cta { padding:28px 22px; } .footer-main { grid-template-columns:1fr; gap:14px; } .footer-lead { padding-right:0; } .footer-panel { padding:18px; } .footer-wordmark { margin:28px 0 18px; font-size:clamp(26px,8.6vw,56px); } .footer-bottom { align-items:flex-start; flex-direction:column; gap:12px; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .about-hero::before { animation:none; } .reveal { opacity:1; transform:none; transition:none; } .approach-card { transition:none; } }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <a class="nav-brand" href="index.html" aria-label="Back to Auto G Detailing home"><span class="brand-wordmark"><span class="brand-wordmark-main">AUTO<span class="brand-wordmark-dot">.G</span></span><span class="brand-wordmark-sub">DETAILING</span></span></a>
+    <nav class="page-actions" aria-label="Page navigation"><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a class="book-link" href="book-now.html">Book Now</a></nav>
+  </header>
+
+  <main>
+    <section class="about-hero" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="eyebrow">Auto G Detailing / Our approach</div>
+        <h1 id="about-title">Care that shows.</h1>
+        <p class="hero-copy">A considered approach to vehicle care: inspect the condition, prepare the surface, and leave the finish clear, clean, and ready for the way the car is used.</p>
+        <div class="hero-actions"><a class="button button-primary" href="book-now.html">Book an assessment &rarr;</a><a class="button" href="gallery.html">See recent work</a></div>
+      </div>
+    </section>
+
+    <section class="approach-section" aria-labelledby="standard-title">
+      <div class="wrap">
+        <div class="intro-grid reveal">
+          <h2 id="standard-title">Not just a quick wash.</h2>
+          <p>Every vehicle brings a different mix of road film, marks, interior wear, and finish goals. Auto G Detailing keeps the process practical and condition-led, whether the job starts with a reset or moves into refinement and protection.</p>
+        </div>
+        <div class="approach-grid">
+          <article class="approach-card reveal"><div class="approach-index">01 / INSPECT</div><h3>Read the car.</h3><p>Start with the vehicle’s condition and the areas that need attention before choosing the right service direction.</p></article>
+          <article class="approach-card reveal"><div class="approach-index">02 / PREPARE</div><h3>Work with care.</h3><p>Use the right preparation for the surface, cabin, wheels, and finish so each part gets a deliberate clean.</p></article>
+          <article class="approach-card reveal"><div class="approach-index">03 / FINISH</div><h3>Leave clarity.</h3><p>Finish with a clean handover and a clear next step, from everyday maintenance to deeper protection work.</p></article>
+        </div>
+        <div class="proof-strip reveal"><div><strong>Kingsgrove</strong><span>Sydney base</span></div><div><strong>Owner-led</strong><span>Direct service</span></div><div><strong>Clean / restore / protect</strong><span>Service direction</span></div></div>
+        <div class="about-cta reveal"><h2>Know what your car needs next?</h2><p>Send the vehicle details, the areas you want checked, and the finish you are chasing. The assessment starts with context.</p><a class="button button-primary" href="book-now.html">Start with the car &rarr;</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="footer-lead">
+          <div class="footer-brand-line"><div class="footer-name">AUTO<span class="footer-wordmark-dot">.G</span> <span>DETAILING</span></div></div>
+          <p>Clean, restore, protect and maintain. Owner-operated detailing based in Kingsgrove, Sydney.</p>
+          <p class="footer-contact-line">Kingsgrove, NSW 2208 &amp; surrounding areas<br>Owner operated service<br>Owner operated service</p>
+          <div class="footer-actions"><a class="footer-action" href="https://www.instagram.com/autog.detailing/" target="_blank" rel="noopener">Instagram ↗</a><a class="footer-action" href="https://www.instagram.com/autog.detailing/">DM Instagram</a><a class="footer-action" href="book-now.html">Book Now</a></div>
+        </div>
+        <div class="footer-panel"><h5>Explore</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Recent work</a></li><li><a href="about.html" aria-current="page">Our approach</a></li><li><a href="book-now.html">Book an assessment</a></li></ul></div>
+        <div class="footer-panel"><h5>Contact</h5><ul><li><a href="https://www.instagram.com/autog.detailing/">DM @autog.detailing</a></li><li><a href="https://www.instagram.com/autog.detailing/" target="_blank" rel="noopener">Instagram profile ↗</a></li></ul></div>
+      </div>
+      <div class="footer-wordmark" aria-hidden="true">AUTO.G DETAILING</div>
+      <div class="footer-bottom"><span>&copy; 2026 AUTO.G DETAILING. All rights reserved.</span><a href="book-now.html">Request an assessment &rarr;</a></div>
+    </div>
+  </footer>
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+      }, { threshold:.14 });
+      revealItems.forEach(function(item) { revealObserver.observe(item); });
+    } else { revealItems.forEach(function(item) { item.classList.add('is-visible'); }); }
+  </script>
+</body>
+</html>
