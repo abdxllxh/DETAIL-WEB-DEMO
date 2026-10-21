@@ -299,6 +299,24 @@
       -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
       mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
     }
+    .hero-frame-layer video.hero-frame-video {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      width: min(100vw, 177.78vh);
+      height: min(100vh, 56.25vw);
+      object-fit: contain;
+      display: block;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      backface-visibility: hidden;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+      mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+      transition: opacity .18s ease;
+    }
+    .hero-frame-layer.video-mode > img.hero-frame-image { opacity: 0; }
+    .hero-frame-layer video.hero-frame-video.is-ready { opacity: 1; }
     .hero-canvas {
       position: absolute;
       inset: 0;
@@ -318,7 +336,8 @@
        tablet, and phone ratios keep the full source frame via contain/cover
        rules below. */
     @media (min-width: 993px) and (min-aspect-ratio: 16/9) {
-      .hero-frame-layer img.hero-frame-image {
+      .hero-frame-layer img.hero-frame-image,
+      .hero-frame-layer video.hero-frame-video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -865,7 +884,8 @@
     /* Responsive */
     @media (max-width: 992px) {
       .site-nav { padding: 14px 20px; }
-      .hero-frame-layer img.hero-frame-image { top: 69%; width: 100vw; height: min(56.25vw, 54vh, 520px); object-fit: cover; object-position: center; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); }
+      .hero-frame-layer img.hero-frame-image,
+      .hero-frame-layer video.hero-frame-video { top: 69%; width: 100vw; height: min(56.25vw, 54vh, 520px); object-fit: cover; object-position: center; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); }
       .hero-hud-layer { padding: 80px 24px 36px; }
       .hud-hero-intro { top: 88px; left: 24px; right: 24px; max-width: none; padding: 18px 20px 20px; }
       .hud-top-right { right: 24px; top: 80px; }
@@ -907,7 +927,8 @@
       .mobile-menu-toggle:focus-visible,
       .mobile-menu-toggle[aria-expanded="true"] { border: 0; background: rgba(249,115,22,.08); }
       .nav-links a:not(.btn-nav-book) { display: none; }
-      .hero-frame-layer img.hero-frame-image { top: 70%; width: 100vw; height: min(54vh, 400px); object-fit: cover; object-position: center; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); }
+      .hero-frame-layer img.hero-frame-image,
+      .hero-frame-layer video.hero-frame-video { top: 70%; width: 100vw; height: min(54vh, 400px); object-fit: cover; object-position: center; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); }
       .hud-hero-intro { top: 80px; left: 16px; right: 16px; max-width: none; padding: 16px 18px 18px; }
       .hud-hero-intro h1 { font-size: clamp(44px, 12vw, 68px); }
       .hud-hero-intro p { font-size: 13px; margin-bottom: 20px; }
@@ -1001,6 +1022,7 @@
       <!-- Fullscreen High-Performance Canvas -->
       <div class="hero-frame-layer" id="hero-frame-layer" aria-hidden="true">
         <img class="hero-frame-image" src="public/sequences/exterior/frame_0001.jpg" alt="" fetchpriority="high" decoding="async">
+        <video class="hero-frame-video" id="hero-video" muted playsinline preload="auto" aria-hidden="true"></video>
       </div>
       <canvas class="hero-canvas" id="hero-canvas" width="1600" height="900" aria-label="Interactive detailing video frame sequence"></canvas>
       
@@ -1143,6 +1165,7 @@
         // continuous with sharp source frames instead of showing a blurred
         // focus-pull or duplicating a frame to cover it.
         frameCount: 222,
+        videoPath: 'public/videos/exterior.mp4',
         skipFrameRanges: [[116, 143]],
         badgeTitle: 'STEP 01 / 04 &bull; BODY WASH',
         cardNum: '01 // PRE-WASH & FOAM',
@@ -1157,6 +1180,7 @@
         name: '02 // CABIN EXTRACTION & STEAM',
         folder: 'public/sequences/interior',
         frameCount: 745,
+        videoPath: 'public/videos/interior.mp4',
         badgeTitle: 'STEP 02 / 04 &bull; INTERIOR PURIFICATION',
         cardNum: '02 // CABIN REJUVENATION',
         cardTitle: 'DEEP EXTRACTION & STEAM',
@@ -1204,6 +1228,7 @@
         name: '03 // WHEELS & BRAKE IRON DECON',
         folder: 'public/sequences/wheels',
         frameCount: 500,
+        videoPath: 'public/videos/wheels.mp4',
         badgeTitle: 'STEP 03 / 04 &bull; WHEELS & CALIPERS',
         cardNum: '03 // STANCE & BRAKES',
         cardTitle: 'BARREL & CALIPER ARMOR',
@@ -1217,6 +1242,7 @@
         name: '04 // MACHINE JEWELING & CERAMIC',
         folder: 'public/sequences/ceramic',
         frameCount: 438,
+        videoPath: 'public/videos/ceramic.mp4',
         badgeTitle: 'STEP 04 / 04 &bull; CERAMIC SHIELD',
         cardNum: '04 // FINAL GLOSS PROTECTION',
         cardTitle: 'CONCOURS MACHINE JEWELING',
@@ -1229,6 +1255,7 @@
 
     const canvas = document.getElementById('hero-canvas');
     const heroFrameLayer = document.getElementById('hero-frame-layer');
+    const heroVideo = document.getElementById('hero-video');
     const ctx = canvas.getContext('2d', { alpha: false });
     const heroTrack = document.getElementById('hero-track');
     const scrubFill = document.getElementById('scrub-fill');
@@ -1299,6 +1326,9 @@
     let pendingCardContent = null;
     let finalRevealVisible = false;
     let heroIntroVisible = true;
+    let videoTargetTime = 0;
+    let videoLoadToken = 0;
+    let videoFailedPath = '';
     const CERAMIC_HOLD_START = 0.91;
     const CERAMIC_CARD_END = 0.91;
     const FINAL_REVEAL_START = 0.975;
@@ -1396,10 +1426,11 @@
       return record;
     }
 
-    /* Load only the opening frame up front. Background chapter preloads made
-       first paint and mobile scrolling compete for the same decode queue. */
+    /* The opening poster remains visible while the first chapter video
+       establishes metadata. The video source itself is attached lazily by
+       drawSequenceFrame so later chapters do not compete for bandwidth. */
     function bootstrapPreloader() {
-      getCachedImage(getFramePath(SECTIONS[0], 1));
+      return;
     }
     bootstrapPreloader();
 
@@ -1442,7 +1473,63 @@
       return Math.max(1, Math.min(section.frameCount, Math.round(frameIndex)));
     }
 
+    function ensureVideoSource(section) {
+      if (!heroVideo || !section.videoPath || videoFailedPath === section.videoPath) return false;
+
+      if (heroVideo.dataset.sequence !== section.videoPath) {
+        const loadToken = ++videoLoadToken;
+        videoTargetTime = 0;
+        heroVideo.classList.remove('is-ready');
+        heroFrameLayer.classList.remove('video-mode');
+        heroVideo.pause();
+        heroVideo.currentTime = 0;
+        heroVideo.dataset.sequence = section.videoPath;
+        heroVideo.src = section.videoPath;
+        heroVideo.onloadeddata = () => {
+          if (loadToken !== videoLoadToken) return;
+          heroVideo.classList.add('is-ready');
+          heroFrameLayer.classList.add('video-mode');
+          requestHeroScrollUpdate();
+        };
+        heroVideo.onerror = () => {
+          if (loadToken !== videoLoadToken) return;
+          videoFailedPath = section.videoPath;
+          heroVideo.classList.remove('is-ready');
+          heroFrameLayer.classList.remove('video-mode');
+          requestHeroScrollUpdate();
+        };
+        heroVideo.load();
+      }
+
+      return heroVideo.dataset.sequence === section.videoPath
+        && heroVideo.readyState >= 2
+        && Number.isFinite(heroVideo.duration)
+        && heroVideo.duration > 0;
+    }
+
+    function drawVideoFrame(section, frameIndex) {
+      if (!ensureVideoSource(section)) return false;
+
+      const normalizedFrame = (getRenderFrameIndex(section, frameIndex) - 1) / Math.max(1, section.frameCount - 1);
+      const safeDuration = Math.max(0, heroVideo.duration - 0.04);
+      videoTargetTime = normalizedFrame * safeDuration;
+
+      // Ease the seek itself. A direct currentTime jump is what made a short
+      // wheel/touch gesture look like it teleported to the end of the scene.
+      const delta = videoTargetTime - heroVideo.currentTime;
+      if (Math.abs(delta) > 0.02) {
+        const maxStep = Math.max(0.03, Math.min(0.18, heroVideo.duration * 0.035));
+        const nextTime = heroVideo.currentTime + Math.sign(delta) * Math.min(Math.abs(delta), maxStep);
+        try { heroVideo.currentTime = nextTime; } catch (_) { /* keep the last decoded frame */ }
+      }
+      return true;
+    }
+
     function drawSequenceFrame(section, frameIndex) {
+      if (section.videoPath && videoFailedPath !== section.videoPath) {
+        return drawVideoFrame(section, frameIndex);
+      }
+
       const renderFrameIndex = getRenderFrameIndex(section, frameIndex);
       const path = getFramePath(section, renderFrameIndex);
       if (path === currentRenderPath) return true;
@@ -1492,10 +1579,10 @@
     let isTicking = false;
     let targetScrollProgress = 0;
     let smoothedScrollProgress = 0;
-    // Keep the cinematic ease, but let the frame follow a real wheel/touch
-    // gesture quickly enough that it does not feel stuck behind the scroll.
-    const SCRUB_SMOOTHING = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : 0.28;
-    const SCROLL_JUMP_THRESHOLD = 0.1;
+    // Keep scroll position and video playback coupled, but never snap a short
+    // wheel/touch gesture directly to its destination. Snapping was the reason
+    // the deployed build appeared to skip straight to the end.
+    const SCRUB_SMOOTHING = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : 0.18;
 
     function resizeHeroCanvas() {
       // The extracted sequence is native 1600x900. Keep the backing canvas at
@@ -1628,11 +1715,7 @@
 
     function animateHeroScroll() {
       const delta = targetScrollProgress - smoothedScrollProgress;
-      // A large wheel/touch jump should request the destination frame, not
-      // replay every intermediate frame and make the browser catch up.
-      smoothedScrollProgress = Math.abs(delta) >= SCROLL_JUMP_THRESHOLD
-        ? targetScrollProgress
-        : Math.abs(delta) < 0.0005
+      smoothedScrollProgress = Math.abs(delta) < 0.0005
         ? targetScrollProgress
         : smoothedScrollProgress + (delta * SCRUB_SMOOTHING);
 
