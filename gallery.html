@@ -57,11 +57,11 @@
     .work-card:hover, .work-card:focus-visible { outline: none; transform: translateY(-6px); border-color: rgba(249,115,22,.72); box-shadow: 0 24px 58px rgba(249,115,22,.14); }
     .work-card:focus-visible { box-shadow: 0 0 0 3px rgba(249,115,22,.34), 0 24px 58px rgba(249,115,22,.14); }
     .work-cover { position: relative; min-height: 100%; overflow: hidden; background: #030404; } .work-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 48%, rgba(0,0,0,.5)); pointer-events: none; }
-    .work-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16,1,.3,1); } .work-card:hover .work-cover img { transform: scale(1.045); }
+    .work-cover img { width: 100%; height: 100%; object-fit: cover; transform: translateY(var(--story-image-shift, 0px)) scale(var(--story-image-scale, 1)); filter: brightness(var(--story-image-brightness, 1)) saturate(var(--story-image-saturation, 1)); transition: filter .35s ease; will-change: transform, filter; } .work-card:hover .work-cover img { transform: translateY(var(--story-image-shift, 0px)) scale(calc(var(--story-image-scale, 1) * 1.045)); }
     .work-index { position: absolute; z-index: 1; top: 16px; left: 16px; color: #fff; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; }
     .work-open { position: absolute; z-index: 1; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 11px; border: 1px solid rgba(255,255,255,.35); border-radius: var(--radius-pill); background: rgba(8,9,9,.74); color: #fff; font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
     .work-open span { color: var(--orange); font-size: 14px; line-height: .7; }
-    .work-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(26px, 4vw, 58px); } .work-meta { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; margin-bottom: 10px; }
+    .work-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(26px, 4vw, 58px); transform: translateY(var(--story-copy-shift, 0px)); transition: transform .45s cubic-bezier(.16,1,.3,1), opacity .35s ease; } .work-meta { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; margin-bottom: 10px; }
     .work-name { font-family: var(--display); font-size: 34px; line-height: .9; text-transform: uppercase; } .work-colour { color: var(--orange); font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; text-align: right; }
     .work-service { color: var(--muted); font-size: 13px; line-height: 1.55; max-width: 520px; } .work-location { display: flex; justify-content: space-between; gap: 16px; margin-top: 18px; color: var(--muted-dark); font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; } .work-location strong { color: var(--orange); font-weight: 500; }
     .work-story-footer { display: flex; align-items: center; gap: 16px; width: min(1180px, calc(100% - 64px)); margin: 18px auto 0; color: var(--muted-dark); font-family: var(--mono); font-size: 10px; letter-spacing: .11em; text-transform: uppercase; }
@@ -202,6 +202,8 @@
     const workGrid = document.querySelector("#work-grid"), modal = document.querySelector("#work-modal"), modalPanel = document.querySelector(".work-modal-panel"), modalTitle = document.querySelector("#work-modal-title"), modalKicker = document.querySelector("#work-modal-kicker"), modalColour = document.querySelector("#work-modal-colour"), modalLocation = document.querySelector("#work-modal-location"), modalRating = document.querySelector("#work-modal-rating"), modalGallery = document.querySelector("#work-modal-gallery"), modalServices = document.querySelector("#work-modal-services"), modalReview = document.querySelector("#work-modal-review"), modalByline = document.querySelector("#work-modal-byline"), modalStars = document.querySelector("#work-modal-stars");
     let lastTrigger = null;
     let workStoryTarget = 0;
+    let workStoryScrollProgress = 0;
+    let workStoryLabelIndex = 0;
     let workStoryPosition = 0;
     let workStoryTicking = false;
     function starsFor(rating) { const score = Number.parseFloat(rating); return "★".repeat(Math.round(score)) + "☆".repeat(5 - Math.round(score)); }
@@ -211,6 +213,10 @@
       }).join("");
     }
     function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+    function storyIndexForProgress(progress) {
+      const lastIndex = Math.max(1, recentWork.length - 1);
+      return clamp(Math.floor((progress * lastIndex) + 0.4), 0, recentWork.length - 1);
+    }
     function measureWorkStory() {
       workStory.style.height = (recentWork.length * window.innerHeight) + "px";
       renderWorkStory(workStoryPosition);
@@ -219,28 +225,57 @@
       const distance = workStory.offsetHeight - window.innerHeight;
       return distance > 0 ? clamp(-workStory.getBoundingClientRect().top / distance, 0, 1) : 0;
     }
-    function renderWorkStory(progress) {
+    function renderWorkStory(position) {
       const lastIndex = Math.max(1, recentWork.length - 1);
-      const slidePosition = progress * lastIndex;
+      const slidePosition = clamp(position, 0, lastIndex);
       const offset = slidePosition * workStoryStage.clientWidth;
-      // Keep the footer label attached to the card currently leading the
-      // viewport. It must not switch to the incoming card while its image is
-      // still only partially visible during the swipe.
-      const activeIndex = clamp(Math.floor(slidePosition + 0.001), 0, recentWork.length - 1);
+      const activeIndex = clamp(workStoryLabelIndex, 0, recentWork.length - 1);
+      const movingForward = workStoryTarget >= slidePosition;
+      const currentIndex = clamp(movingForward ? Math.floor(slidePosition + 0.001) : Math.ceil(slidePosition - 0.001), 0, recentWork.length - 1);
+      const nextIndex = clamp(movingForward ? currentIndex + 1 : currentIndex - 1, 0, recentWork.length - 1);
+      const transitionPhase = clamp(Math.abs(workStoryTarget - slidePosition), 0, 1);
       workGrid.style.transform = "translate3d(" + (-offset) + "px, 0, 0)";
       workStoryCounter.textContent = String(activeIndex + 1).padStart(3, "0") + " / " + String(recentWork.length).padStart(2, "0");
       workStoryName.textContent = recentWork[activeIndex].name;
-      workStoryProgressFill.style.transform = "scaleX(" + progress + ")";
+      workStoryProgressFill.style.transform = "scaleX(" + workStoryScrollProgress + ")";
+      workGrid.querySelectorAll(".work-card").forEach(function(card, index) {
+        let imageScale = 1;
+        let imageShift = 0;
+        let imageBrightness = 1;
+        let imageSaturation = 1;
+        let copyShift = 0;
+        if (transitionPhase > 0 && index === currentIndex) {
+          imageScale = 1 + (transitionPhase * .055);
+          imageShift = workStoryTarget > slidePosition ? -(transitionPhase * 10) : transitionPhase * 10;
+          imageBrightness = 1 - (transitionPhase * .04);
+          imageSaturation = 1 - (transitionPhase * .06);
+          copyShift = workStoryTarget > slidePosition ? -(transitionPhase * 8) : transitionPhase * 8;
+        } else if (transitionPhase > 0 && index === nextIndex && nextIndex !== currentIndex) {
+          imageScale = 1.055 - (transitionPhase * .055);
+          imageShift = workStoryTarget > slidePosition ? transitionPhase * 10 : -(transitionPhase * 10);
+          imageBrightness = 1.04 - (transitionPhase * .04);
+          imageSaturation = 1.06 - (transitionPhase * .06);
+          copyShift = workStoryTarget > slidePosition ? transitionPhase * 8 : -(transitionPhase * 8);
+        }
+        card.style.setProperty("--story-image-scale", imageScale.toFixed(3));
+        card.style.setProperty("--story-image-shift", imageShift.toFixed(2) + "px");
+        card.style.setProperty("--story-image-brightness", imageBrightness.toFixed(3));
+        card.style.setProperty("--story-image-saturation", imageSaturation.toFixed(3));
+        card.style.setProperty("--story-copy-shift", copyShift.toFixed(2) + "px");
+      });
     }
     function animateWorkStory() {
       const delta = workStoryTarget - workStoryPosition;
-      workStoryPosition = Math.abs(delta) < 0.0005 ? workStoryTarget : workStoryPosition + (delta * 0.18);
+      const settled = Math.abs(delta) < 0.0005;
+      workStoryPosition = settled ? workStoryTarget : workStoryPosition + (delta * 0.18);
+      if (settled) workStoryLabelIndex = workStoryTarget;
       renderWorkStory(workStoryPosition);
       if (Math.abs(workStoryTarget - workStoryPosition) > 0.0005) window.requestAnimationFrame(animateWorkStory);
       else workStoryTicking = false;
     }
     function requestWorkStoryUpdate() {
-      workStoryTarget = readWorkStoryProgress();
+      workStoryScrollProgress = readWorkStoryProgress();
+      workStoryTarget = storyIndexForProgress(workStoryScrollProgress);
       if (!workStoryTicking) { workStoryTicking = true; window.requestAnimationFrame(animateWorkStory); }
     }
     function openWork(index, trigger) {
