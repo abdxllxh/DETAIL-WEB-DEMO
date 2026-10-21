@@ -212,7 +212,10 @@
       const lastIndex = Math.max(1, recentWork.length - 1);
       const slidePosition = progress * lastIndex;
       const offset = slidePosition * workStoryStage.clientWidth;
-      const activeIndex = clamp(Math.round(slidePosition), 0, recentWork.length - 1);
+      // Keep the footer label attached to the card currently leading the
+      // viewport. It must not switch to the incoming card while its image is
+      // still only partially visible during the swipe.
+      const activeIndex = clamp(Math.floor(slidePosition + 0.001), 0, recentWork.length - 1);
       workGrid.style.transform = "translate3d(" + (-offset) + "px, 0, 0)";
       workStoryCounter.textContent = String(activeIndex + 1).padStart(3, "0") + " / " + String(recentWork.length).padStart(2, "0");
       workStoryName.textContent = recentWork[activeIndex].name;
