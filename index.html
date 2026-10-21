@@ -1277,9 +1277,13 @@
        memory so a long scroll cannot retain all 1,900+ source images. */
     const frameCache = new Map();
     const IS_COMPACT_VIEW = window.matchMedia('(max-width: 992px)').matches;
-    const FRAME_STRIDE = IS_COMPACT_VIEW ? 4 : 2;
-    const MAX_FRAME_CACHE = IS_COMPACT_VIEW ? 10 : 18;
-    const PREFETCH_RADIUS = 0;
+    // Keep every source frame in the scrub path. Skipping frames makes the
+    // sequence look like a slideshow on touch devices, especially during a
+    // slow drag. The bounded cache and small directional window keep the
+    // full-density sequence practical without retaining the whole library.
+    const FRAME_STRIDE = 1;
+    const MAX_FRAME_CACHE = IS_COMPACT_VIEW ? 24 : 36;
+    const PREFETCH_RADIUS = 2;
     let currentRenderPath = '';
     let currentRequestedPath = '';
     let currentFrameRecord = null;
@@ -1435,9 +1439,7 @@
     }
 
     function getRenderFrameIndex(section, frameIndex) {
-      if (frameIndex >= section.frameCount) return section.frameCount;
-      return Math.max(1, Math.min(section.frameCount,
-        1 + Math.round((frameIndex - 1) / FRAME_STRIDE) * FRAME_STRIDE));
+      return Math.max(1, Math.min(section.frameCount, Math.round(frameIndex)));
     }
 
     function drawSequenceFrame(section, frameIndex) {
