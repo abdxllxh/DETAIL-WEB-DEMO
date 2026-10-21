@@ -961,18 +961,13 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
-      .site-nav { padding: 10px 14px; }
+      .site-nav { padding: 10px 12px; }
       .brand-icon { width: 30px; height: 30px; }
-      .brand-title { font-size: 16px; gap: 4px; white-space: nowrap; }
-      .brand-title span { display: none; }
-      .nav-links { gap: 3px; padding: 3px 3px 3px 8px; }
-      .nav-links a { font-size: 8.5px; }
-      .btn-nav-book { padding: 7px 10px; font-size: 8px; white-space: nowrap; }
-      .mobile-menu-toggle { display: inline-flex; width: 32px; height: 32px; border: 0; background: transparent; }
-      .mobile-menu-toggle:hover,
-      .mobile-menu-toggle:focus-visible,
-      .mobile-menu-toggle[aria-expanded="true"] { border: 0; background: rgba(249,115,22,.08); }
-      .nav-links a:not(.btn-nav-book) { display: none; }
+      .brand-title { font-size: 14px; gap: 3px; white-space: nowrap; }
+      .brand-title span { display: inline; font-size: 8px; letter-spacing: .08em; }
+      .nav-links { gap: 8px; padding: 4px 5px 4px 10px; }
+      .nav-links a { font-size: 7px; letter-spacing: .08em; }
+      .btn-nav-book { padding: 7px 9px; font-size: 7px; white-space: nowrap; }
       .hero-frame-layer img.hero-frame-image,
       .hero-frame-layer video.hero-frame-video { top: 70%; width: 100vw; height: min(54vh, 400px); object-fit: cover; object-position: center; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 91%, transparent 100%); }
       .hud-hero-intro { top: 80px; left: 16px; right: 16px; max-width: none; padding: 16px 18px 18px; }
@@ -1049,15 +1044,7 @@
       <a href="services.html">Services</a>
       <a href="gallery.html">Gallery</a>
       <a href="book-now.html" class="btn-nav-book">Book Now</a>
-      <button class="mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
-        <span></span><span></span><span></span>
-      </button>
     </nav>
-    <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-      <a href="services.html">Services</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="book-now.html">Book Now</a>
-    </div>
   </header>
 
   <!-- =========================================================
@@ -1325,31 +1312,6 @@
     const cardTags = document.getElementById('card-tags');
 
     const hudFinalReveal = document.getElementById('hud-final-reveal');
-
-    /* Compact mobile navigation: Book Now stays visible in the pill while
-       the remaining links move into an accessible, touch-sized menu. */
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuToggle && mobileMenu) {
-      const closeMobileMenu = () => {
-        mobileMenu.classList.remove('is-open');
-        mobileMenuToggle.setAttribute('aria-expanded', 'false');
-        mobileMenuToggle.setAttribute('aria-label', 'Open navigation menu');
-      };
-      mobileMenuToggle.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const isOpen = mobileMenu.classList.toggle('is-open');
-        mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
-        mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-      });
-      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu));
-      document.addEventListener('click', (event) => {
-        if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) closeMobileMenu();
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeMobileMenu();
-      });
-    }
 
     /* Rolling frame cache: keep only a small window of decoded frames in
        memory so a long scroll cannot retain all 1,900+ source images. */
