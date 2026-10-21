@@ -229,7 +229,10 @@
       const lastIndex = Math.max(1, recentWork.length - 1);
       const slidePosition = clamp(position, 0, lastIndex);
       const offset = slidePosition * workStoryStage.clientWidth;
-      const activeIndex = clamp(workStoryLabelIndex, 0, recentWork.length - 1);
+      // Keep the footer paired to the card currently occupying the stage.
+      // Deriving this from the eased track position prevents the label from
+      // lagging behind when the browser jumps to a new scroll position.
+      const activeIndex = clamp(Math.round(slidePosition), 0, recentWork.length - 1);
       const movingForward = workStoryTarget >= slidePosition;
       const currentIndex = clamp(movingForward ? Math.floor(slidePosition + 0.001) : Math.ceil(slidePosition - 0.001), 0, recentWork.length - 1);
       const nextIndex = clamp(movingForward ? currentIndex + 1 : currentIndex - 1, 0, recentWork.length - 1);
