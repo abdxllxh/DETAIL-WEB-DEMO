@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="description" content="A visual client result journal for Auto G Detailing: paint correction, surface protection, and cabin finish work.">
+  <title>Client Results | Auto G Detailing</title>
+  <link rel="icon" type="image/svg+xml" href="public/images/brand/auto-g-logo-hdr.svg?rev=transparent-wordmark-g-centered-20261021">
+  <link rel="apple-touch-icon" href="public/images/brand/auto-g-logo-hdr.svg?rev=transparent-wordmark-g-centered-20261021">
+  <link rel="preload" as="image" href="public/images/gallery/porsche_paint_correction_1792432729371.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#05080a; --panel:#0b1115; --text:#f3f4ef; --muted:#9ea29f; --muted-dark:#666a68; --line:#1b2b34; --orange:#f97316; --display:"Barlow Condensed", "Arial Narrow", sans-serif; --body:"Manrope", Arial, sans-serif; --mono:"JetBrains Mono", monospace; --pill:999px; --radius:6px; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { background:var(--bg); color-scheme:dark; scroll-behavior:smooth; }
+    body { min-height:100vh; overflow-x:hidden; background:var(--bg); color:var(--text); font-family:var(--body); line-height:1.5; -webkit-font-smoothing:antialiased; }
+    body::before { content:""; position:fixed; inset:0; z-index:999; pointer-events:none; opacity:.03; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E"); }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; height:auto; }
+    .site-nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:18px 32px; background:linear-gradient(180deg,rgba(5,8,10,.96),rgba(5,8,10,.52) 72%,transparent); border-bottom:1px solid rgba(249,115,22,.12); }
+    .nav-brand { display:flex; align-items:center; flex-shrink:0; white-space:nowrap; }
+    .brand-logo { display:block; width:184px; height:58px; object-fit:contain; object-position:left center; }
+    .page-actions { display:flex; align-items:center; gap:20px; flex-wrap:nowrap; white-space:nowrap; font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+    .page-actions a { color:var(--muted); transition:color .2s ease; }
+    .page-actions a:hover, .page-actions a:focus-visible { color:#fff; }
+    .page-actions .book-link { padding:9px 16px; border-radius:var(--pill); background:var(--orange); color:#061014; font-weight:700; transition:background .2s ease,transform .2s ease,box-shadow .2s ease; }
+    .page-actions .book-link:hover, .page-actions .book-link:focus-visible { background:#ffab66; color:#061014; transform:translateY(-1px); box-shadow:0 4px 18px rgba(249,115,22,.28); outline:none; }
+    .wrap { width:min(1180px,calc(100% - 64px)); margin:0 auto; }
+    .results-hero { position:relative; isolation:isolate; min-height:min(820px,94vh); display:grid; grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr); align-items:stretch; gap:0; overflow:hidden; padding:154px 0 64px; border-bottom:1px solid var(--line); }
+    .results-hero::before { content:""; position:absolute; z-index:-2; inset:0; background:radial-gradient(circle at 75% 40%,rgba(249,115,22,.12),transparent 34%),linear-gradient(90deg,var(--bg) 0%,rgba(5,8,10,.9) 46%,rgba(5,8,10,.28) 100%); }
+    .results-hero::after { content:""; position:absolute; z-index:-1; top:0; right:0; bottom:0; width:58%; background:linear-gradient(90deg,var(--bg) 0%,rgba(5,8,10,.18) 30%,rgba(5,8,10,.05) 100%),linear-gradient(180deg,rgba(5,8,10,.08),transparent 48%,var(--bg) 100%); pointer-events:none; }
+    .results-hero-copy { display:flex; flex-direction:column; justify-content:center; padding:50px 28px 70px 0; }
+    .eyebrow { margin-bottom:18px; color:var(--orange); font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; }
+    h1,h2,h3 { font-family:var(--display); line-height:.88; text-transform:uppercase; }
+    h1 { max-width:620px; font-size:clamp(72px,10vw,142px); letter-spacing:-.025em; }
+    .hero-copy { max-width:520px; margin-top:28px; color:#d4d9d6; font-size:15px; line-height:1.75; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+    .button { display:inline-flex; min-height:44px; align-items:center; justify-content:center; padding:13px 20px; border:1px solid var(--line); border-radius:var(--pill); color:#fff; font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; transition:transform .2s ease,border-color .2s ease,background .2s ease; }
+    .button:hover, .button:focus-visible { transform:translateY(-2px); border-color:rgba(249,115,22,.72); outline:none; }
+    .button-primary { border-color:var(--orange); background:var(--orange); color:#061014; }
+    .results-hero-media { position:relative; min-height:520px; overflow:hidden; border-left:1px solid rgba(249,115,22,.18); }
+    .results-hero-media img { width:100%; height:100%; min-height:520px; object-fit:cover; object-position:center; filter:saturate(.78) contrast(1.08) brightness(.72); }
+    .results-hero-media figcaption { position:absolute; right:20px; bottom:18px; color:rgba(243,244,239,.62); font-family:var(--mono); font-size:9px; letter-spacing:.12em; text-transform:uppercase; }
+    .result-journal { padding:112px 0 126px; }
+    .journal-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,.62fr); gap:80px; align-items:end; margin-bottom:54px; }
+    .journal-head h2 { max-width:760px; font-size:clamp(58px,8vw,112px); }
+    .journal-head p { color:var(--muted); font-size:14px; line-height:1.8; }
+    .result-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .result-card { overflow:hidden; border:1px solid var(--line); border-radius:var(--radius); background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.014)); transition:transform .3s ease,border-color .3s ease,background .3s ease; }
+    .result-card:hover { transform:translateY(-6px); border-color:rgba(249,115,22,.58); background:linear-gradient(145deg,rgba(249,115,22,.1),rgba(255,255,255,.014)); }
+    .result-card-media { aspect-ratio:4 / 3; overflow:hidden; background:#0b1115; }
+    .result-card-media img { width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.16,1,.3,1),filter .3s ease; filter:saturate(.8) contrast(1.04); }
+    .result-card:hover .result-card-media img { transform:scale(1.045); filter:saturate(1) contrast(1.07); }
+    .result-card-body { min-height:250px; display:flex; flex-direction:column; padding:24px; }
+    .result-label { color:var(--orange); font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; }
+    .result-card h3 { margin-top:32px; font-size:clamp(38px,4vw,64px); }
+    .result-card p { margin-top:16px; color:var(--muted); font-size:13px; line-height:1.72; }
+    .result-byline { margin-top:auto; padding-top:22px; color:#d4d9d6; font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+    .proof-band { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px; padding:26px 0 0; border-top:1px solid var(--line); }
+    .proof-band strong { display:block; color:#fff; font-family:var(--display); font-size:32px; line-height:1; text-transform:uppercase; }
+    .proof-band span { display:block; margin-top:8px; color:var(--muted-dark); font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; }
+    .results-cta { position:relative; overflow:hidden; margin-top:14px; padding:48px; border:1px solid rgba(249,115,22,.5); border-radius:12px; background:linear-gradient(110deg,rgba(249,115,22,.16),rgba(9,20,22,.8) 58%,rgba(255,255,255,.025)); }
+    .results-cta::after { content:"RESULTS"; position:absolute; right:-18px; bottom:-48px; color:rgba(249,115,22,.08); font-family:var(--display); font-size:clamp(100px,17vw,260px); font-weight:900; letter-spacing:-.08em; line-height:.8; pointer-events:none; }
+    .results-cta h2, .results-cta p, .results-cta .button { position:relative; z-index:1; }
+    .results-cta h2 { max-width:760px; font-size:clamp(50px,7vw,100px); }
+    .results-cta p { max-width:600px; margin-top:18px; color:#d4d9d6; font-size:14px; line-height:1.7; }
+    .results-cta .button { margin-top:26px; }
+    .footer { padding:80px 0 40px; border-top:1px solid var(--line); background:var(--bg); color:var(--muted); font-size:13px; }
+    .footer-main { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(180px,.72fr) minmax(180px,.72fr); gap:14px; align-items:stretch; }
+    .footer-lead { padding:4px 26px 12px 0; }
+    .footer-brand-line { margin-bottom:24px; }
+    .footer-name { font-family:var(--display); font-size:22px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .footer-name span { color:var(--muted); font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; }
+    .footer-name .footer-wordmark-dot { color:var(--orange); font-family:var(--display); font-size:inherit; font-weight:inherit; letter-spacing:normal; }
+    .footer-lead p { max-width:460px; color:var(--muted); font-size:13px; line-height:1.75; }
+    .footer-contact-line { margin-top:18px; color:#d6dcda !important; font-family:var(--mono); font-size:11px !important; letter-spacing:.06em; }
+    .footer-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
+    .footer-action { display:inline-flex; min-height:40px; align-items:center; padding:10px 14px; border:1px solid var(--line); border-radius:5px; color:#e8ece9; font-family:var(--mono); font-size:10px; letter-spacing:.06em; transition:border-color .2s ease,background .2s ease,transform .2s ease; }
+    .footer-action:hover, .footer-action:focus-visible { border-color:var(--orange); background:rgba(249,115,22,.08); transform:translateY(-2px); outline:none; }
+    .footer-panel { padding:20px 18px 24px; border:1px solid var(--line); background:rgba(255,255,255,.018); }
+    .footer-panel h5 { margin-bottom:18px; color:var(--orange); font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
+    .footer-panel ul { display:grid; gap:10px; list-style:none; }
+    .footer-panel li, .footer-panel a { color:var(--muted); font-family:var(--mono); font-size:10px; line-height:1.45; }
+    .footer-panel a:hover, .footer-panel a:focus-visible { color:#fff; outline:none; }
+    .footer-wordmark { width:100%; margin:34px 0 18px; overflow:hidden; color:rgba(249,115,22,.08); font-family:var(--display); font-size:clamp(44px,9.5vw,136px); font-weight:800; letter-spacing:-.055em; line-height:.8; text-align:center; text-transform:uppercase; white-space:nowrap; }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; gap:18px; padding-top:28px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10px; }
+    .footer-bottom a:hover, .footer-bottom a:focus-visible { color:#fff; outline:none; }
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.is-visible { opacity:1; transform:none; }
+    .reveal:nth-child(2) { transition-delay:.08s; } .reveal:nth-child(3) { transition-delay:.16s; }
+    @media (max-width:900px) { .results-hero { grid-template-columns:1fr; min-height:auto; padding-top:138px; } .results-hero-copy { min-height:540px; padding:42px 0 70px; } .results-hero-media { min-height:480px; border-top:1px solid rgba(249,115,22,.18); border-left:0; } .results-hero-media img { min-height:480px; } .journal-head { grid-template-columns:1fr; gap:24px; } .result-grid { grid-template-columns:1fr 1fr; } .result-card:last-child { grid-column:1 / -1; } .footer-main { grid-template-columns:1fr 1fr; } }
+    @media (max-width:560px) { .site-nav { padding:12px; gap:8px; } .brand-logo { width:138px; height:46px; } .page-actions { gap:9px; font-size:8.4px; } .page-actions .book-link { padding:10px 12px; font-size:8.8px; } .wrap { width:min(100% - 40px,560px); } .results-hero { padding-top:126px; } .results-hero-copy { min-height:520px; padding:26px 0 54px; } h1 { font-size:clamp(64px,17vw,94px); } .hero-copy { font-size:14px; } .results-hero-media, .results-hero-media img { min-height:320px; } .result-journal { padding:78px 0 92px; } .journal-head { margin-bottom:34px; } .journal-head h2 { font-size:56px; } .result-grid { grid-template-columns:1fr; } .result-card:last-child { grid-column:auto; } .result-card-body { min-height:0; } .proof-band { grid-template-columns:1fr; gap:18px; } .results-cta { padding:28px 22px; } .footer-main { grid-template-columns:1fr; gap:14px; } .footer-lead { padding-right:0; } .footer-panel { padding:18px; } .footer-wordmark { margin:28px 0 18px; font-size:clamp(26px,8.6vw,56px); } .footer-bottom { align-items:flex-start; flex-direction:column; gap:12px; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .result-card, .result-card-media img { transition:none; } .reveal { opacity:1; transform:none; transition:none; } }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <a class="nav-brand" href="index.html" aria-label="Back to Auto G Detailing home"><img class="brand-logo" src="public/images/brand/auto-g-logo-hdr.svg?rev=transparent-wordmark-g-centered-20261021" alt="AUTO.G Detailing"></a>
+    <nav class="page-actions" aria-label="Results navigation"><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a class="book-link" href="book-now.html">Book Now</a></nav>
+  </header>
+
+  <main>
+    <section class="results-hero" aria-labelledby="results-title">
+      <div class="wrap results-hero-copy">
+        <div class="eyebrow">Auto G Detailing / Client result journal</div>
+        <h1 id="results-title">Real paint.<br>Clearer finish.</h1>
+        <p class="hero-copy">A visual record of the details that change how a vehicle reads: paint correction under inspection light, a surface that holds clean water behaviour, and a cabin ready for everyday use.</p>
+        <div class="hero-actions"><a class="button button-primary" href="book-now.html">Book an assessment &rarr;</a><a class="button" href="gallery.html">See recent work</a></div>
+      </div>
+      <figure class="results-hero-media"><img src="public/images/gallery/porsche_paint_correction_1792432729371.jpg" alt="Black Porsche bonnet under paint-correction inspection lights" fetchpriority="high"><figcaption>01 / paint correction study</figcaption></figure>
+    </section>
+
+    <section class="result-journal" aria-labelledby="journal-title">
+      <div class="wrap">
+        <div class="journal-head reveal"><h2 id="journal-title">The finish tells the story.</h2><p>Different surfaces need different attention. These sample result studies show the three details a proper handover should make clear: the paint, the protection, and the cabin.</p></div>
+        <div class="result-grid">
+          <article class="result-card reveal"><div class="result-card-media"><img src="public/images/gallery/porsche_paint_correction_1792432729371.jpg" alt="Black Porsche bonnet showing paint-correction inspection lighting" loading="lazy"></div><div class="result-card-body"><div class="result-label">01 / sample result / paint correction</div><h3>Clearer paint.</h3><p>Controlled preparation helps settle haze and surface marks so the reflection reads deeper without looking overworked.</p><div class="result-byline">Finish direction / clarity polish</div></div></article>
+          <article class="result-card reveal"><div class="result-card-media"><img src="public/images/gallery/ceramic_water_bead_1792432757542.jpg" alt="Water beads on a glossy black protected vehicle surface" loading="lazy"></div><div class="result-card-body"><div class="result-label">02 / sample result / surface protection</div><h3>Water, held clean.</h3><p>Protection is visible in the small details: a smoother reflection, cleaner water behaviour, and an easier surface to maintain.</p><div class="result-byline">Finish direction / ceramic clarity</div></div></article>
+          <article class="result-card reveal"><div class="result-card-media"><img src="public/images/gallery/interior_cabin_detail_1792432777881.jpg" alt="Detailed black leather vehicle cabin with dashboard and seats" loading="lazy"></div><div class="result-card-body"><div class="result-label">03 / sample result / cabin care</div><h3>Cabin, reset.</h3><p>Seats, mats, trims, touch points, and the areas you live with every day all contribute to the final handover.</p><div class="result-byline">Finish direction / interior reset</div></div></article>
+        </div>
+        <div class="proof-band reveal"><div><strong>03</strong><span>Result directions</span></div><div><strong>01</strong><span>Clear assessment</span></div><div><strong>100%</strong><span>Context-led finish</span></div></div>
+        <div class="results-cta reveal"><h2>Want your car assessed properly?</h2><p>Share the vehicle, the areas that need attention, and the finish you want to maintain. The next step starts with context, not a guess.</p><a class="button button-primary" href="book-now.html">Start with the car &rarr;</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="footer-lead"><div class="footer-brand-line"><div class="footer-name">AUTO<span class="footer-wordmark-dot">.G</span> <span>DETAILING</span></div></div><p>Clean, restore, protect and maintain. Owner-operated detailing based in Kingsgrove, Sydney.</p><p class="footer-contact-line">Kingsgrove, NSW 2208 &amp; surrounding areas<br>Owner operated service<br>Owner operated service</p><div class="footer-actions"><a class="footer-action" href="https://www.instagram.com/autog.detailing/" target="_blank" rel="noopener">Instagram ↗</a><a class="footer-action" href="https://www.instagram.com/autog.detailing/">DM Instagram</a><a class="footer-action" href="book-now.html">Book Now</a></div></div>
+        <div class="footer-panel"><h5>Explore</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Recent work</a></li><li><a href="results.html" aria-current="page">Client results</a></li><li><a href="about.html">Our approach</a></li><li><a href="book-now.html">Book an assessment</a></li></ul></div>
+        <div class="footer-panel"><h5>Contact</h5><ul><li><a href="https://www.instagram.com/autog.detailing/">DM @autog.detailing</a></li><li><a href="https://www.instagram.com/autog.detailing/" target="_blank" rel="noopener">Instagram profile ↗</a></li></ul></div>
+      </div>
+      <div class="footer-wordmark" aria-hidden="true">AUTO.G DETAILING</div>
+      <div class="footer-bottom"><span>&copy; 2026 AUTO.G DETAILING. All rights reserved.</span><a href="book-now.html">Request an assessment &rarr;</a></div>
+    </div>
+  </footer>
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+      }, { threshold:.14 });
+      revealItems.forEach(function(item) { revealObserver.observe(item); });
+    } else { revealItems.forEach(function(item) { item.classList.add('is-visible'); }); }
+  </script>
+</body>
+</html>
