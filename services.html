@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore Auto G Detailing service directions for exterior care, cabin cleaning, wheel detailing, and paint protection in Sydney and surrounding areas.">
   <title>Services | Auto G Detailing</title>
-  <link rel="icon" type="image/jpeg" href="public/images/brand/autog-detailing-profile.jpg">
-  <link rel="apple-touch-icon" href="public/images/brand/autog-detailing-profile.jpg">
+  <link rel="icon" type="image/svg+xml" href="public/images/brand/autog-wordmark.svg">
+  <link rel="apple-touch-icon" href="public/images/brand/autog-wordmark.svg">
   <link rel="preload" as="image" href="public/images/gallery/paint_correction_split.jpg">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap');
@@ -19,6 +19,10 @@
     img { display:block; max-width:100%; height:auto; }
     .site-nav { position:fixed; top:0; left:0; right:0; z-index:10; padding:18px 32px; display:flex; justify-content:space-between; align-items:center; background:linear-gradient(180deg,rgba(5,8,10,.96),rgba(5,8,10,.52) 72%,transparent); border-bottom:1px solid rgba(249,115,22,.12); }
     .nav-brand { display:flex; align-items:center; gap:12px; flex-shrink:0; white-space:nowrap; }
+    .brand-wordmark { display:inline-flex; align-items:baseline; gap:8px; color:#fff; font-family:var(--display); font-size:21px; font-weight:800; letter-spacing:.08em; line-height:1; text-transform:uppercase; white-space:nowrap; }
+    .brand-wordmark-main { color:#fff; }
+    .brand-wordmark-dot { color:var(--orange); }
+    .brand-wordmark-sub { color:var(--muted); font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.12em; }
     .brand-icon { width:42px; height:42px; object-fit:contain; display:block; border-radius:50%; }
     .brand-title { display:flex; align-items:center; gap:8px; font-family:var(--display); font-size:21px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
     .brand-title span { color:var(--muted); font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.12em; }
@@ -66,7 +70,7 @@
     .package-card li { display:flex; gap:10px; align-items:flex-start; }
     .package-card li::before { content:"+"; flex:0 0 auto; color:var(--orange); font-family:var(--mono); }
     .package-note { margin-top:auto; padding-top:24px; color:var(--muted-dark); font-family:var(--mono); font-size:9px; line-height:1.6; letter-spacing:.06em; text-transform:uppercase; }
-    .limited-offer { display:grid; grid-template-columns:minmax(0,1fr) minmax(220px,.48fr); gap:38px; margin-top:18px; padding:34px; border:1px solid rgba(249,115,22,.58); border-radius:var(--radius); background:linear-gradient(110deg,rgba(249,115,22,.16),rgba(9,20,22,.8) 56%,rgba(255,255,255,.025)); }
+    .limited-offer { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr); gap:48px; min-height:360px; align-items:center; margin-top:18px; padding:44px; border:1px solid rgba(249,115,22,.58); border-radius:var(--radius-lg); background:linear-gradient(110deg,rgba(249,115,22,.16),rgba(9,20,22,.8) 56%,rgba(255,255,255,.025)); }
     .limited-offer .eyebrow { font-weight:800; color:var(--orange); }
     .limited-offer h3 { font-size:clamp(40px,5vw,72px); font-weight:900; }
     .limited-offer p { max-width:660px; margin-top:16px; color:#d6dcda; font-size:14px; line-height:1.7; }
@@ -120,7 +124,7 @@
     .footer-col a:hover, .footer-bottom a:hover { color:#fff; }
     .footer-bottom { display:flex; justify-content:space-between; gap:22px; padding-top:28px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.06em; }
     @media (max-width:900px) { .section-intro { grid-template-columns:1fr; gap:24px; } .package-grid { grid-template-columns:1fr; } .package-card { min-height:0; } .limited-offer { grid-template-columns:1fr; } .service-card,.service-card:nth-child(even) { grid-template-columns:1fr; } .service-card:nth-child(even) .service-image { order:0; } .service-image { min-height:280px; } .footer-grid { grid-template-columns:1fr 1fr; } }
-     @media (max-width:560px) { .site-nav { padding:12px 12px; gap:8px; } .brand-title { font-size:14.5px; gap:3px; } .brand-title span { display:inline; font-size:8px; letter-spacing:.08em; } .page-actions { gap:7px; font-size:7.8px; } .page-actions a { display:inline-flex; } .page-actions .book-link { padding:8px 10px; font-size:8px; } .wrap { width:min(100% - 40px,560px); } .services-hero { min-height:760px; padding:144px 0 46px; align-items:flex-start; } .services-hero::before { inset:auto 0 0; height:42%; background-position:center; opacity:.86; } .services-hero::after { background:linear-gradient(180deg,var(--bg) 0%,rgba(5,8,10,.96) 45%,rgba(5,8,10,.18) 100%),linear-gradient(180deg,transparent 58%,var(--bg) 100%); } .hero-copy { padding-right:0; } h1 { font-size:clamp(58px,17vw,94px); } .hero-copy p { font-size:14px; } .packages-section { padding:18px 0 78px; } .package-card { padding:26px 22px; } .limited-offer { padding:26px 22px; } .services-section { padding:78px 0 92px; } .section-intro h2 { font-size:56px; } .service-copy { padding:30px 24px 34px; } .service-image { min-height:230px; } .footer-grid { grid-template-columns:1fr; gap:30px; } .footer-bottom { align-items:flex-start; flex-direction:column; gap:12px; } }
+    @media (max-width:560px) { .site-nav { padding:12px 12px; gap:8px; } .brand-wordmark { font-size:14.5px; gap:4px; } .brand-wordmark-sub { font-size:8px; letter-spacing:.08em; } .page-actions { gap:7px; font-size:7.8px; } .page-actions a { display:inline-flex; } .page-actions .book-link { padding:8px 10px; font-size:8px; } .wrap { width:min(100% - 40px,560px); } .services-hero { min-height:760px; padding:144px 0 46px; align-items:flex-start; } .services-hero::before { inset:auto 0 0; height:42%; background-position:center; opacity:.86; } .services-hero::after { background:linear-gradient(180deg,var(--bg) 0%,rgba(5,8,10,.96) 45%,rgba(5,8,10,.18) 100%),linear-gradient(180deg,transparent 58%,var(--bg) 100%); } .hero-copy { padding-right:0; } h1 { font-size:clamp(58px,17vw,94px); } .hero-copy p { font-size:14px; } .packages-section { padding:18px 0 78px; } .package-card { padding:26px 22px; } .limited-offer { min-height:0; padding:26px 22px; } .services-section { padding:78px 0 92px; } .section-intro h2 { font-size:56px; } .service-copy { padding:30px 24px 34px; } .service-image { min-height:230px; } .footer-grid { grid-template-columns:1fr; gap:30px; } .footer-bottom { align-items:flex-start; flex-direction:column; gap:12px; } }
     @media (prefers-reduced-motion: reduce) { .services-hero .eyebrow, .services-hero h1 .hero-title-line, .services-hero .hero-copy p, .services-hero .hero-actions, .reveal-on-scroll, .service-card .service-index, .service-card h3, .service-card p, .service-card .service-detail, .package-card > *, .limited-offer > *, .section-intro h2, .section-intro p { animation:none; opacity:1; transform:none; transition:none; } }
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; } }
     .footer { padding:56px 0 22px; background:var(--bg); }
@@ -130,6 +134,7 @@
     .footer-brand-line .brand-icon { flex:0 0 42px; }
     .footer-name { font-family:var(--display); font-size:22px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
     .footer-name span { color:var(--muted); font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; }
+    .footer-name .footer-wordmark-dot { color:var(--orange); font-family:var(--display); font-size:inherit; font-weight:inherit; letter-spacing:normal; }
     .footer-lead p { max-width:460px; color:var(--muted); font-size:13px; line-height:1.75; }
     .footer-contact-line { margin-top:18px; color:#d6dcda !important; font-family:var(--mono); font-size:11px !important; letter-spacing:.06em; }
     .footer-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
@@ -147,7 +152,7 @@
 </head>
 <body>
   <header class="site-nav">
-    <a class="nav-brand" href="index.html" aria-label="Back to Auto G Detailing home"><img class="brand-icon" src="public/images/brand/autog-detailing-profile.jpg" alt="Auto G Detailing logo"><span class="brand-title">AUTO.G <span>DETAILING</span></span></a>
+    <a class="nav-brand" href="index.html" aria-label="Back to Auto G Detailing home"><span class="brand-wordmark"><span class="brand-wordmark-main">AUTO<span class="brand-wordmark-dot">.G</span></span><span class="brand-wordmark-sub">DETAILING</span></span></a>
     <nav class="page-actions" aria-label="Services navigation"><a class="active" href="services.html" aria-current="page">Services</a><a href="gallery.html">Gallery</a><a class="book-link" href="book-now.html">Book Now</a></nav>
   </header>
 
@@ -190,7 +195,7 @@
     <div class="wrap">
       <div class="footer-main">
         <div class="footer-lead">
-          <div class="footer-brand-line"><img class="brand-icon" src="public/images/brand/autog-detailing-profile.jpg" alt="Auto G Detailing logo"><div class="footer-name">AUTO.G <span>DETAILING</span></div></div>
+          <div class="footer-brand-line"><div class="footer-name">AUTO<span class="footer-wordmark-dot">.G</span> <span>DETAILING</span></div></div>
           <p>Clean, restore, protect and maintain. Owner-operated detailing based in Kingsgrove, Sydney.</p>
           <p class="footer-contact-line">Kingsgrove, NSW 2208 &amp; surrounding areas<br>Owner operated service<br>Owner operated service</p>
           <div class="footer-actions"><a class="footer-action" href="https://www.instagram.com/autog.detailing/" target="_blank" rel="noopener">Instagram ↗</a><a class="footer-action" href="https://www.instagram.com/autog.detailing/">DM Instagram</a><a class="footer-action" href="book-now.html">Book Now</a></div>
