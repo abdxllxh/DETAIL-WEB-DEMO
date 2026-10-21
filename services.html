@@ -7,7 +7,7 @@
   <title>Services | Auto G Detailing</title>
   <link rel="icon" type="image/svg+xml" href="public/images/brand/auto-g-logo-hdr.svg?rev=transparent-wordmark-g-centered-20261021">
   <link rel="apple-touch-icon" href="public/images/brand/auto-g-logo-hdr.svg?rev=transparent-wordmark-g-centered-20261021">
-  <link rel="preload" as="image" href="public/images/gallery/paint_correction_split.jpg">
+  <link rel="preload" as="image" href="public/images/gallery/correction-comparison.png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap');
     :root { --bg:#05080a; --panel:#0b1115; --text:#f3f3ed; --muted:#9aa29f; --line:#1b2b34; --orange:#f97316; --radius:10px; --pill:999px; --display:'Barlow Condensed',sans-serif; --body:'Manrope',sans-serif; --mono:'DM Mono',monospace; }
@@ -39,7 +39,7 @@
     .services-hero .wrap { position:relative; z-index:1; }
     .services-hero-grid { display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(32px,6vw,84px); align-items:center; }
     .hero-copy { max-width:620px; padding-right:0; }
-    .services-hero-media { position:relative; height:clamp(500px,68vh,690px); margin:0; overflow:hidden; border:1px solid rgba(249,115,22,.16); border-radius:var(--radius); background:#081013; box-shadow:0 24px 80px rgba(0,0,0,.28); opacity:0; transform:translateX(52px); animation:serviceHeroMediaIn .9s .16s cubic-bezier(.16,1,.3,1) both; }
+    .services-hero-media { position:relative; height:auto; aspect-ratio:16 / 9; margin:0; overflow:hidden; border:1px solid rgba(249,115,22,.16); border-radius:var(--radius); background:#081013; box-shadow:0 24px 80px rgba(0,0,0,.28); opacity:0; transform:translateX(52px); animation:serviceHeroMediaIn .9s .16s cubic-bezier(.16,1,.3,1) both; }
     .services-hero-media::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg,rgba(5,8,10,.22),transparent 30%),linear-gradient(0deg,rgba(5,8,10,.2),transparent 24%); }
     .services-hero-media img { width:100%; height:100%; object-fit:cover; object-position:center; filter:saturate(.96) contrast(1.04) brightness(.9); transition:transform .8s cubic-bezier(.2,.7,.2,1); }
     .services-hero:hover .services-hero-media img { transform:scale(1.018); }
@@ -55,7 +55,7 @@
     @keyframes serviceHeroMediaIn { from { opacity:0; transform:translateX(52px) scale(1.02); } to { opacity:1; transform:translateX(0) scale(1); } }
     .eyebrow { margin-bottom:15px; color:var(--orange); font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; }
     h1,h2,h3 { font-family:var(--display); line-height:.9; text-transform:uppercase; }
-    h1 { max-width:850px; font-size:clamp(68px,10vw,142px); letter-spacing:-.025em; }
+    h1 { max-width:850px; font-size:clamp(58px,6.2vw,92px); letter-spacing:-.025em; }
     .hero-copy p { max-width:540px; margin-top:26px; color:#d4d9d6; font-size:15px; line-height:1.7; }
     .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
     .button { display:inline-flex; min-height:44px; align-items:center; justify-content:center; padding:13px 20px; border:1px solid var(--line); border-radius:var(--pill); font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; transition:transform .2s ease,border-color .2s ease,background .2s ease; }
@@ -129,8 +129,8 @@
     .footer-col ul { display:grid; gap:10px; list-style:none; }
     .footer-col a:hover, .footer-bottom a:hover { color:#fff; }
     .footer-bottom { display:flex; justify-content:space-between; gap:22px; padding-top:28px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.06em; }
-    @media (max-width:900px) { .section-intro { grid-template-columns:1fr; gap:24px; } .package-grid { grid-template-columns:1fr; } .package-card { min-height:0; } .limited-offer { grid-template-columns:1fr; } .services-hero-grid { grid-template-columns:1fr; gap:36px; } .hero-copy { max-width:760px; } .services-hero-media { height:460px; } .service-card,.service-card:nth-child(even) { grid-template-columns:1fr; } .service-card:nth-child(even) .service-image { order:0; } .service-image { min-height:280px; } .footer-grid { grid-template-columns:1fr 1fr; } }
-    @media (max-width:560px) { .site-nav { padding:12px 12px; gap:8px; } .brand-logo { width:138px; height:46px; } .brand-wordmark { font-size:14.5px; gap:4px; } .brand-wordmark-sub { font-size:8px; letter-spacing:.08em; } .page-actions { gap:9px; font-size:8.4px; } .page-actions a { display:inline-flex; } .page-actions .book-link { padding:10px 12px; font-size:8.8px; } .wrap { width:min(100% - 40px,560px); } .services-hero { min-height:0; padding:144px 0 46px; align-items:flex-start; } .services-hero::after { background:linear-gradient(180deg,rgba(4,6,7,.18) 0%,rgba(4,6,7,0) 50%,var(--bg) 100%); } .services-hero-grid { gap:28px; } .services-hero-media { height:320px; border-radius:8px; } .services-hero-media img { object-position:center; } .hero-copy { padding-right:0; } h1 { font-size:clamp(58px,17vw,94px); } .hero-copy p { font-size:14px; } .packages-section { padding:18px 0 78px; } .package-card { padding:26px 22px; } .limited-offer { min-height:0; padding:26px 22px; } .services-section { padding:78px 0 92px; } .section-intro h2 { font-size:56px; } .service-copy { padding:30px 24px 34px; } .service-image { min-height:230px; } .footer-grid { grid-template-columns:1fr; gap:30px; } .footer-bottom { align-items:flex-start; flex-direction:column; gap:12px; } }
+    @media (max-width:900px) { .section-intro { grid-template-columns:1fr; gap:24px; } .package-grid { grid-template-columns:1fr; } .package-card { min-height:0; } .limited-offer { grid-template-columns:1fr; } .services-hero-grid { grid-template-columns:1fr; gap:36px; } .hero-copy { max-width:760px; } .services-hero-media { aspect-ratio:16 / 10; } .service-card,.service-card:nth-child(even) { grid-template-columns:1fr; } .service-card:nth-child(even) .service-image { order:0; } .service-image { min-height:280px; } .footer-grid { grid-template-columns:1fr 1fr; } }
+    @media (max-width:560px) { .site-nav { padding:12px 12px; gap:8px; } .brand-logo { width:138px; height:46px; } .brand-wordmark { font-size:14.5px; gap:4px; } .brand-wordmark-sub { font-size:8px; letter-spacing:.08em; } .page-actions { gap:9px; font-size:8.4px; } .page-actions a { display:inline-flex; } .page-actions .book-link { padding:10px 12px; font-size:8.8px; } .wrap { width:min(100% - 40px,560px); } .services-hero { min-height:0; padding:144px 0 46px; align-items:flex-start; } .services-hero::after { background:linear-gradient(180deg,rgba(4,6,7,.18) 0%,rgba(4,6,7,0) 50%,var(--bg) 100%); } .services-hero-grid { gap:28px; } .services-hero-media { aspect-ratio:16 / 10; border-radius:8px; } .services-hero-media img { object-position:center; } .hero-copy { padding-right:0; } h1 { font-size:clamp(52px,15vw,82px); } .hero-copy p { font-size:14px; } .packages-section { padding:18px 0 78px; } .package-card { padding:26px 22px; } .limited-offer { min-height:0; padding:26px 22px; } .services-section { padding:78px 0 92px; } .section-intro h2 { font-size:56px; } .service-copy { padding:30px 24px 34px; } .service-image { min-height:230px; } .footer-grid { grid-template-columns:1fr; gap:30px; } .footer-bottom { align-items:flex-start; flex-direction:column; gap:12px; } }
     @media (prefers-reduced-motion: reduce) { .services-hero .eyebrow, .services-hero h1 .hero-title-line, .services-hero .hero-copy p, .services-hero .hero-actions, .services-hero-media, .reveal-on-scroll, .service-card .service-index, .service-card h3, .service-card p, .service-card .service-detail, .package-card > *, .limited-offer > *, .section-intro h2, .section-intro p { animation:none; opacity:1; transform:none; transition:none; } }
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; } }
     .footer { padding:56px 0 22px; background:var(--bg); }
@@ -172,7 +172,7 @@
           <div class="hero-actions"><a class="button button-primary" href="book-now.html">Tell us about your car</a><a class="button" href="gallery.html">See recent work</a></div>
         </div>
         <figure class="services-hero-media">
-          <img src="public/images/gallery/paint_correction_split.jpg" alt="Black sports car under detailing lights with a visible paint-correction comparison" fetchpriority="high">
+          <img src="public/images/gallery/correction-comparison.png" alt="Before and after clearcoat correction comparison under studio lighting" fetchpriority="high">
         </figure>
       </div>
     </section>
