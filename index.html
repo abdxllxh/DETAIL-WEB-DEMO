@@ -906,7 +906,7 @@
     .review-rating { display: flex; align-items: center; gap: 9px; margin-top: 12px; color: var(--orange); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; }
     .review-rating strong { color: var(--muted); font-size: 10px; font-weight: 600; }
     .review-rating .stars { letter-spacing: .12em; }
-    .review-carousel { position: relative; overflow: hidden; margin-top: 8px; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+    .review-carousel { position: relative; overflow: hidden; margin-top: 8px; }
     .review-track { display: flex; width: max-content; gap: 24px; padding: 0 2px 8px; animation: reviewMarquee 76s linear infinite; will-change: transform; }
     .review-slide { display: contents; }
     .review-card { flex: 0 0 clamp(320px, 28vw, 390px); }
@@ -967,10 +967,10 @@
       .hud-detail-card.stage-ceramic { top: 96px; bottom: auto; left: 24px; right: 24px; max-width: none; padding: 18px 0 24px; background: transparent; background-image: none; border: 0; border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; -webkit-mask-image: none; mask-image: none; }
       .hud-final-reveal { top: 88px; left: 24px; width: min(580px, calc(100% - 48px)); padding: 24px; }
       .hud-bottom-scrubber { padding: 0 24px 18px; }
-      .review-carousel { max-height: none; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+      .review-carousel { max-height: none; -webkit-mask-image: none; mask-image: none; }
       .review-track { flex-direction: row; width: max-content; gap: 14px; padding: 0 10px 12px; animation: reviewMarqueeRight 62s linear infinite; }
       .review-card { flex: 0 0 min(460px, calc((100vw - 52px) / 2)); width: min(460px, calc((100vw - 52px) / 2)); }
-      .review-card { border-color: transparent; box-shadow: inset 0 0 0 1px rgba(249,115,22,.05), 0 14px 32px rgba(0,0,0,.24); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%); }
+      .review-card { border-color: transparent; opacity: 1; filter: none; box-shadow: inset 0 0 0 1px rgba(249,115,22,.05), 0 14px 32px rgba(0,0,0,.24); -webkit-mask-image: none; mask-image: none; }
       .review-card .gallery-media { aspect-ratio: 16 / 10; height: auto; }
       .review-card .gallery-content { padding: 22px; }
       .review-card .gallery-content h4 { font-size: 26px; margin-bottom: 8px; }
@@ -1024,10 +1024,10 @@
       .gallery-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 12px; }
-      .review-carousel { max-height: none; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+      .review-carousel { max-height: none; -webkit-mask-image: none; mask-image: none; }
       .review-track { flex-direction: row; width: max-content; gap: 14px; padding: 0 8px 10px; animation: reviewMarqueeRight 54s linear infinite; }
       .review-card { flex: 0 0 calc(100vw - 44px); width: calc(100vw - 44px); }
-      .review-card { border-color: transparent; box-shadow: inset 0 0 0 1px rgba(249,115,22,.05), 0 12px 28px rgba(0,0,0,.22); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%); }
+      .review-card { border-color: transparent; opacity: 1; filter: none; box-shadow: inset 0 0 0 1px rgba(249,115,22,.05), 0 12px 28px rgba(0,0,0,.22); -webkit-mask-image: none; mask-image: none; }
       .review-card .gallery-media { aspect-ratio: 16 / 10; height: auto; }
       .review-card .gallery-content { padding: 20px; }
       .review-card .gallery-content h4 { font-size: 24px; margin-bottom: 8px; }
