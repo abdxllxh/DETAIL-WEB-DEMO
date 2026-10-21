@@ -198,11 +198,12 @@
       .page-footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
-      .site-nav { padding: 14px 20px; }
-      .brand-title { font-size: 18px; }
-      .brand-title span { display: none; }
-      .page-actions { gap: 10px; font-size: 9px; }
-       .page-actions a:not(.book-link) { display: none; }
+      .site-nav { padding: 10px 12px; }
+      .brand-title { font-size: 14px; gap: 3px; }
+      .brand-title span { display: inline; font-size: 8px; letter-spacing: .08em; }
+      .page-actions { gap: 8px; font-size: 7.5px; }
+       .page-actions a { display: inline-flex; }
+       .page-actions .book-link { padding: 8px 10px; font-size: 7.5px; }
        h1 { font-size: clamp(48px, 15vw, 70px); letter-spacing: -.03em; }
       .page-shell { width: min(100% - 40px, 560px); padding: 130px 0 64px; }
       .booking-header { margin-bottom: 30px; padding: 34px 0 44px; }
@@ -243,7 +244,6 @@
       <span class="brand-title">AUTO.G <span>DETAILING</span></span>
     </a>
     <nav class="page-actions" aria-label="Booking navigation">
-      <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="gallery.html">Gallery</a>
       <a class="book-link" href="book-now.html" aria-current="page">Book Now</a>
