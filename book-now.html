@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta name="description" content="Book a mobile car detailing service with Sam’s Auto Detailing in Mildura and surrounding areas.">
-  <title>Sam’s Auto Detailing - Book Now</title>
-  <link rel="icon" type="image/png" href="public/images/brand/sams-auto-detailing-logo-transparent.png">
-  <link rel="apple-touch-icon" href="public/images/brand/sams-auto-detailing-logo-transparent.png">
+  <meta name="description" content="Book a mobile car detailing service with Auto G Detailing in Sydney and surrounding areas.">
+  <title>Auto G Detailing - Book Now</title>
+  <link rel="icon" type="image/jpeg" href="public/images/brand/autog-detailing-profile.jpg">
+  <link rel="apple-touch-icon" href="public/images/brand/autog-detailing-profile.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -19,8 +19,8 @@
       --muted: #9ea29f;
       --muted-dark: #666a68;
       --line: #242725;
-      --blue: #62c1ce;
-      --blue-glow: rgba(98,193,206,.24);
+      --orange: #f97316;
+      --orange-glow: rgba(249,115,22,.24);
       --display: "Barlow Condensed", "Arial Narrow", sans-serif;
       --body: "Manrope", Arial, sans-serif;
       --mono: "JetBrains Mono", monospace;
@@ -64,7 +64,7 @@
       justify-content: space-between;
       padding: 18px 32px;
        background: linear-gradient(180deg, rgba(5,8,10,.96), rgba(5,8,10,.52) 72%, transparent);
-       border-bottom: 1px solid rgba(98,193,206,.12);
+       border-bottom: 1px solid rgba(249,115,22,.12);
     }
     .nav-brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; white-space: nowrap; }
     .brand-icon {
@@ -72,6 +72,7 @@
       height: 42px;
       object-fit: contain;
       display: block;
+      border-radius: 50%;
     }
     .brand-title {
       display: flex;
@@ -87,8 +88,8 @@
     .page-actions { display: flex; align-items: center; gap: 22px; flex-wrap: nowrap; white-space: nowrap; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
     .page-actions a { color: var(--muted); transition: color .2s ease; }
     .page-actions a:hover, .page-actions a:focus-visible { color: #fff; }
-     .page-actions .book-link { padding: 9px 16px; border-radius: var(--radius-pill); background: var(--blue); color: #061014; font-weight: 700; white-space: nowrap; transition: background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease; }
-     .page-actions .book-link:hover, .page-actions .book-link:focus-visible { background: #8be0e8; color: #061014; transform: translateY(-1px); box-shadow: 0 4px 18px rgba(98,193,206,.28); outline: none; }
+     .page-actions .book-link { padding: 9px 16px; border-radius: var(--radius-pill); background: var(--orange); color: #061014; font-weight: 700; white-space: nowrap; transition: background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease; }
+     .page-actions .book-link:hover, .page-actions .book-link:focus-visible { background: #ffab66; color: #061014; transform: translateY(-1px); box-shadow: 0 4px 18px rgba(249,115,22,.28); outline: none; }
 
     .page-shell { width: min(1240px, calc(100% - 64px)); margin: 0 auto; padding: 170px 0 100px; }
     .booking-header {
@@ -132,11 +133,11 @@
       pointer-events: none;
     }
     .booking-header > * { position: relative; z-index: 1; }
-    .eyebrow { margin-bottom: 14px; color: var(--blue); font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
+    .eyebrow { margin-bottom: 14px; color: var(--orange); font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
     h1, h2, h3 { font-family: var(--display); line-height: .92; text-transform: uppercase; }
     h1 { max-width: 760px; font-size: clamp(64px, 10vw, 128px); letter-spacing: -.025em; }
     .intro-copy { max-width: 430px; color: var(--muted); font-size: 14px; line-height: 1.7; }
-    .demo-note { display: block; margin-top: 18px; color: var(--blue); font-family: var(--mono); font-size: 9px; letter-spacing: .11em; line-height: 1.6; text-transform: uppercase; }
+    .demo-note { display: block; margin-top: 18px; color: var(--orange); font-family: var(--mono); font-size: 9px; letter-spacing: .11em; line-height: 1.6; text-transform: uppercase; }
 
     .booking-card {
       display: grid;
@@ -153,7 +154,7 @@
     .booking-aside-copy { max-width: 390px; margin-top: 24px; color: var(--muted); font-size: 14px; line-height: 1.7; }
     .booking-points { display: grid; gap: 16px; margin-top: 34px; list-style: none; color: var(--muted); font-family: var(--mono); font-size: 11px; line-height: 1.5; }
     .booking-points li { display: flex; gap: 12px; align-items: flex-start; }
-    .booking-points li::before { content: ""; flex: 0 0 7px; width: 7px; height: 7px; margin-top: 5px; border-radius: 50%; background: var(--blue); }
+    .booking-points li::before { content: ""; flex: 0 0 7px; width: 7px; height: 7px; margin-top: 5px; border-radius: 50%; background: var(--orange); }
     .aside-index { color: var(--muted-dark); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
 
     .booking-form { align-self: start; }
@@ -171,13 +172,13 @@
       transition: border-color .2s ease, background .2s ease;
     }
     input::placeholder, textarea::placeholder { color: #5f6461; }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--blue); background: #0b1115; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); background: #0b1115; }
     textarea { min-height: 124px; resize: vertical; }
     .form-foot { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 6px; }
     .form-foot-note { color: var(--muted-dark); font-family: var(--mono); font-size: 10px; line-height: 1.5; }
-    .submit-button { border: 0; border-radius: var(--radius-pill); background: var(--blue); color: var(--bg); padding: 13px 24px; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; transition: transform .2s ease, background .2s ease; }
-    .submit-button:hover { transform: translateY(-2px); background: #9dd0e3; }
-    .form-status { margin-top: 18px; padding: 14px 16px; border: 1px solid rgba(98,193,206,.38); border-radius: var(--radius); background: rgba(98,193,206,.08); color: var(--blue); font-family: var(--mono); font-size: 10px; line-height: 1.6; }
+    .submit-button { border: 0; border-radius: var(--radius-pill); background: var(--orange); color: var(--bg); padding: 13px 24px; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; transition: transform .2s ease, background .2s ease; }
+    .submit-button:hover { transform: translateY(-2px); background: #ffb477; }
+    .form-status { margin-top: 18px; padding: 14px 16px; border: 1px solid rgba(249,115,22,.38); border-radius: var(--radius); background: rgba(249,115,22,.08); color: var(--orange); font-family: var(--mono); font-size: 10px; line-height: 1.6; }
     .form-status[hidden] { display: none; }
 
     .page-footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: var(--bg); color: var(--muted); font-size: 13px; }
@@ -224,22 +225,22 @@
     .footer-contact-line { margin-top:18px; color:#d6dcda !important; font-family:var(--mono); font-size:11px !important; letter-spacing:.06em; }
     .footer-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
     .footer-action { display:inline-flex; min-height:40px; align-items:center; gap:8px; padding:10px 14px; border:1px solid var(--line); border-radius:5px; color:#e8ece9; font-family:var(--mono); font-size:10px; letter-spacing:.06em; transition:border-color .2s ease, background .2s ease, transform .2s ease; }
-    .footer-action:hover, .footer-action:focus-visible { border-color:var(--blue); background:rgba(98,193,206,.08); transform:translateY(-2px); }
+    .footer-action:hover, .footer-action:focus-visible { border-color:var(--orange); background:rgba(249,115,22,.08); transform:translateY(-2px); }
     .footer-panel { padding:20px 18px 24px; border:1px solid var(--line); background:rgba(255,255,255,.018); }
-    .footer-panel h5 { margin-bottom:18px; color:var(--blue); font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
+    .footer-panel h5 { margin-bottom:18px; color:var(--orange); font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
     .footer-panel ul { display:grid; gap:10px; list-style:none; }
     .footer-panel li, .footer-panel a { color:var(--muted); font-family:var(--mono); font-size:10px; line-height:1.45; }
     .footer-panel a:hover, .footer-panel a:focus-visible { color:#fff; }
-    .footer-wordmark { width:100%; max-width:100%; margin:34px 0 18px; overflow:hidden; color:rgba(98,193,206,.08); font-family:var(--display); font-size:clamp(44px,9.5vw,136px); font-weight:800; letter-spacing:-.055em; line-height:.8; text-align:center; text-transform:uppercase; white-space:nowrap; }
+    .footer-wordmark { width:100%; max-width:100%; margin:34px 0 18px; overflow:hidden; color:rgba(249,115,22,.08); font-family:var(--display); font-size:clamp(44px,9.5vw,136px); font-weight:800; letter-spacing:-.055em; line-height:.8; text-align:center; text-transform:uppercase; white-space:nowrap; }
     .page-footer-bottom { align-items:center; gap:18px; }
     @media (max-width: 640px) { .footer-main { grid-template-columns:1fr; gap:14px; } .footer-lead { padding-right:0; } .footer-panel { padding:18px; } .footer-wordmark { margin:28px 0 18px; font-size:clamp(26px,8.6vw,56px); letter-spacing:-.06em; text-align:center; } }
   </style>
 </head>
 <body>
   <header class="site-nav">
-    <a class="nav-brand" href="index.html" aria-label="Back to Sam’s Auto Detailing home">
-      <img class="brand-icon" src="public/images/brand/sams-auto-detailing-logo-transparent.png" alt="Sam's Auto Detailing logo">
-      <span class="brand-title">SAM'S AUTO <span>DETAILING</span></span>
+    <a class="nav-brand" href="index.html" aria-label="Back to Auto G Detailing home">
+      <img class="brand-icon" src="public/images/brand/autog-detailing-profile.jpg" alt="Auto G Detailing logo">
+      <span class="brand-title">AUTO.G <span>DETAILING</span></span>
     </a>
     <nav class="page-actions" aria-label="Booking navigation">
       <a href="index.html">Home</a>
@@ -252,7 +253,7 @@
   <main class="page-shell">
     <header class="booking-header">
       <div>
-        <div class="eyebrow">Sam’s Auto Detailing / Direct enquiry</div>
+        <div class="eyebrow">Auto G Detailing / Direct enquiry</div>
         <h1>Reserve your<br>vehicle assessment.</h1>
       </div>
       <div class="intro-copy">
@@ -273,7 +274,7 @@
             <li>Add the marks, swirls, stains, or areas you want checked before handover.</li>
           </ul>
         </div>
-        <div class="aside-index">SAM'S AUTO DETAILING / ASSESSMENT REQUEST</div>
+        <div class="aside-index">AUTO.G DETAILING / ASSESSMENT REQUEST</div>
       </aside>
 
       <form class="booking-form" id="booking-form">
@@ -296,10 +297,10 @@
           <div class="form-group">
             <label for="book-service">Service selection *</label>
             <select id="book-service" name="service" required>
-              <option value="Limited Deep Interior Clean - $119">Limited Deep Interior Clean — $119</option>
-              <option value="Bronze Package - $80">Bronze Package — $80</option>
-              <option value="Gold Pre-Sale Detail - $140">Gold Pre-Sale Detail — $140</option>
-              <option value="Platinum Package - $300">Platinum Package — $300</option>
+              <option value="Deep interior clean">Deep interior clean</option>
+              <option value="Exterior wash and reset">Exterior wash and reset</option>
+              <option value="Paint refinement and protection">Paint refinement and protection</option>
+              <option value="Full interior and exterior detail">Full interior and exterior detail</option>
               <option value="Custom Assessment">Custom assessment / vehicle-size quote</option>
             </select>
           </div>
@@ -313,7 +314,7 @@
           <div class="form-group">
             <label for="book-location">Studio or mobile</label>
             <select id="book-location" name="location">
-              <option value="Mildura mobile service">Mildura mobile service</option>
+              <option value="Sydney mobile service">Sydney mobile service</option>
               <option value="Surrounding areas">Surrounding areas</option>
             </select>
           </div>
@@ -337,16 +338,16 @@
     <div class="footer-wrap">
       <div class="footer-main">
         <div class="footer-lead">
-          <div class="footer-brand-line"><img class="brand-icon" src="public/images/brand/sams-auto-detailing-logo-transparent.png" alt="Sam's Auto Detailing logo"><div class="footer-name">SAM'S AUTO <span>DETAILING</span></div></div>
-          <p>Mobile car care in Mildura and surrounding areas. We come to you for practical cleans, deeper detailing, and finish protection.</p>
-          <p class="footer-contact-line">Mildura, VIC 3500 &amp; surrounding areas<br>Fully insured mobile service<br>ABN 77 698 702 569</p>
-          <div class="footer-actions"><a class="footer-action" href="https://www.facebook.com/SamsCarDetailing1" target="_blank" rel="noopener">Facebook ↗</a><a class="footer-action" href="tel:+61470385024">Call / Text</a><a class="footer-action" href="book-now.html">Book Now</a></div>
+          <div class="footer-brand-line"><img class="brand-icon" src="public/images/brand/autog-detailing-profile.jpg" alt="Auto G Detailing logo"><div class="footer-name">AUTO.G <span>DETAILING</span></div></div>
+          <p>Clean, restore, protect and maintain. Owner-operated detailing based in Kingsgrove, Sydney.</p>
+          <p class="footer-contact-line">Kingsgrove, NSW 2208 &amp; surrounding areas<br>Owner operated service<br>Owner operated service</p>
+          <div class="footer-actions"><a class="footer-action" href="https://www.instagram.com/autog.detailing/" target="_blank" rel="noopener">Instagram ↗</a><a class="footer-action" href="https://www.instagram.com/autog.detailing/">DM Instagram</a><a class="footer-action" href="book-now.html">Book Now</a></div>
         </div>
         <div class="footer-panel"><h5>Explore</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Recent work</a></li><li><a href="#booking-card-title">Request an assessment</a></li></ul></div>
-        <div class="footer-panel"><h5>Contact</h5><ul><li><a href="tel:+61470385024">0470 385 024</a></li><li><a href="https://www.facebook.com/SamsCarDetailing1" target="_blank" rel="noopener">Facebook page ↗</a></li></ul></div>
+        <div class="footer-panel"><h5>Contact</h5><ul><li><a href="https://www.instagram.com/autog.detailing/">DM @autog.detailing</a></li><li><a href="https://www.instagram.com/autog.detailing/" target="_blank" rel="noopener">Instagram profile ↗</a></li></ul></div>
       </div>
-      <div class="footer-wordmark" aria-hidden="true">SAM'S AUTO DETAILING</div>
-      <div class="page-footer-bottom"><span>&copy; 2026 SAM'S AUTO DETAILING. All rights reserved.</span><a href="gallery.html">View recent work &rarr;</a></div>
+      <div class="footer-wordmark" aria-hidden="true">AUTO.G DETAILING</div>
+      <div class="page-footer-bottom"><span>&copy; 2026 AUTO.G DETAILING. All rights reserved.</span><a href="gallery.html">View recent work &rarr;</a></div>
     </div>
   </footer>
 
@@ -358,7 +359,7 @@
       event.preventDefault();
       const formData = new FormData(bookingForm);
       const message = [
-        'Assessment request for Sam\'s Auto Detailing',
+        'Assessment request for Auto G Detailing',
         `Name: ${formData.get('name') || ''}`,
         `Phone: ${formData.get('phone') || ''}`,
         `Email: ${formData.get('email') || ''}`,
@@ -369,7 +370,7 @@
         `Notes: ${formData.get('notes') || ''}`
       ].join('\n');
       bookingStatus.hidden = false;
-      bookingStatus.innerHTML = `Your request is ready. <a href="sms:+61470385024?body=${encodeURIComponent(message)}">Open messages to review and send it</a>.`;
+      bookingStatus.innerHTML = `Your request is ready. <a href="sms:https://www.instagram.com/autog.detailing/?body=${encodeURIComponent(message)}">Open messages to review and send it</a>.`;
       bookingForm.reset();
     });
   </script>
