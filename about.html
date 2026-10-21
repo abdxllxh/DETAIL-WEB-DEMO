@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="The Auto G Detailing approach: condition-led vehicle care, careful preparation, and a clear finish for drivers in Kingsgrove, Sydney and surrounding areas.">
   <title>Our Approach | Auto G Detailing</title>
-  <link rel="icon" type="image/svg+xml" href="public/images/brand/autog-wordmark.svg">
-  <link rel="apple-touch-icon" href="public/images/brand/autog-wordmark.svg">
+  <link rel="icon" type="image/svg+xml" href="public/images/brand/auto-g-logo.svg">
+  <link rel="apple-touch-icon" href="public/images/brand/auto-g-logo.svg">
   <link rel="preload" as="image" href="public/images/gallery/interior_cockpit.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,7 @@
     .brand-wordmark-main { color:#fff; }
     .brand-wordmark-dot { color:var(--orange); }
     .brand-wordmark-sub { color:var(--muted); font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.12em; }
+    .brand-logo { display:block; width:184px; height:58px; object-fit:contain; object-position:left center; }
     .page-actions { display:flex; align-items:center; gap:20px; flex-wrap:nowrap; white-space:nowrap; font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
     .page-actions a { color:var(--muted); transition:color .2s ease; }
     .page-actions a:hover, .page-actions a:focus-visible { color:#fff; }
@@ -91,13 +92,13 @@
     .reveal:nth-child(2) { transition-delay:.08s; } .reveal:nth-child(3) { transition-delay:.16s; }
     @keyframes heroDrift { from { transform:scale(1.04) translate3d(0,0,0); } to { transform:scale(1.09) translate3d(-1.2%,-1%,0); } }
     @media (max-width:900px) { .intro-grid { grid-template-columns:1fr; gap:24px; } .approach-grid { grid-template-columns:1fr; } .approach-card { min-height:0; } .footer-main { grid-template-columns:1fr 1fr; } }
-    @media (max-width:560px) { .site-nav { padding:12px; gap:8px; } .brand-wordmark { font-size:14.5px; gap:4px; } .brand-wordmark-sub { font-size:8px; letter-spacing:.08em; } .page-actions { gap:9px; font-size:8.4px; } .page-actions .book-link { padding:10px 12px; font-size:8.8px; } .wrap { width:min(100% - 40px,560px); } .about-hero { min-height:760px; align-items:flex-start; padding:150px 0 56px; } .about-hero::after { background:linear-gradient(180deg,rgba(5,8,10,.94),rgba(5,8,10,.6) 48%,var(--bg) 100%); } h1 { font-size:clamp(64px,17vw,94px); } .hero-copy { font-size:14px; } .approach-section { padding:78px 0 92px; } .intro-grid h2 { font-size:56px; } .proof-strip { grid-template-columns:1fr; gap:18px; } .about-cta { padding:28px 22px; } .footer-main { grid-template-columns:1fr; gap:14px; } .footer-lead { padding-right:0; } .footer-panel { padding:18px; } .footer-wordmark { margin:28px 0 18px; font-size:clamp(26px,8.6vw,56px); } .footer-bottom { align-items:flex-start; flex-direction:column; gap:12px; } }
+    @media (max-width:560px) { .site-nav { padding:12px; gap:8px; } .brand-logo { width:138px; height:46px; } .brand-wordmark { font-size:14.5px; gap:4px; } .brand-wordmark-sub { font-size:8px; letter-spacing:.08em; } .page-actions { gap:9px; font-size:8.4px; } .page-actions .book-link { padding:10px 12px; font-size:8.8px; } .wrap { width:min(100% - 40px,560px); } .about-hero { min-height:760px; align-items:flex-start; padding:150px 0 56px; } .about-hero::after { background:linear-gradient(180deg,rgba(5,8,10,.94),rgba(5,8,10,.6) 48%,var(--bg) 100%); } h1 { font-size:clamp(64px,17vw,94px); } .hero-copy { font-size:14px; } .approach-section { padding:78px 0 92px; } .intro-grid h2 { font-size:56px; } .proof-strip { grid-template-columns:1fr; gap:18px; } .about-cta { padding:28px 22px; } .footer-main { grid-template-columns:1fr; gap:14px; } .footer-lead { padding-right:0; } .footer-panel { padding:18px; } .footer-wordmark { margin:28px 0 18px; font-size:clamp(26px,8.6vw,56px); } .footer-bottom { align-items:flex-start; flex-direction:column; gap:12px; } }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .about-hero::before { animation:none; } .reveal { opacity:1; transform:none; transition:none; } .approach-card { transition:none; } }
   </style>
 </head>
 <body>
   <header class="site-nav">
-    <a class="nav-brand" href="index.html" aria-label="Back to Auto G Detailing home"><span class="brand-wordmark"><span class="brand-wordmark-main">AUTO<span class="brand-wordmark-dot">.G</span></span><span class="brand-wordmark-sub">DETAILING</span></span></a>
+    <a class="nav-brand" href="index.html" aria-label="Back to Auto G Detailing home"><img class="brand-logo" src="public/images/brand/auto-g-logo.svg" alt="AUTO.G Detailing"></a>
     <nav class="page-actions" aria-label="Page navigation"><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a class="book-link" href="book-now.html">Book Now</a></nav>
   </header>
 
