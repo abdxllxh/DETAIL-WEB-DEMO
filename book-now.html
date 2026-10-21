@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <meta name="description" content="Book a mobile car detailing service with Auto G Detailing in Sydney and surrounding areas.">
   <title>Auto G Detailing - Book Now</title>
-  <link rel="icon" type="image/jpeg" href="public/images/brand/autog-detailing-profile.jpg">
-  <link rel="apple-touch-icon" href="public/images/brand/autog-detailing-profile.jpg">
+  <link rel="icon" type="image/svg+xml" href="public/images/brand/autog-wordmark.svg">
+  <link rel="apple-touch-icon" href="public/images/brand/autog-wordmark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -67,6 +67,10 @@
        border-bottom: 1px solid rgba(249,115,22,.12);
     }
     .nav-brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; white-space: nowrap; }
+    .brand-wordmark { display:inline-flex; align-items:baseline; gap:8px; color:#fff; font-family:var(--display); font-size:21px; font-weight:800; letter-spacing:.08em; line-height:1; text-transform:uppercase; white-space:nowrap; }
+    .brand-wordmark-main { color:#fff; }
+    .brand-wordmark-dot { color:var(--orange); }
+    .brand-wordmark-sub { color:var(--muted); font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.12em; }
     .brand-icon {
       width: 42px;
       height: 42px;
@@ -199,8 +203,8 @@
     }
     @media (max-width: 640px) {
       .site-nav { padding: 12px 12px; gap: 8px; }
-      .brand-title { font-size: 14.5px; gap: 3px; }
-      .brand-title span { display: inline; font-size: 8px; letter-spacing: .08em; }
+      .brand-wordmark { font-size: 14.5px; gap: 4px; }
+      .brand-wordmark-sub { display: inline; font-size: 8px; letter-spacing: .08em; }
       .page-actions { gap: 7px; font-size: 7.8px; }
        .page-actions a { display: inline-flex; }
        .page-actions .book-link { padding: 8px 10px; font-size: 8px; }
@@ -219,9 +223,9 @@
     .footer-main { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(180px,.72fr) minmax(180px,.72fr); gap: 14px; align-items: stretch; }
     .footer-lead { padding: 4px 26px 12px 0; }
     .footer-brand-line { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
-    .footer-brand-line .brand-icon { flex:0 0 42px; }
     .footer-name { font-family:var(--display); font-size:22px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
     .footer-name span { color:var(--muted); font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; }
+    .footer-name .footer-wordmark-dot { color:var(--orange); font-family:var(--display); font-size:inherit; font-weight:inherit; letter-spacing:normal; }
     .footer-lead p { max-width:460px; color:var(--muted); font-size:13px; line-height:1.75; }
     .footer-contact-line { margin-top:18px; color:#d6dcda !important; font-family:var(--mono); font-size:11px !important; letter-spacing:.06em; }
     .footer-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
@@ -240,8 +244,7 @@
 <body>
   <header class="site-nav">
     <a class="nav-brand" href="index.html" aria-label="Back to Auto G Detailing home">
-      <img class="brand-icon" src="public/images/brand/autog-detailing-profile.jpg" alt="Auto G Detailing logo">
-      <span class="brand-title">AUTO.G <span>DETAILING</span></span>
+      <span class="brand-wordmark"><span class="brand-wordmark-main">AUTO<span class="brand-wordmark-dot">.G</span></span><span class="brand-wordmark-sub">DETAILING</span></span>
     </a>
     <nav class="page-actions" aria-label="Booking navigation">
       <a href="services.html">Services</a>
@@ -338,7 +341,7 @@
     <div class="footer-wrap">
       <div class="footer-main">
         <div class="footer-lead">
-          <div class="footer-brand-line"><img class="brand-icon" src="public/images/brand/autog-detailing-profile.jpg" alt="Auto G Detailing logo"><div class="footer-name">AUTO.G <span>DETAILING</span></div></div>
+          <div class="footer-brand-line"><div class="footer-name">AUTO<span class="footer-wordmark-dot">.G</span> <span>DETAILING</span></div></div>
           <p>Clean, restore, protect and maintain. Owner-operated detailing based in Kingsgrove, Sydney.</p>
           <p class="footer-contact-line">Kingsgrove, NSW 2208 &amp; surrounding areas<br>Owner operated service<br>Owner operated service</p>
           <div class="footer-actions"><a class="footer-action" href="https://www.instagram.com/autog.detailing/" target="_blank" rel="noopener">Instagram ↗</a><a class="footer-action" href="https://www.instagram.com/autog.detailing/">DM Instagram</a><a class="footer-action" href="book-now.html">Book Now</a></div>
