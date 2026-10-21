@@ -162,11 +162,15 @@
     .aside-index { color: var(--muted-dark); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
 
     .booking-form { align-self: start; }
+    .booking-card, .booking-form, .form-row, .form-group { min-width: 0; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .form-group { display: grid; gap: 8px; margin-bottom: 20px; }
     label { color: var(--muted); font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
     input, select, textarea {
+      display: block;
       width: 100%;
+      min-width: 0;
+      max-width: 100%;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: #080909;
@@ -175,6 +179,7 @@
       font-size: 14px;
       transition: border-color .2s ease, background .2s ease;
     }
+    input[type="date"] { min-inline-size: 0; inline-size: 100%; max-inline-size: 100%; }
     input::placeholder, textarea::placeholder { color: #5f6461; }
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); background: #0b1115; }
     textarea { min-height: 124px; resize: vertical; }
@@ -205,9 +210,9 @@
       .site-nav { padding: 12px 12px; gap: 8px; }
       .brand-wordmark { font-size: 14.5px; gap: 4px; }
       .brand-wordmark-sub { display: inline; font-size: 8px; letter-spacing: .08em; }
-      .page-actions { gap: 7px; font-size: 7.8px; }
+      .page-actions { gap: 9px; font-size: 8.4px; }
        .page-actions a { display: inline-flex; }
-       .page-actions .book-link { padding: 8px 10px; font-size: 8px; }
+       .page-actions .book-link { padding: 10px 12px; font-size: 8.8px; }
        h1 { font-size: clamp(48px, 15vw, 70px); letter-spacing: -.03em; }
       .page-shell { width: min(100% - 40px, 560px); padding: 130px 0 64px; }
       .booking-header { margin-bottom: 30px; padding: 34px 0 44px; }
