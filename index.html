@@ -1470,6 +1470,7 @@
     let videoTargetTime = 0;
     let videoLoadToken = 0;
     let videoFailedPath = '';
+    const videoWarmers = new Map();
     let heroBootReady = false;
     let heroBootPromise = null;
     const CERAMIC_HOLD_START = 0.91;
@@ -1629,6 +1630,50 @@
       });
     }
 
+    function warmupSectionVideo(section, timeoutMs = 14000) {
+      if (!section?.videoPath) return Promise.resolve(false);
+      const existing = videoWarmers.get(section.videoPath);
+      if (existing) return existing.promise;
+
+      const warmer = document.createElement('video');
+      warmer.muted = true;
+      warmer.playsInline = true;
+      warmer.preload = 'auto';
+      warmer.setAttribute('aria-hidden', 'true');
+      warmer.style.position = 'fixed';
+      warmer.style.width = '1px';
+      warmer.style.height = '1px';
+      warmer.style.opacity = '0';
+      warmer.style.pointerEvents = 'none';
+      warmer.style.left = '-10px';
+      warmer.style.top = '-10px';
+      document.body.appendChild(warmer);
+
+      const promise = new Promise(resolve => {
+        let settled = false;
+        const settle = ready => {
+          if (settled) return;
+          settled = true;
+          warmer.removeEventListener('canplay', onReady);
+          warmer.removeEventListener('canplaythrough', onReady);
+          warmer.removeEventListener('loadeddata', onReady);
+          window.clearTimeout(timeoutId);
+          resolve(ready);
+        };
+        const onReady = () => settle(warmer.readyState >= 2);
+        const timeoutId = window.setTimeout(() => settle(warmer.readyState >= 2), timeoutMs);
+        warmer.addEventListener('canplay', onReady, { once: false });
+        warmer.addEventListener('canplaythrough', onReady, { once: false });
+        warmer.addEventListener('loadeddata', onReady, { once: false });
+        warmer.src = section.videoPath;
+        warmer.load();
+        if (warmer.readyState >= 2) onReady();
+      });
+
+      videoWarmers.set(section.videoPath, { element: warmer, promise });
+      return promise;
+    }
+
     function bootstrapPreloader() {
       if (heroBootPromise) return heroBootPromise;
 
@@ -1650,7 +1695,12 @@
           return record.promise;
         });
         const fontTask = document.fonts?.ready?.catch(() => undefined) || Promise.resolve();
-        const totalTasks = criticalTasks.length + 2;
+        const connection = navigator.connection;
+        const dataSaverConnection = Boolean(connection?.saveData || /(^|-)2g$|slow-2g/i.test(connection?.effectiveType || ''));
+        const chapterVideoTasks = dataSaverConnection
+          ? []
+          : SECTIONS.slice(1).map(section => warmupSectionVideo(section));
+        const totalTasks = criticalTasks.length + 2 + chapterVideoTasks.length;
         let completedTasks = 0;
         const completeTask = (message, value) => {
           completedTasks += 1;
@@ -1662,7 +1712,8 @@
         const trackedFrames = criticalTasks.map(task => task.then(() => completeTask('Buffering opening frames')));
         const trackedVideo = waitForOpeningVideo().then(() => completeTask('Preparing motion playback'));
         const trackedFonts = fontTask.then(() => completeTask('Setting type and layout'));
-        await Promise.all([...trackedFrames, trackedVideo, trackedFonts]);
+        const trackedChapterVideos = chapterVideoTasks.map(task => task.then(() => completeTask('Buffering chapter motion')));
+        await Promise.all([...trackedFrames, trackedVideo, trackedFonts, ...trackedChapterVideos]);
 
         // Give the browser one paint with decoded assets before releasing the
         // gate; this avoids revealing the page in the same frame as the last
