@@ -4,9 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <meta name="description" content="Auto G Detailing — owner-operated detailing in Kingsgrove, Sydney. Clean, restore, protect and maintain.">
+  <meta name="theme-color" content="#05080a">
   <title>Auto G Detailing | Kingsgrove Sydney</title>
-  <link rel="icon" type="image/svg+xml" href="public/images/brand/auto-g-logo-hdr.svg?rev=transparent-wordmark-g-centered-20261021">
-  <link rel="apple-touch-icon" href="public/images/brand/auto-g-logo-hdr.svg?rev=transparent-wordmark-g-centered-20261021">
+  <link rel="icon" type="image/svg+xml" href="public/images/brand/auto-g-favicon.svg?rev=square-favicon-20261022">
+  <link rel="apple-touch-icon" href="public/images/brand/auto-g-favicon.svg?rev=square-favicon-20261022">
+  <link rel="manifest" href="site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AUTO.G Detailing">
+  <meta property="og:title" content="Auto G Detailing | Kingsgrove Sydney">
+  <meta property="og:description" content="Owner-operated auto detailing in Kingsgrove, Sydney. Clean, restore, protect and maintain.">
+  <meta property="og:image" content="public/images/gallery/gallery-hero-original.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <meta property="og:image:alt" content="Blue BMW receiving an exterior detailing wash">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Auto G Detailing | Kingsgrove Sydney">
+  <meta name="twitter:description" content="Owner-operated auto detailing in Kingsgrove, Sydney.">
+  <meta name="twitter:image" content="public/images/gallery/gallery-hero-original.jpg">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -235,6 +249,82 @@
       color: #fff;
       background: rgba(249,115,22,.1);
       outline: none;
+    }
+
+    /* =========================================================
+       HERO READINESS GATE
+       Keep the first paint intentional while the opening video and
+       fallback frame buffer are decoded. This prevents a user from
+       scrolling into an half-ready scrub sequence on a cold load.
+       ========================================================= */
+    .site-preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: #020303;
+      color: #f4f1e9;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .45s ease, visibility .45s ease;
+    }
+    .site-preloader.is-ready {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .site-preloader-inner {
+      width: min(420px, 100%);
+      text-align: center;
+    }
+    .site-preloader-logo {
+      width: min(230px, 72vw);
+      height: auto;
+      margin: 0 auto 30px;
+      display: block;
+    }
+    .site-preloader-kicker {
+      margin: 0 0 12px;
+      color: var(--orange);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .site-preloader-status {
+      min-height: 1.3em;
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .site-preloader-progress {
+      height: 2px;
+      overflow: hidden;
+      background: rgba(255,255,255,.1);
+    }
+    .site-preloader-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--orange);
+      transform-origin: left center;
+      transition: width .25s ease;
+    }
+    body.is-booting { overflow: hidden; }
+    body.is-booting > :not(.site-preloader) {
+      visibility: hidden;
+    }
+    body.is-ready > :not(.site-preloader) {
+      visibility: visible;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .site-preloader { transition-duration: .01ms; }
+      .site-preloader-progress span { transition-duration: .01ms; }
     }
 
     /* =========================================================
@@ -1057,7 +1147,17 @@
     @media (max-width: 640px) { .footer-main { grid-template-columns:1fr; gap:14px; } .footer-lead { padding-right:0; } .footer-panel { padding:18px; } .footer-wordmark { margin:28px 0 18px; font-size:clamp(26px,8.6vw,56px); letter-spacing:-.06em; text-align:center; } }
   </style>
 </head>
-<body>
+<body class="is-booting">
+
+  <!-- Hold the first paint until the hero has a usable opening buffer. -->
+  <div class="site-preloader" id="site-preloader" role="status" aria-live="polite" aria-label="Loading Auto G Detailing experience">
+    <div class="site-preloader-inner">
+      <img class="site-preloader-logo" src="public/images/brand/auto-g-logo-hdr.svg?rev=transparent-wordmark-g-centered-20261021" alt="AUTO.G Detailing">
+      <p class="site-preloader-kicker">Preparing the detail</p>
+      <p class="site-preloader-status" id="site-preloader-status">Loading opening scene · 0%</p>
+      <div class="site-preloader-progress" aria-hidden="true"><span id="site-preloader-progress"></span></div>
+    </div>
+  </div>
 
   <!-- Top Navigation -->
   <header class="site-nav">
@@ -1336,6 +1436,9 @@
     const cardTags = document.getElementById('card-tags');
 
     const hudFinalReveal = document.getElementById('hud-final-reveal');
+    const sitePreloader = document.getElementById('site-preloader');
+    const sitePreloaderStatus = document.getElementById('site-preloader-status');
+    const sitePreloaderProgress = document.getElementById('site-preloader-progress');
 
     /* Rolling frame cache: keep only a small window of decoded frames in
        memory so a long scroll cannot retain all 1,900+ source images. */
@@ -1367,6 +1470,8 @@
     let videoTargetTime = 0;
     let videoLoadToken = 0;
     let videoFailedPath = '';
+    let heroBootReady = false;
+    let heroBootPromise = null;
     const CERAMIC_HOLD_START = 0.91;
     const CERAMIC_CARD_END = 0.91;
     const FINAL_REVEAL_START = 0.975;
@@ -1485,13 +1590,105 @@
       return record;
     }
 
-    /* The opening poster remains visible while the first chapter video
-       establishes metadata. The video source itself is attached lazily by
-       drawSequenceFrame so later chapters do not compete for bandwidth. */
-    function bootstrapPreloader() {
-      return;
+    /* Hold the first paint until the opening video, a small opening frame
+       buffer, every chapter's poster, and the font metrics are available.
+       Waiting for every source frame would make mobile startup needlessly
+       expensive, so the remaining frames continue warming in the background
+       after the experience is usable. */
+    function setPreloaderProgress(value, message) {
+      const safeValue = Math.max(0, Math.min(100, Math.round(value)));
+      if (sitePreloaderProgress) sitePreloaderProgress.style.width = `${safeValue}%`;
+      if (sitePreloaderStatus) sitePreloaderStatus.textContent = `${message} · ${safeValue}%`;
     }
-    bootstrapPreloader();
+
+    function waitForOpeningVideo(timeoutMs = 9000) {
+      if (!heroVideo || !SECTIONS[0]?.videoPath) return Promise.resolve(false);
+      if (heroVideo.readyState >= 3 && Number.isFinite(heroVideo.duration) && heroVideo.duration > 0) {
+        return Promise.resolve(true);
+      }
+
+      return new Promise(resolve => {
+        let settled = false;
+        const settle = ready => {
+          if (settled) return;
+          settled = true;
+          heroVideo.removeEventListener('canplay', onReady);
+          heroVideo.removeEventListener('canplaythrough', onReady);
+          heroVideo.removeEventListener('loadeddata', onReady);
+          window.clearTimeout(timeoutId);
+          resolve(ready);
+        };
+        const onReady = () => settle(heroVideo.readyState >= 2);
+        const timeoutId = window.setTimeout(() => settle(heroVideo.readyState >= 2), timeoutMs);
+
+        heroVideo.addEventListener('canplay', onReady, { once: false });
+        heroVideo.addEventListener('canplaythrough', onReady, { once: false });
+        heroVideo.addEventListener('loadeddata', onReady, { once: false });
+        ensureVideoSource(SECTIONS[0]);
+        if (heroVideo.readyState >= 2) onReady();
+      });
+    }
+
+    function bootstrapPreloader() {
+      if (heroBootPromise) return heroBootPromise;
+
+      heroBootPromise = (async () => {
+        if (!sitePreloader) {
+          heroBootReady = true;
+          return;
+        }
+
+        const openingFrameCount = IS_COMPACT_VIEW ? 6 : 10;
+        const criticalPaths = new Set();
+        SECTIONS.forEach(section => criticalPaths.add(getFramePath(section, 1)));
+        for (let index = 1; index <= openingFrameCount; index += 1) {
+          criticalPaths.add(getFramePath(SECTIONS[0], index));
+        }
+
+        const criticalTasks = Array.from(criticalPaths).map(path => {
+          const record = getCachedImage(path, 'high');
+          return record.promise;
+        });
+        const fontTask = document.fonts?.ready?.catch(() => undefined) || Promise.resolve();
+        const totalTasks = criticalTasks.length + 2;
+        let completedTasks = 0;
+        const completeTask = (message, value) => {
+          completedTasks += 1;
+          const calculated = Math.min(96, (completedTasks / totalTasks) * 96);
+          setPreloaderProgress(Math.max(value || 0, calculated), message);
+        };
+
+        setPreloaderProgress(4, 'Preparing opening scene');
+        const trackedFrames = criticalTasks.map(task => task.then(() => completeTask('Buffering opening frames')));
+        const trackedVideo = waitForOpeningVideo().then(() => completeTask('Preparing motion playback'));
+        const trackedFonts = fontTask.then(() => completeTask('Setting type and layout'));
+        await Promise.all([...trackedFrames, trackedVideo, trackedFonts]);
+
+        // Give the browser one paint with decoded assets before releasing the
+        // gate; this avoids revealing the page in the same frame as the last
+        // decode and causing a visible hitch.
+        await new Promise(requestAnimationFrame);
+        await new Promise(requestAnimationFrame);
+        setPreloaderProgress(100, 'Ready');
+        heroBootReady = true;
+        document.body.classList.remove('is-booting');
+        document.body.classList.add('is-ready');
+        sitePreloader.classList.add('is-ready');
+      })().catch(error => {
+        // Never trap a visitor behind the gate. The static poster and the
+        // existing video error fallback remain usable if a network request
+        // fails or a browser blocks media preloading.
+        console.warn('Hero readiness gate released with fallback:', error);
+        setPreloaderProgress(100, 'Ready');
+        heroBootReady = true;
+        document.body.classList.remove('is-booting');
+        document.body.classList.add('is-ready');
+        if (sitePreloader) sitePreloader.classList.add('is-ready');
+      });
+
+      return heroBootPromise;
+    }
+    const heroBootReadyPromise = bootstrapPreloader();
 
     function renderImageToCanvas(img) {
       if (!img.naturalWidth) return;
@@ -1827,13 +2024,14 @@
 
     // Initial render
     function initializeHeroScroll() {
+      if (!heroBootReady) return;
       resizeHeroCanvas();
       targetScrollProgress = getHeroScrollProgress();
       smoothedScrollProgress = targetScrollProgress;
       updateHeroScroll(smoothedScrollProgress);
     }
     window.addEventListener('load', initializeHeroScroll);
-    initializeHeroScroll();
+    heroBootReadyPromise.then(initializeHeroScroll);
 
     /* =========================================================
        BEFORE & AFTER SPLIT COMPARISON SLIDER
